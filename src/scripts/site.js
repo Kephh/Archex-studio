@@ -190,6 +190,7 @@
   const studioButtons = [...document.querySelectorAll('[data-studio-stage]')];
   const methodIndex = document.querySelector('[data-method-index]');
   const methodWord = document.querySelector('[data-method-word]');
+  const methodVisual = document.querySelector('.method-visual');
   const activateStudio = (index) => {
     studioSteps.forEach((step, i) =>
       step.classList.toggle('is-active', i === index),
@@ -202,6 +203,7 @@
       methodWord.textContent = ['Recognise', 'Translate', 'Test', 'Carry'][
         index
       ];
+    if (methodVisual) methodVisual.dataset.active = String(index);
   };
   studioButtons.forEach((button) =>
     button.addEventListener('click', () =>
