@@ -18,7 +18,9 @@ const siteUrl =
     : 'https://studio.archexweb.in');
 const canonical = new URL(path, siteUrl).toString();
 const allowIndexing =
-  import.meta.env.PUBLIC_ALLOW_INDEXING === 'true' && !noindex;
+  import.meta.env.VERCEL_ENV === 'production' &&
+  import.meta.env.PUBLIC_ALLOW_INDEXING === 'true' &&
+  !noindex;
 ---
 
 <!doctype html>
@@ -31,11 +33,11 @@ const allowIndexing =
       name="robots"
       content={allowIndexing ? 'index,follow' : 'noindex,nofollow'}
     />
-    <link rel="canonical" href={canonical} />
+    {allowIndexing && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    {allowIndexing && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content="Archex Studio" />
     <title>{title}</title>
   </head>

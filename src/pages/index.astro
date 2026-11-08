@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Archex Studio develops identities and digital experiences that hold together from first impression to interaction."
   path="/"
 >
-  <section class="hero-field" data-reveal>
+  <section class="hero-field" data-stage="0" aria-label="The Resolving Field">
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="hero-label meta">
@@ -20,7 +20,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         <div class="hero-actions">
           <a class="button on-dark" href="/work/">See the work</a>
-          <a class="button secondary" href="/contact/">Start a conversation</a>
+          <a class="button secondary" href="/capabilities/"
+            >Explore capabilities</a
+          >
         </div>
       </div>
       <div
@@ -61,6 +63,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span>Identity → use</span><span>Responsive frame</span>
           </div>
         </div>
+        <div class="field-orbit field-orbit-a" aria-hidden="true"></div>
+        <div class="field-orbit field-orbit-b" aria-hidden="true"></div>
+        <div class="field-index" aria-hidden="true">
+          <span>FIELD NOTE</span><b>01</b><i>FORM / SIGNAL / USE</i>
+        </div>
       </div>
     </div>
     <div class="hero-progress">
@@ -74,17 +81,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           >↗</span
         >
       </button>
-      <span class="progress-track"><i></i></span>
+      <div class="hero-stage-state" aria-live="polite" aria-atomic="true">
+        <span data-live-stage>01 — Mark</span><span class="progress-track"
+          ><i></i></span
+        ><span>04 — Experience</span>
+      </div>
     </div>
   </section>
 
   <section class="section section-rule shell reveal">
     <div class="section-header">
-      <h2 class="section-title">One project,<br />fully considered.</h2>
+      <h2 class="section-title">One reference.<br />Held honestly.</h2>
       <div class="section-intro">
         <p>
-          Archex Web is our first real project. Its evidence is being gathered;
-          its story will be told with precision, not assumption.
+          Archex Web is the one available project reference. The relationship is
+          stated plainly; project details remain evidence-pending.
         </p>
       </div>
     </div>
@@ -101,7 +112,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <dl class="meta-list">
         <div><dt>Status</dt><dd>Evidence pending</dd></div>
-        <div><dt>Role</dt><dd>Created by Archex</dd></div>
+        <div>
+          <dt>Relationship</dt><dd>A separate site by the same owner/team</dd>
+        </div>
         <div>
           <dt>Next</dt><dd><a href="/work/">View the work archive</a></dd>
         </div>
@@ -176,9 +189,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             class="method-control"
             type="button"
             data-method
-            data-method-title="Carry it through."
-            data-method-copy="Test the system until it remains clear in use."
-            aria-pressed="false">Carry through</button
+            data-method-title="Carry the system through."
+            data-method-copy="Keep the experience coherent across screens, states, and responsive conditions."
+            aria-pressed="false">Carry</button
           >
         </div>
         <div class="method-panel">

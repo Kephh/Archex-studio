@@ -1,5 +1,7 @@
 export function GET() {
-  const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';
+  const allowIndexing =
+    import.meta.env.VERCEL_ENV === 'production' &&
+    import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';
   const siteUrl =
     import.meta.env.PUBLIC_SITE_URL ||
     (import.meta.env.VERCEL_URL
