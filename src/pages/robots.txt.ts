@@ -1,7 +1,10 @@
 export function GET() {
   const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';
   const siteUrl =
-    import.meta.env.PUBLIC_SITE_URL || 'https://studio.archexweb.in';
+    import.meta.env.PUBLIC_SITE_URL ||
+    (import.meta.env.VERCEL_URL
+      ? `https://${import.meta.env.VERCEL_URL}`
+      : 'https://studio.archexweb.in');
   const lines = [
     'User-agent: *',
     allowIndexing ? 'Allow: /' : 'Disallow: /',
