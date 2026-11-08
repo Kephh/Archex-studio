@@ -8,35 +8,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   path="/archex-web/"
   noindex
 >
-  <div class="wrap project-page">
-    <div class="page-intro" data-reveal="hero">
+  <div class="shell">
+    <header class="page-intro">
       <h1>Archex Web.</h1><p>
         Evidence-pending project framework. This page is not indexable and
         contains no invented project details.
       </p>
-    </div><div class="page-body" data-reveal>
-      <div class="case-grid">
-        <div class="project-evidence-rail">
-          <div class="evidence-tile" aria-hidden="true">
-            <span>ARCHEX<br />WEB</span><i></i><small
-              >published / exploring / software</small
-            >
-          </div>
-        </div><div>
-          <div class="case-slots">
-            <div class="case-slot">
-              <strong>Published description</strong><span>VERIFIED</span>
-            </div><p>
-              Archex Web helps businesses explore software problems, from a new
-              product idea to the tools and systems already part of everyday
-              work. Its published site invites people to begin with the problem,
-              even when they do not know the technical answer.
-            </p><div class="case-slot">
-              <strong>Objective, contribution, process and outcome</strong><span
-                >EVIDENCE PENDING</span
-              >
-            </div>
-          </div>
+    </header>
+    <section class="section reveal">
+      <div class="case-layout">
+        <div class="case-lead">
+          <div class="eyebrow">Live project / Evidence pending</div><h2>
+            Known<br />carefully.
+          </h2><p>
+            Archex Web helps businesses explore software problems, from a new
+            product idea to the tools and systems already part of everyday work.
+          </p>
         </div><aside class="case-aside">
           <p>
             <strong>What is known</strong><br />Archex Web is one real project
@@ -50,6 +37,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           ><br /><a href="/work/">Return to work</a>
         </aside>
       </div>
-    </div>
+      <div class="evidence-list">
+        <div class="case-slot">
+          <strong>Published description</strong><span>VERIFIED</span>
+        </div><p>
+          Its published site invites people to begin with the problem, even when
+          they do not know the technical answer.
+        </p><div class="case-slot">
+          <strong>Objective, contribution, process and outcome</strong><span
+            >EVIDENCE PENDING</span
+          >
+        </div>
+      </div>
+    </section>
   </div>
 </BaseLayout>

@@ -1,113 +1,203 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Handoff from '../components/Handoff.astro';
-import ProjectStatus from '../components/ProjectStatus.astro';
-import { projects } from '../data/projects';
 ---
 
 <BaseLayout
-  title="Archex Studio — Identity and Digital Experience"
+  title="Archex Studio — The Living Grid"
   description="Archex Studio develops identities and digital experiences that hold together from first impression to interaction."
   path="/"
 >
-  <section class="hero" data-reveal="hero">
-    <div class="hero-grid">
-      <div>
+  <section class="hero-field" data-reveal>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-label meta">
+          <span>Archex Studio / 01—05</span><span>Living Grid</span>
+        </div>
         <h1>Identity <em>into</em> interface.</h1>
-        <p class="hero-copy">
-          Archex Studio develops identities and digital experiences that hold
-          together from first impression to interaction.
+        <p>
+          We develop identities and digital experiences that hold together from
+          first impression to interaction.
         </p>
         <div class="hero-actions">
-          <a class="button" href="/work/">See the work</a><a
-            class="button secondary"
-            href="/contact/">Start a project conversation</a
-          >
+          <a class="button on-dark" href="/work/">See the work</a>
+          <a class="button secondary" href="/contact/">Start a conversation</a>
         </div>
       </div>
-      <Handoff />
+      <div
+        class="field-visual"
+        data-resolving-field
+        aria-label="Conceptual identity-to-interface specimen"
+      >
+        <svg
+          class="signal-path"
+          viewBox="0 0 640 520"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M24 430 C 145 390, 160 160, 300 210 S 450 370, 616 74"
+          ></path>
+        </svg>
+        <div class="glass-note glass-note-a">
+          identity / signal<br /><b>01—04</b>
+        </div>
+        <div class="glass-note glass-note-b">
+          responsive frame<br /><b>1440 → 390</b>
+        </div>
+        <span class="coordinate a">X / 04 — TYPE SCALE</span>
+        <span class="coordinate b">Y / 18 — COMPONENT</span>
+        <span class="coordinate c">CONCEPTUAL SPECIMEN</span>
+        <div class="mark" aria-hidden="true"><span>A</span><i>01</i></div>
+        <div class="specimen">
+          <div class="specimen-head">
+            <span>Interface / 04</span><span>Ready state</span>
+          </div>
+          <div class="specimen-main">
+            <div class="specimen-word">make<br />room.</div>
+            <div class="specimen-lines" aria-hidden="true">
+              <i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="specimen-foot">
+            <span>Identity → use</span><span>Responsive frame</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-progress">
+      <button
+        class="stage-control"
+        type="button"
+        data-stage-toggle
+        aria-pressed="false"
+      >
+        <span data-stage-label>Resolve the field</span><span aria-hidden="true"
+          >↗</span
+        >
+      </button>
+      <span class="progress-track"><i></i></span>
     </div>
   </section>
-  <div class="wrap">
-    <section class="section rule" data-reveal>
-      <div class="section-head">
-        <h2 class="section-title">One project,<br />fully considered.</h2><div
-          class="section-intro"
-        >
+
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <h2 class="section-title">One project,<br />fully considered.</h2>
+      <div class="section-intro">
+        <p>
+          Archex Web is our first real project. Its evidence is being gathered;
+          its story will be told with precision, not assumption.
+        </p>
+      </div>
+    </div>
+    <div class="evidence">
+      <div class="evidence-frame">
+        <div class="evidence-copy">
+          <div class="eyebrow">01 / Live project / Evidence pending</div>
+          <h3>Archex<br />Web.</h3>
           <p>
-            Archex Web is our first real project. Its evidence is being
-            gathered; its story will be told with precision, not assumption.
+            Conceptual frame only. No project screenshots or unsupported details
+            are presented here.
           </p>
         </div>
       </div>
-      <div class="work-lead">
-        <ProjectStatus project={projects[0]} featured /><dl
-          class="project-meta"
-        >
-          <div><dt>Status</dt><dd>Evidence pending</dd></div><div>
-            <dt>Role</dt><dd>Created by Archex</dd>
-          </div><div>
-            <dt>Next</dt><dd><a href="/work/">View the work archive</a></dd>
-          </div>
-        </dl>
+      <dl class="meta-list">
+        <div><dt>Status</dt><dd>Evidence pending</dd></div>
+        <div><dt>Role</dt><dd>Created by Archex</dd></div>
+        <div>
+          <dt>Next</dt><dd><a href="/work/">View the work archive</a></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="reserved-grid">
+      <article class="reserved">
+        <small>02 / Reserved</small><strong>Concept<br />project 01</strong
+        ><small>Future chapter</small>
+      </article>
+      <article class="reserved">
+        <small>03 / Reserved</small><strong>Concept<br />project 02</strong
+        ><small>Future chapter</small>
+      </article>
+      <article class="reserved">
+        <small>04 / Reserved</small><strong>Concept<br />project 03</strong
+        ><small>Future chapter</small>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <h2 class="section-title">Two sides<br />of one system.</h2>
+      <div class="section-intro">
+        <p>
+          Brand identity and digital experience have equal weight. Creative
+          direction is the connection between them.
+        </p>
       </div>
-      <div class="reserved-grid">
-        {
-          projects
-            .slice(1)
-            .map((project) => <ProjectStatus project={project} />)
-        }
-      </div>
-    </section>
-    <section class="section rule section-split" data-reveal>
-      <div class="section-head">
-        <h2 class="section-title">Two sides<br />of one idea.</h2><div
-          class="section-intro"
-        >
-          <p>
-            Brand identity and digital experience have equal weight. Creative
-            direction is the connection between them.
+    </div>
+    <div class="capability-grid">
+      <article class="capability">
+        <div class="eyebrow">Translate / 01</div><h3>
+          Make it<br />recognisable.
+        </h3><p>
+          Direction, identity systems, typography and visual communication give
+          an idea a shape people can remember.
+        </p><div class="capability-list">
+          <span>Direction</span><span>Identity systems</span><span
+            >Art direction</span
+          >
+        </div>
+      </article>
+      <article class="capability">
+        <div class="eyebrow">Carry / 02</div><h3>Make it<br />usable.</h3><p>
+          Websites, interfaces, interactions and responsive systems carry that
+          idea into use.
+        </p><div class="capability-list">
+          <span>Web design</span><span>UI/UX</span><span>Interaction</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-rule shell reveal">
+    <div class="method">
+      <blockquote class="method-quote">
+        Make the first impression hold up in the hand.
+      </blockquote>
+      <div>
+        <div class="method-controls">
+          <button
+            class="method-control"
+            type="button"
+            data-method
+            data-method-title="Recognise the essential."
+            data-method-copy="Find the character that must survive every expression."
+            aria-pressed="true">Recognise</button
+          >
+          <button
+            class="method-control"
+            type="button"
+            data-method
+            data-method-title="Carry it through."
+            data-method-copy="Test the system until it remains clear in use."
+            aria-pressed="false">Carry through</button
+          >
+        </div>
+        <div class="method-panel">
+          <h3 data-method-title>Recognise the essential.</h3><p
+            data-method-copy
+          >
+            Find the character that must survive every expression.
           </p>
         </div>
+        <a href="/studio/">Read the studio approach</a>
       </div>
-      <div class="cap-grid">
-        <article class="cap">
-          <h3>Brand identity<br />&amp; visual communication</h3><p>
-            We can help with the direction, visual identity, typography, colour,
-            and art direction that make an organisation recognisable.
-          </p><div class="cap-list">
-            <span>Direction</span><span>Identity systems</span><span
-              >Art direction</span
-            >
-          </div>
-        </article><article class="cap">
-          <h3>Digital<br />experience</h3><p>
-            We can help shape websites, interfaces, interactions, and responsive
-            systems that carry the idea into use.
-          </p><div class="cap-list">
-            <span>Web design</span><span>UI/UX</span><span>Interaction</span>
-          </div>
-        </article>
-      </div>
-    </section>
-    <section class="section rule statement-section" data-reveal>
-      <div class="philosophy">
-        <blockquote>
-          Make the first impression hold up in the hand.
-        </blockquote><div class="philosophy-copy">
-          <p>
-            We are building a studio around the space where a brand becomes an
-            experience. The work should be distinct at a glance and generous in
-            use.
-          </p><a href="/studio/">Read the studio approach</a>
-        </div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
   <section class="cta-band">
-    <div class="cta-band-inner">
-      <h2>Have something worth shaping?</h2><a class="button" href="/contact/"
-        >Start a project conversation</a
+    <div class="cta-inner">
+      <h2>Have something worth shaping?</h2><a
+        class="button on-dark"
+        href="/contact/"
+        >Start a project conversation <span aria-hidden="true">↗</span></a
       >
     </div>
   </section>

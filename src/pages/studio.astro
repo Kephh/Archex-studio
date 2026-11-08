@@ -4,34 +4,98 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Studio — Archex Studio"
-  description="The point of view and working approach behind Archex Studio's identity-to-interface practice."
+  description="The point of view and working approach behind Archex Studio."
   path="/studio/"
 >
-  <div class="wrap studio-page">
-    <div class="page-intro" data-reveal="hero">
-      <h1>A studio for the space between.</h1><p>
-        Between a name and a feeling. Between a visual system and the way it
-        behaves. Between what an organisation says and what people experience.
+  <div class="shell">
+    <header class="page-intro">
+      <h1>Studio.</h1><p>
+        We work in the space where a brand becomes an experience: distinct at a
+        glance, generous in use.
       </p>
-    </div><div class="page-body" data-reveal>
-      <div class="studio-manifesto">
-        <div class="manifesto-mark" aria-hidden="true">
-          A<span>—</span>I
-        </div><div class="philosophy">
-          <blockquote>
-            Distinctive is not enough. It has to hold together.
-          </blockquote><div class="philosophy-copy">
-            <p>
-              Archex is a new multidisciplinary creative studio with an
-              Identity-to-Interface point of view. We are interested in the
-              decisions that make a brand both recognisable and usable.
-            </p><p>
-              Our approach is deliberate: understand the idea, find its visual
-              language, then carry that language into the experience.
-            </p>
+    </header>
+    <section class="section reveal">
+      <div class="method-page">
+        <div class="method-visual" aria-hidden="true">
+          <svg viewBox="0 0 260 360"
+            ><path
+              d="M36 24V336M36 72 C 112 72 146 110 214 110M36 170 C 110 170 142 210 214 210M36 270 C 116 270 146 312 214 312"
+            ></path></svg
+          ><strong data-method-index>01</strong><span data-method-word
+            >Recognise</span
+          >
+        </div>
+        <div class="method-list">
+          <div
+            class="method-mobile-controls"
+            role="group"
+            aria-label="Studio stages"
+          >
+            <button type="button" data-studio-stage="0" aria-pressed="true"
+              >Recognise</button
+            ><button type="button" data-studio-stage="1" aria-pressed="false"
+              >Translate</button
+            ><button type="button" data-studio-stage="2" aria-pressed="false"
+              >Test</button
+            ><button type="button" data-studio-stage="3" aria-pressed="false"
+              >Carry through</button
+            >
           </div>
+          <article class="method-step" data-studio-step="0">
+            <span>01</span><div>
+              <h2>Recognise</h2><p>
+                Find the character that must survive every expression. Start
+                with what is essential, not what is easy to decorate.
+              </p>
+            </div>
+          </article>
+          <article class="method-step" data-studio-step="1">
+            <span>02</span><div>
+              <h2>Translate</h2><p>
+                Turn that character into rules, relationships, type, colour, and
+                a visual grammar people can use.
+              </p>
+            </div>
+          </article>
+          <article class="method-step" data-studio-step="2">
+            <span>03</span><div>
+              <h2>Test</h2><p>
+                Put the system in an interface context. Watch where the promise
+                becomes unclear or difficult to carry.
+              </p>
+            </div>
+          </article>
+          <article class="method-step" data-studio-step="3">
+            <span>04</span><div>
+              <h2>Carry through</h2><p>
+                Keep the experience coherent across screens, states, and
+                responsive conditions.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
+    <section class="section section-rule reveal">
+      <div class="section-header">
+        <h2 class="section-title">
+          Distinct at a glance.<br />Generous in use.
+        </h2><div class="section-intro">
+          <p>
+            Archex Studio is building a practice around judgement: the decisions
+            between an identity people recognise and an interface they can
+            actually use.
+          </p><p><a href="/work/">See the work archive</a></p>
+        </div>
+      </div>
+    </section>
   </div>
+  <section class="cta-band">
+    <div class="cta-inner">
+      <h2>Bring us something worth shaping.</h2><a
+        class="button on-dark"
+        href="/contact/">Start a project conversation</a
+      >
+    </div>
+  </section>
 </BaseLayout>
