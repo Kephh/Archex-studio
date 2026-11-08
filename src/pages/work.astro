@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout
+  title="Work — Archex Studio"
+  description="Archex Studio work: one real project and three deliberately reserved future positions."
+  path="/work/"
+>
+  <div class="wrap work-page">
+    <div class="page-intro" data-reveal="hero">
+      <h1>Work, with room to grow.</h1><p>
+        A deliberately small archive: one real project, followed by three
+        reserved future positions.
+      </p>
+    </div><div class="page-body">
+      <div class="case-grid work-composition" data-reveal>
+        <div class="slot-list">
+          {
+            projects.map((project) =>
+              project.route ? (
+                <a class="slot" href={project.route}>
+                  <>
+                    <h2>
+                      Archex
+                      <br />
+                      Web
+                    </h2>
+                    <small>{project.label.toUpperCase()}</small>
+                  </>
+                </a>
+              ) : (
+                <div class="slot">
+                  <>
+                    <h2>{project.title}</h2>
+                    <small>{project.label.toUpperCase()}</small>
+                  </>
+                </div>
+              ),
+            )
+          }
+        </div><div class="work-signal" aria-hidden="true">
+          <span>ARX</span><i></i><small>one / three / future</small>
+        </div><aside class="case-aside">
+          <p>
+            <strong>One real project.</strong><br />Three deliberate pauses.
+          </p><p>
+            Archex Web is created by us. The project description below uses only
+            information currently published on its live site.
+          </p><a href="/archex-web/">Open the evidence framework</a>
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

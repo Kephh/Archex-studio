@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityExplorer from '../components/CapabilityExplorer.astro';
+---
+
+<BaseLayout
+  title="Capabilities — Archex Studio"
+  description="The intended identity, visual communication and digital experience capabilities Archex Studio can help with."
+  path="/capabilities/"
+>
+  <div class="wrap capabilities-page">
+    <div class="page-intro" data-reveal="hero">
+      <h1>What we can help with.</h1><p>
+        Two equal disciplines, connected by one point of view. These are
+        intended services, not claims about completed delivery.
+      </p>
+    </div><div class="page-body" data-reveal>
+      <div class="cap-grid capability-columns">
+        <article class="cap">
+          <h2>Brand identity<br />&amp; visual communication</h2><p>
+            We can help clarify a point of view and give it a visual system:
+            direction, identity, typography, colour, composition, and art
+            direction.
+          </p><div class="cap-list">
+            <span>Direction</span><span>Visual identity</span><span
+              >Communication</span
+            ><span>Art direction</span>
+          </div>
+        </article><article class="cap">
+          <h2>Digital<br />experience</h2><p>
+            We can help carry that system into the places people use it:
+            websites, interfaces, flows, interaction, and responsive digital
+            experiences.
+          </p><div class="cap-list">
+            <span>Web design</span><span>UI/UX</span><span>Interaction</span
+            ><span>Responsive systems</span>
+          </div>
+        </article>
+      </div><CapabilityExplorer /><section class="section">
+        <div class="philosophy">
+          <blockquote>
+            Creative direction is the connective tissue.
+          </blockquote><div class="philosophy-copy">
+            <p>
+              It keeps the idea recognisable as it moves from a first impression
+              into a lived interaction.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

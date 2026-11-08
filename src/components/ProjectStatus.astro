@@ -1,0 +1,32 @@
+---
+import type { Project } from '../data/projects';
+interface Props {
+  project: Project;
+  featured?: boolean;
+}
+const { project, featured = false } = Astro.props;
+---
+
+{
+  featured ? (
+    <div class="evidence-frame">
+      <div class="evidence-copy">
+        <>
+          <h3>
+            Archex
+            <br />
+            Web
+          </h3>
+          <p>
+            Evidence pending — a visual placeholder, not a project screenshot.
+          </p>
+        </>
+      </div>
+    </div>
+  ) : (
+    <div class:list={['reserved', project.status === 'live' && 'featured']}>
+      <strong>{project.title}</strong>
+      <small>{project.label.toUpperCase()}</small>
+    </div>
+  )
+}

@@ -1,0 +1,41 @@
+---
+interface Props {
+  path: string;
+}
+const { path } = Astro.props;
+const links = [
+  { href: '/work/', label: 'Work' },
+  { href: '/capabilities/', label: 'Capabilities' },
+  { href: '/studio/', label: 'Studio' },
+];
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Archex Studio home"
+    >archex<span>—</span>studio</a
+  >
+  <button
+    class="menu"
+    type="button"
+    aria-expanded="false"
+    aria-controls="primary-nav">Menu</button
+  >
+  <nav id="primary-nav" class="nav" aria-label="Primary">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={path === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <a
+      class="nav-cta"
+      href="/contact/"
+      aria-current={path === '/contact/' ? 'page' : undefined}
+      >Start a project conversation</a
+    >
+  </nav>
+</header>
