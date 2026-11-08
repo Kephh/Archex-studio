@@ -79,10 +79,10 @@
       hero.style.setProperty('--hero-p', progress.toFixed(3));
       hero.dataset.stage = String(Math.min(3, Math.floor(progress * 4)));
       const stageNames = [
-        '01 — Mark',
-        '02 — Evidence',
-        '03 — Translate',
-        '04 — Experience',
+        '01 — Identity',
+        '02 — Structure',
+        '03 — Interface',
+        '04 — Digital experience',
       ];
       const liveStage = document.querySelector('[data-live-stage]');
       if (liveStage)
@@ -108,7 +108,7 @@
       hero?.style.setProperty('--hero-p', '1');
       if (hero) hero.dataset.stage = '3';
       const liveStage = document.querySelector('[data-live-stage]');
-      if (liveStage) liveStage.textContent = '04 — Experience';
+      if (liveStage) liveStage.textContent = '04 — Digital experience';
     } else {
       visual?.classList.remove('is-resolved');
       requestScroll();
@@ -143,25 +143,20 @@
       const resolved = visual.classList.toggle('is-resolved');
       stageButton.setAttribute('aria-pressed', String(resolved));
       stageButton.querySelector('[data-stage-label]').textContent = resolved
-        ? 'Return to mark'
-        : 'Resolve the field';
+        ? 'Return to the starting point'
+        : 'Explore the system';
     });
 
   const capabilityCopy = {
     identity: [
-      'Make it recognisable.',
-      'Direction, type, colour and visual communication give an idea a shape people can remember.',
-      '01 / 03',
+      'Build a recognisable identity.',
+      'Brand strategy, visual identity, typography and colour give an idea a clear and consistent expression.',
+      '01 / 02',
     ],
-    translation: [
-      'Carry the character through.',
-      'Rules, relationships and a visual grammar translate the identity into a system people can use.',
-      '02 / 03',
-    ],
-    interface: [
-      'Make it usable.',
-      'Websites, interfaces and interaction carry that idea into the places people actually use it.',
-      '03 / 03',
+    digital: [
+      'Carry the identity into use.',
+      'Website design, UI/UX and interaction bring the same character into a clear digital experience.',
+      '02 / 02',
     ],
   };
   const capabilityFrame = document.querySelector('[data-capability-frame]');

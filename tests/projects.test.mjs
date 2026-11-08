@@ -18,7 +18,11 @@ test('reserved projects have no routes and no indexability', () => {
   }
 });
 
-test('Archex Web remains evidence-dependent and non-indexable', () => {
+test('Archex Web remains non-indexable and future work stays unnamed', () => {
   assert.equal(projects[0].indexable, false);
   assert.equal(projects[0].route, '/archex-web/');
+  assert.deepEqual(
+    projects.slice(1).map((project) => project.label),
+    ['Future position 01', 'Future position 02', 'Future position 03'],
+  );
 });

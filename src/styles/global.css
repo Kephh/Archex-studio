@@ -60,7 +60,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font: 400 17px/1.5 var(--sans);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 ::selection {
   background: var(--signal);
@@ -563,7 +563,7 @@ a {
   opacity: 0.9;
 }
 .evidence-frame::after {
-  content: 'CONCEPTUAL FRAME / NO PROJECT EVIDENCE';
+  content: 'FIRST PROJECT';
   position: absolute;
   top: 25px;
   right: 27px;
@@ -1909,23 +1909,9 @@ a {
   text-shadow: 18px 18px 0 rgba(156, 62, 47, 0.18);
   transform: rotate(-8deg) translateZ(54px);
 }
-.cap-demo-frame[data-mode='translation'] .demo-mark {
-  text-shadow: 12px 12px 0 rgba(242, 123, 97, 0.3);
-  transform: scale(0.76) rotate(-4deg) translateZ(30px);
-}
-.cap-demo-frame[data-mode='interface'] .demo-mark {
+.cap-demo-frame[data-mode='digital'] .demo-mark {
   transform: scale(0.5) translateY(-42px) translateZ(24px);
-}
-.reserved,
-.archive-reserved article {
-  transition:
-    transform 0.45s var(--ease),
-    background 0.45s ease;
-}
-.reserved:hover,
-.archive-reserved article:hover {
-  transform: translateY(-5px);
-  background: rgba(250, 249, 245, 0.72);
+  color: var(--paper);
 }
 .cta-band {
   position: relative;
@@ -2118,6 +2104,7 @@ a {
 .hero-field {
   min-height: 280vh;
   display: block;
+  overflow: clip;
 }
 .hero-inner {
   position: sticky;
@@ -2281,19 +2268,11 @@ a {
     width 0.65s var(--ease),
     background 0.65s ease;
 }
-.cap-demo-frame[data-mode='translation'] {
-  --cap-level: 0.5;
-  background: #312725;
-}
-.cap-demo-frame[data-mode='interface'] {
+.cap-demo-frame[data-mode='digital'] {
   --cap-level: 1;
   background: #262b2b;
 }
-.cap-demo-frame[data-mode='translation'] .demo-mark {
-  transform: scale(0.76) rotate(-4deg);
-  color: var(--signal-bright);
-}
-.cap-demo-frame[data-mode='interface'] .demo-mark {
+.cap-demo-frame[data-mode='digital'] .demo-mark {
   transform: scale(0.5) translateY(-42px);
   color: var(--paper);
 }

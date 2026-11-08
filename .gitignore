@@ -6,6 +6,7 @@ dist/
 .agents/
 .codex/
 .impeccable/
+artifacts/
 docs/*
 !docs/implementation/
 docs/implementation/*

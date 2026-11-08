@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 
 const routes = [
   { path: '/', heading: /identity into interface/i, name: 'home' },
@@ -19,7 +19,7 @@ const viewports = [
   { width: 1800, height: 1000 },
 ];
 
-const evidenceDir = 'artifacts/stage-03/playwright';
+const evidenceDir = 'artifacts/stage-03.1/playwright';
 
 async function settleRevealsForScreenshot(page: Page) {
   await page.locator('.reveal').evaluateAll((sections) => {
@@ -75,6 +75,10 @@ test('all six routes render at every requested viewport without overflow', async
       );
       await expect(page.locator('main h1')).toBeVisible();
       await expect(page.locator('main h1')).toContainText(route.heading);
+      await expect(
+        page.locator('.site-header .nav-cta'),
+        `${route.path} header Contact label`,
+      ).toHaveText('Contact');
       if (viewport.width <= 800) {
         await expect(page.locator('.site-header .menu')).toBeVisible();
         await expect(page.locator('#primary-nav')).not.toBeVisible();
@@ -131,9 +135,18 @@ test('homepage CTAs and story sections lead to real destinations', async ({
     page.getByRole('heading', { name: /identity into interface/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: /one reference/i }),
+    page.getByRole('heading', { name: /our first project.*archex web/i }),
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: /two sides/i })).toBeVisible();
+  await expect(page.locator('.hero-label')).toContainText(
+    'Identity-to-Interface Studio',
+  );
+  await expect(page.locator('.hero-label')).not.toContainText(
+    /Living Grid|01—05/,
+  );
+  await expect(page.locator('.hero-field')).not.toContainText(
+    /conceptual specimen|field note|form\s*\/\s*signal\s*\/\s*use|X\s*\/\s*04|Y\s*\/\s*18/i,
+  );
 
   const contactLink = page
     .locator('.site-header')
@@ -144,9 +157,19 @@ test('homepage CTAs and story sections lead to real destinations', async ({
   await expect(page.locator('main h1')).toHaveText('Contact.');
 
   await page.goto('/');
+  const exploreSystem = page.locator('[data-stage-toggle]');
+  const exploreSystemLabel = page.locator('[data-stage-label]');
+  await expect(exploreSystemLabel).toHaveText('Explore the system');
+  await exploreSystem.click();
+  await expect(exploreSystem).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-stage-toggle]')).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(exploreSystemLabel).toHaveText('Return to the starting point');
   await page
-    .getByRole('link', { name: /contact \/ channel in preparation/i })
-    .last()
+    .locator('.cta-band')
+    .getByRole('link', { name: 'Contact', exact: true })
     .click();
   await expect(page).toHaveURL(/\/contact\/$/);
   expect(errors).toEqual([]);
@@ -162,12 +185,23 @@ test('Work exposes one available first project and exactly three inert reserved 
   await expect(
     page.locator('.archive-grid .archive-lead a[href="/archex-web/"]'),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'View project overview' }),
+  ).toHaveAttribute('href', '/archex-web/');
+  await expect(
+    page.getByRole('link', { name: 'Visit the live website' }),
+  ).toHaveAttribute('href', 'https://www.archexweb.in');
   await expect(page.locator('.archive-grid .archive-lead')).toHaveCount(1);
   const reserved = page.locator('.archive-reserved article');
   await expect(reserved).toHaveCount(3);
-  await expect(reserved.nth(0)).toContainText('Reserved concept project 01');
-  await expect(reserved.nth(1)).toContainText('Reserved concept project 02');
-  await expect(reserved.nth(2)).toContainText('Reserved concept project 03');
+  await expect(reserved.nth(0)).toContainText('Future position 01');
+  await expect(reserved.nth(1)).toContainText('Future position 02');
+  await expect(reserved.nth(2)).toContainText('Future position 03');
+  for (const position of await reserved.all()) {
+    await expect(position).toContainText(
+      'Position reserved for a future project.',
+    );
+  }
   await expect(
     page.locator('.archive-reserved a, .archive-reserved button'),
   ).toHaveCount(0);
@@ -185,15 +219,23 @@ test('Capabilities explains the two equal disciplines and the connecting directi
     page.getByText('Creative Direction', { exact: true }),
   ).toBeVisible();
   await expect(
+    page.locator('.section-header .section-intro').first(),
+  ).toContainText(
+    /select Brand Identity or Digital Experience.*see how.*carries/i,
+  );
+  await expect(
     page.locator('.capability-groups li').filter({ hasText: 'UI/UX design' }),
   ).toBeVisible();
-  await page.getByRole('button', { name: /interface/i }).click();
+  await page.getByRole('button', { name: /digital experience/i }).click();
   await expect(page.locator('[data-capability-frame]')).toHaveAttribute(
     'data-mode',
-    'interface',
+    'digital',
   );
   await expect(page.locator('[data-capability-progress]')).toHaveText(
-    '03 / 03',
+    '02 / 02',
+  );
+  await expect(page.locator('[data-capability-title]')).toHaveText(
+    'Carry the identity into use.',
   );
 });
 
@@ -234,8 +276,14 @@ test('Contact explains the unavailable enquiry channel without a fake form', asy
     page.getByText(/enquiry channel is being prepared/i),
   ).toBeVisible();
   await expect(
-    page.getByText(/does not accept or send enquiries/i),
+    page.getByText(
+      /our enquiry channel is being prepared.*not accepting enquiries yet/i,
+    ),
   ).toBeVisible();
+  await expect(page.locator('main')).not.toContainText(
+    /not connected|no form|submission service|no contact method|response promise/i,
+  );
+  await expect(page.locator('.site-header a.nav-cta')).toHaveText('Contact');
   await expect(
     page.locator(
       'main form, main input, main textarea, main button[type="submit"]',
@@ -244,6 +292,25 @@ test('Contact explains the unavailable enquiry channel without a fake form', asy
   await expect(page.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(
     0,
   );
+});
+
+test('first-time visitor copy avoids internal status and implementation language', async ({
+  page,
+}) => {
+  for (const route of [
+    '/',
+    '/work/',
+    '/capabilities/',
+    '/studio/',
+    '/archex-web/',
+    '/contact/',
+  ]) {
+    await page.goto(route);
+    const visiblePage = page.locator('main');
+    await expect(visiblePage).not.toContainText(
+      /Living Grid|evidence pending|not indexable|not provided|open project framework|contact \/ channel in preparation/i,
+    );
+  }
 });
 
 test('mobile navigation opens, navigates, closes, and responds to Escape', async ({
@@ -288,6 +355,17 @@ test('Archex Web remains noindex and excluded from the sitemap; preview pages st
   expect(await sitemap.text()).not.toContain('archex-web');
   const robots = await request.get('/robots.txt');
   expect(await robots.text()).toContain('Disallow: /');
+  await page.goto('/archex-web/');
+  await expect(page.locator('main')).toContainText('Our first project.');
+  await expect(page.locator('main')).not.toContainText(
+    /indexable|evidence pending|not provided/i,
+  );
+  await expect(
+    page.getByRole('link', { name: 'Visit the live website' }),
+  ).toHaveAttribute('href', 'https://www.archexweb.in');
+  await expect(
+    page.getByRole('link', { name: 'Return to Work' }),
+  ).toHaveAttribute('href', '/work/');
 });
 
 test('reduced motion keeps the homepage complete and navigable', async ({
@@ -377,7 +455,11 @@ test('homepage and affected routes produce requested visual evidence', async ({
         window.scrollTo(0, top + range * value),
       { top: heroTop, range: heroRange, progress },
     );
-    await page.waitForTimeout(80);
+    await expect(hero).toHaveAttribute('data-stage', String(index));
+    const innerBox = await page.locator('.hero-inner').boundingBox();
+    expect(innerBox).not.toBeNull();
+    expect(innerBox!.y).toBeGreaterThan(60);
+    expect(innerBox!.y).toBeLessThan(100);
     await page.screenshot({
       path: `${evidenceDir}/home-hero-stage-0${index + 1}.png`,
     });
@@ -390,4 +472,43 @@ test('homepage and affected routes produce requested visual evidence', async ({
     path: `${evidenceDir}/home-mobile-full.png`,
     fullPage: true,
   });
+
+  const visualReview = [
+    ['Homepage · desktop first viewport', 'home-desktop-first.png'],
+    ['Homepage · desktop full page', 'home-desktop-full.png'],
+    ['Homepage · identity to interface 01', 'home-hero-stage-01.png'],
+    ['Homepage · identity to interface 02', 'home-hero-stage-02.png'],
+    ['Homepage · identity to interface 03', 'home-hero-stage-03.png'],
+    ['Homepage · identity to interface 04', 'home-hero-stage-04.png'],
+    ['Homepage · mobile first viewport', 'home-mobile-first.png'],
+    ['Homepage · mobile full page', 'home-mobile-full.png'],
+    ['Work · desktop', 'work-desktop.png'],
+    ['Work · mobile', 'work-mobile.png'],
+    ['Capabilities · desktop', 'capabilities-desktop.png'],
+    ['Capabilities · mobile', 'capabilities-mobile.png'],
+    ['Studio · desktop', 'studio-desktop.png'],
+    ['Studio · mobile', 'studio-mobile.png'],
+    ['Archex Web · desktop', 'archex-web-desktop.png'],
+    ['Archex Web · mobile', 'archex-web-mobile.png'],
+    ['Contact · desktop', 'contact-desktop.png'],
+    ['Contact · mobile', 'contact-mobile.png'],
+    ['Mobile navigation · open', 'navigation-mobile-open.png'],
+    ['Homepage · reduced motion', 'home-reduced-motion.png'],
+  ];
+  const cards = await Promise.all(
+    visualReview.map(async ([title, filename]) => {
+      const image = await readFile(`${evidenceDir}/${filename}`);
+      return `<figure><figcaption>${title}</figcaption><img alt="${title}" src="data:image/png;base64,${image.toString('base64')}" /></figure>`;
+    }),
+  );
+  const contactSheet = await page.context().newPage();
+  await contactSheet.setViewportSize({ width: 1680, height: 1000 });
+  await contactSheet.setContent(
+    `<!doctype html><html lang="en"><meta charset="utf-8"><title>Stage 03.1 Visual Review</title><style>body{margin:0;padding:28px;background:#e8e5dd;color:#171717;font:16px Arial,sans-serif}h1{margin:0 0 20px;font:32px Georgia,serif}main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}figure{margin:0;padding:14px;background:#f7f5ef;border:1px solid #c8c3b7}figcaption{margin-bottom:10px;font-size:15px;font-weight:600}img{display:block;width:100%;height:640px;object-fit:contain;background:#dedbd4}</style><h1>Archex Studio · Stage 03.1 visual review</h1><main>${cards.join('')}</main></html>`,
+  );
+  await contactSheet.screenshot({
+    path: `${evidenceDir}/STAGE-03.1-VISUAL-REVIEW.png`,
+    fullPage: true,
+  });
+  await contactSheet.close();
 });
