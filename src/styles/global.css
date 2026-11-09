@@ -2514,6 +2514,9 @@ a {
   }
 }
 @media (max-width: 600px) {
+  :root {
+    --gutter: clamp(24px, 6vw, 32px);
+  }
   .demo-copy {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
