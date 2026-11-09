@@ -10,12 +10,12 @@ export default defineConfig({
     [
       'html',
       {
-        outputFolder: 'artifacts/stage-03.1/playwright/report',
+        outputFolder: 'artifacts/stage-03.2/responsive-review/report',
         open: 'never',
       },
     ],
   ],
-  outputDir: 'artifacts/stage-03.1/playwright/test-results',
+  outputDir: 'artifacts/stage-03.2/responsive-review/test-results',
   use: {
     baseURL: 'http://127.0.0.1:4322',
     trace: 'retain-on-failure',

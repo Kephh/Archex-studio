@@ -12,18 +12,23 @@
   const menu = document.querySelector('.menu');
   const nav = document.querySelector('#primary-nav');
   let menuReturn;
+  const setMenuOpen = (open) => {
+    if (!menu || !nav) return;
+    menu.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
+  };
   const closeMenu = () => {
     if (!menu || !nav) return;
-    menu.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('is-open');
+    setMenuOpen(false);
     if (menuReturn) menuReturn.focus();
   };
   if (menu && nav) {
     menu.addEventListener('click', () => {
       const open = menu.getAttribute('aria-expanded') === 'true';
       menuReturn = menu;
-      menu.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('is-open', !open);
+      setMenuOpen(!open);
       if (!open) nav.querySelector('a')?.focus();
     });
     nav

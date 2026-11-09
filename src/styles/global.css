@@ -53,14 +53,12 @@
 }
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
 }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font: 400 17px/1.5 var(--sans);
-  overflow-x: clip;
 }
 ::selection {
   background: var(--signal);
@@ -154,7 +152,9 @@ a {
 }
 .nav a {
   display: inline-flex;
+  min-width: 44px;
   align-items: center;
+  justify-content: center;
   min-height: 46px;
   text-decoration: none;
 }
@@ -2469,5 +2469,135 @@ a {
   .mark,
   .specimen {
     transform: none;
+  }
+}
+
+/* Stage 03.2: compose touch layouts and short landscape screens deliberately. */
+.page-intro .capabilities-heading {
+  min-width: 0;
+  font-size: clamp(3.8rem, 7.2vw, 7rem);
+}
+.site-footer nav a,
+.meta-list dd a,
+.archive-side strong a,
+.case-aside a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+.site-footer nav a {
+  min-width: 44px;
+  justify-content: center;
+}
+@media (max-width: 800px) {
+  body.menu-open {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  html.menu-open {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  .site-header.is-scrolled .menu,
+  .site-header.is-scrolled .wordmark {
+    min-height: 46px;
+  }
+  .method-mobile-controls {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .method-mobile-controls button {
+    min-width: 0;
+    min-height: 48px;
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .demo-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .demo-copy p {
+    max-width: none;
+  }
+  .method-mobile-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .direction-bridge span {
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 1100px) {
+  .page-intro .capabilities-heading {
+    font-size: clamp(3.8rem, 10vw, 7rem);
+  }
+}
+@media (max-width: 1000px) {
+  .page-intro .capabilities-heading {
+    font-size: clamp(3.8rem, 9.5vw, 7rem);
+  }
+}
+@media (max-width: 800px) {
+  .page-intro .capabilities-heading {
+    font-size: clamp(3.8rem, 10vw, 7rem);
+  }
+}
+@media (max-width: 480px) {
+  .page-intro .capabilities-heading {
+    font-size: clamp(3rem, 15.5vw, 3.8rem);
+    letter-spacing: -0.055em;
+  }
+  .glass-note,
+  .coordinate {
+    display: none;
+  }
+  .specimen-head span:last-child {
+    display: none;
+  }
+  .field-visual .mark {
+    left: 0;
+    font-size: clamp(8rem, 42vw, 11rem);
+  }
+  .specimen {
+    width: 92%;
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  }
+  .archive-lead .eyebrow,
+  .archive-reserved small.meta {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  .site-footer nav a {
+    padding: 0 2px;
+  }
+}
+@media (max-height: 600px) and (min-width: 801px) {
+  .method-visual,
+  .case-rail {
+    position: relative;
+    top: auto;
+  }
+  .method-visual {
+    min-height: 270px;
+  }
+  .method-visual svg {
+    height: 180px;
+  }
+  .case-rail {
+    min-height: 250px;
+  }
+  .case-rail small {
+    margin-top: 60px;
+  }
+}
+@media (hover: none) {
+  .button:hover {
+    transform: none;
+  }
+  .button:active {
+    transform: scale(0.985);
   }
 }
