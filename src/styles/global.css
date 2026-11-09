@@ -1728,26 +1728,6 @@ a {
   border-color: rgba(250, 249, 245, 0.23);
   transform: rotate(42deg) rotateX(68deg) translateZ(10px);
 }
-.field-index {
-  position: absolute;
-  z-index: 5;
-  left: 0;
-  bottom: 5%;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 4px 16px;
-  color: #aaa59d;
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
-}
-.field-index b {
-  grid-row: span 2;
-  color: var(--signal-bright);
-  font: 400 2.6rem/0.9 var(--serif);
-}
-.field-index i {
-  font-style: normal;
-}
 .hero-progress {
   z-index: 6;
   right: var(--gutter);
@@ -1776,24 +1756,6 @@ a {
 }
 .progress-track i {
   transition: width 0.12s linear;
-}
-.hero-field[data-stage='1'] .field-orbit-a {
-  transform: rotate(-18deg) rotateX(68deg) translateZ(36px) scale(1.08);
-}
-.hero-field[data-stage='2'] .field-orbit-a {
-  transform: rotate(-5deg) rotateX(68deg) translateZ(36px) scale(0.94);
-}
-.hero-field[data-stage='3'] .field-orbit-a {
-  transform: rotate(9deg) rotateX(68deg) translateZ(36px) scale(0.82);
-}
-.hero-field[data-stage='1'] .specimen {
-  filter: saturate(0.85);
-}
-.hero-field[data-stage='2'] .specimen {
-  filter: saturate(1.08);
-}
-.hero-field[data-stage='3'] .specimen {
-  border-color: rgba(242, 123, 97, 0.75);
 }
 .section-header {
   align-items: end;
@@ -2011,9 +1973,6 @@ a {
   .field-orbit {
     opacity: 0.62;
   }
-  .field-index {
-    bottom: 0;
-  }
   .specimen {
     min-height: 310px;
   }
@@ -2031,9 +1990,6 @@ a {
   .hero-label span:last-child,
   .cta-band::after {
     animation: none;
-  }
-  .hero-field[data-stage] .field-orbit-a {
-    transform: rotate(-31deg) rotateX(68deg) translateZ(36px);
   }
   .button::after {
     display: none;
@@ -2102,45 +2058,34 @@ a {
   transform-origin: left;
 }
 .hero-field {
-  min-height: 280vh;
-  display: block;
-  overflow: clip;
+  min-height: clamp(650px, calc(100svh - 76px), 920px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
 }
 .hero-inner {
-  position: sticky;
-  top: 76px;
-  min-height: calc(100svh - 76px);
-  height: calc(100svh - 76px);
+  position: relative;
+  top: auto;
+  min-height: 0;
+  height: auto;
+  padding-top: clamp(28px, 4vh, 54px);
+  padding-bottom: clamp(28px, 4vh, 54px);
 }
 .hero-field::before {
-  transform: translateY(calc(var(--hero-p, 0) * -60px));
+  transform: none;
 }
 .hero-field::after {
-  opacity: calc(0.6 + var(--hero-p, 0) * 0.35);
+  opacity: 1;
 }
 .field-visual {
-  transform: translateY(calc(var(--hero-p, 0) * -18px));
+  transform: none;
 }
 .mark {
-  transform: translate(
-      calc(var(--mx, 0) * 12px + var(--hero-p, 0) * 5%),
-      calc(var(--my, 0) * 12px - var(--hero-p, 0) * 5%)
-    )
-    scale(calc(1 - var(--hero-p, 0) * 0.33));
+  transform: translate(calc(var(--mx, 0) * 8px), calc(var(--my, 0) * 8px));
 }
 .mark span {
   display: inline-block;
   transition: letter-spacing 0.3s ease;
-}
-.mark i {
-  display: block;
-  position: absolute;
-  right: 2%;
-  bottom: -1rem;
-  color: var(--paper);
-  font: 500 0.75rem/1 var(--sans);
-  letter-spacing: 0.15em;
-  opacity: calc(var(--hero-p, 0) * 1);
 }
 .field-visual.is-resolved .mark {
   transform: translate(22%, 12%) scale(0.67) rotate(-5deg);
@@ -2153,12 +2098,8 @@ a {
     22px 22px 0 rgba(156, 62, 47, 0.65);
   backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
-  transform: rotate(calc(3deg - var(--hero-p, 0) * 3deg))
-    translate(
-      calc(var(--mx, 0) * -7px),
-      calc(var(--my, 0) * -7px + var(--hero-p, 0) * 20px)
-    )
-    scale(calc(0.9 + var(--hero-p, 0) * 0.14));
+  transform: rotate(0.5deg)
+    translate(calc(var(--mx, 0) * -4px), calc(var(--my, 0) * -4px));
 }
 .field-visual.is-resolved .specimen {
   transform: rotate(0) translate(-7%, 8%) scale(1.04);
@@ -2177,7 +2118,7 @@ a {
   line-height: 1.35;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: calc(0.15 + var(--hero-p, 0) * 0.85);
+  opacity: 1;
   transition: transform 0.6s var(--ease);
 }
 .glass-note b {
@@ -2185,22 +2126,15 @@ a {
   font-weight: 500;
 }
 .glass-note-a {
-  top: 11%;
+  top: 1%;
   left: 4%;
-  transform: translate3d(
-    calc(var(--hero-p, 0) * 38px),
-    calc(var(--hero-p, 0) * 22px),
-    0
-  );
+  transform: none;
 }
 .glass-note-b {
   right: 1%;
-  bottom: 17%;
-  transform: translate3d(
-    calc(var(--hero-p, 0) * -22px),
-    calc(var(--hero-p, 0) * -15px),
-    0
-  );
+  top: 1%;
+  bottom: auto;
+  transform: none;
 }
 .signal-path {
   position: absolute;
@@ -2216,26 +2150,8 @@ a {
   stroke: var(--signal-bright);
   stroke-width: 1.5;
   stroke-dasharray: 900;
-  stroke-dashoffset: calc(900 - var(--hero-p, 0) * 900);
+  stroke-dashoffset: 0;
   opacity: 0.9;
-}
-.hero-progress {
-  position: sticky;
-  bottom: 22px;
-}
-.hero-progress .progress-track i {
-  width: calc(12% + var(--hero-p, 0) * 88%);
-}
-.hero-field[data-stage='2'] .specimen-lines i:nth-child(2) {
-  width: 90%;
-}
-.hero-field[data-stage='3'] .specimen {
-  box-shadow:
-    var(--glass-shadow),
-    12px 12px 0 var(--signal);
-}
-.hero-field[data-stage='3'] .glass-note {
-  background: rgba(242, 123, 97, 0.18);
 }
 .cap-demo-frame {
   position: relative;
@@ -2339,16 +2255,25 @@ a {
 @media (max-width: 800px) {
   .hero-field {
     min-height: auto;
+    display: block;
+    overflow: hidden;
   }
   .hero-inner {
     position: relative;
     top: auto;
     height: auto;
     min-height: 0;
+    padding-top: 68px;
+    padding-bottom: 32px;
   }
-  .hero-progress {
-    position: relative;
-    bottom: auto;
+  .field-visual {
+    min-height: 360px;
+  }
+  .specimen {
+    min-height: 290px;
+  }
+  .specimen-main {
+    min-height: 205px;
   }
   .signal-path {
     inset: 5% 0 5% 4%;
@@ -2380,12 +2305,9 @@ a {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-field {
-    min-height: auto;
-  }
+  .hero-field,
   .hero-inner {
     position: relative;
-    top: auto;
     height: auto;
   }
   .signal-path path {
@@ -2395,8 +2317,157 @@ a {
     opacity: 1;
     transform: none;
   }
-  .hero-progress {
+}
+
+/* Stage 03.1: complete first impression, no scroll track. */
+.hero-field {
+  min-height: clamp(650px, calc(100svh - 76px), 920px);
+  display: grid;
+  align-items: center;
+}
+.hero-inner {
+  position: relative;
+  top: auto;
+  height: auto;
+  min-height: 0;
+  padding-top: clamp(28px, 4vh, 54px);
+  padding-bottom: clamp(28px, 4vh, 54px);
+}
+.hero-copy h1 {
+  max-width: 8ch;
+  font-size: clamp(4rem, 7.4vw, 8.5rem);
+  line-height: 0.84;
+}
+.field-visual {
+  min-height: clamp(350px, 54vh, 520px);
+  transform: none;
+}
+.mark {
+  font-size: clamp(12rem, 23vw, 22rem);
+  transform: translate(calc(var(--mx, 0) * 8px), calc(var(--my, 0) * 8px));
+}
+.specimen {
+  min-height: 0;
+  transform: rotate(0.5deg)
+    translate(calc(var(--mx, 0) * -4px), calc(var(--my, 0) * -4px));
+}
+.specimen-main {
+  min-height: 205px;
+}
+.glass-note {
+  opacity: 1;
+}
+.signal-path path {
+  stroke-dashoffset: 0;
+}
+.hero-progress {
+  display: none;
+}
+@media (max-width: 1100px) and (min-width: 801px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.9fr);
+    gap: 24px;
+    padding-right: clamp(28px, 4vw, 52px);
+    padding-left: clamp(28px, 4vw, 52px);
+  }
+  .hero-copy h1 {
+    font-size: clamp(4.2rem, 7.1vw, 6.6rem);
+  }
+  .field-visual {
+    min-height: 390px;
+  }
+  .specimen {
+    width: 90%;
+  }
+}
+@media (max-height: 780px) and (min-width: 801px) {
+  .hero-field {
+    min-height: calc(100svh - 76px);
+  }
+  .hero-inner {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .hero-copy h1 {
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+  .field-visual {
+    min-height: min(52vh, 390px);
+  }
+  .specimen {
+    padding: 14px;
+  }
+  .specimen-main {
+    min-height: 175px;
+    padding: 20px 0;
+  }
+}
+@media (max-width: 800px) {
+  .hero-field {
+    min-height: 0;
+    display: block;
+  }
+  .hero-inner {
+    height: auto;
+    padding-top: 68px;
+    padding-bottom: 32px;
+  }
+  .field-visual {
+    min-height: 360px;
+    margin-top: 18px;
+  }
+  .mark {
+    font-size: 49vw;
+  }
+}
+@media (max-width: 480px) {
+  .hero-inner {
+    padding-top: 34px;
+    padding-bottom: 24px;
+  }
+  .hero-copy h1 {
+    font-size: 16vw;
+  }
+  .hero-actions {
+    margin-top: 22px;
+    gap: 8px;
+  }
+  .field-visual {
+    min-height: 300px;
+    margin-top: 6px;
+  }
+  .specimen {
+    width: 88%;
+    min-height: 0;
+    top: 12%;
+  }
+  .specimen-main {
+    min-height: 180px;
+    padding: 18px 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-field,
+  .hero-inner {
     position: relative;
-    bottom: auto;
+    height: auto;
+  }
+  .hero-copy h1 em {
+    animation: none;
+  }
+  .hero-label span:last-child {
+    animation: none;
+  }
+  .signal-path path {
+    stroke-dashoffset: 0;
+  }
+  .glass-note {
+    opacity: 1;
+    transform: none;
+  }
+  .mark,
+  .specimen {
+    transform: none;
   }
 }

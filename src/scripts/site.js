@@ -57,12 +57,6 @@
   }
 
   const visual = document.querySelector('[data-resolving-field]');
-  const hero = document.querySelector('.hero-field');
-  if (reducedMotion && visual) {
-    visual.classList.add('is-resolved');
-    hero?.style.setProperty('--hero-p', '1');
-    if (hero) hero.dataset.stage = '3';
-  }
   let ticking = false;
   const updateScroll = () => {
     const scrollMax =
@@ -72,23 +66,6 @@
       `${scrollMax ? (window.scrollY / scrollMax) * 100 : 0}%`,
     );
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
-    if (hero && !reducedMotion && window.innerWidth > 800) {
-      const rect = hero.getBoundingClientRect();
-      const range = Math.max(1, hero.offsetHeight - window.innerHeight);
-      const progress = Math.max(0, Math.min(1, -rect.top / range));
-      hero.style.setProperty('--hero-p', progress.toFixed(3));
-      hero.dataset.stage = String(Math.min(3, Math.floor(progress * 4)));
-      const stageNames = [
-        '01 — Identity',
-        '02 — Structure',
-        '03 — Interface',
-        '04 — Digital experience',
-      ];
-      const liveStage = document.querySelector('[data-live-stage]');
-      if (liveStage)
-        liveStage.textContent =
-          stageNames[Math.min(3, Math.floor(progress * 4))];
-    }
     ticking = false;
   };
   const requestScroll = () => {
@@ -104,11 +81,8 @@
     reducedMotion = enabled;
     if (enabled) {
       revealItems.forEach((item) => item.classList.add('is-visible'));
-      visual?.classList.add('is-resolved');
-      hero?.style.setProperty('--hero-p', '1');
-      if (hero) hero.dataset.stage = '3';
-      const liveStage = document.querySelector('[data-live-stage]');
-      if (liveStage) liveStage.textContent = '04 — Digital experience';
+      visual?.style.setProperty('--mx', '0');
+      visual?.style.setProperty('--my', '0');
     } else {
       visual?.classList.remove('is-resolved');
       requestScroll();
@@ -136,16 +110,6 @@
       visual.style.setProperty('--my', '0');
     });
   }
-
-  const stageButton = document.querySelector('[data-stage-toggle]');
-  if (stageButton && visual)
-    stageButton.addEventListener('click', () => {
-      const resolved = visual.classList.toggle('is-resolved');
-      stageButton.setAttribute('aria-pressed', String(resolved));
-      stageButton.querySelector('[data-stage-label]').textContent = resolved
-        ? 'Return to the starting point'
-        : 'Explore the system';
-    });
 
   const capabilityCopy = {
     identity: [

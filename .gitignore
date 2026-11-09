@@ -8,12 +8,14 @@ dist/
 .impeccable/
 artifacts/
 docs/*
+implementation/*
 !docs/implementation/
 docs/implementation/*
 !docs/implementation/phase-3b-redesign/
 docs/implementation/phase-3b-redesign/*
 !docs/implementation/phase-3b-redesign/STAGE-03-CONTENT-UX-REFINEMENT-COMPLETION-REPORT.md
 !docs/implementation/phase-3b-redesign/STAGE-03.1-FIRST-TIME-VISITOR-REFINEMENT-REPORT.md
+!docs/implementation/phase-3b-redesign/STAGE-03.1-HERO-AND-VISITOR-REFINEMENT-COMPLETION-REPORT.md
 prototypes/*
 .md
 .env

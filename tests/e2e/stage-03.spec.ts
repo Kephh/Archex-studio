@@ -157,16 +157,7 @@ test('homepage CTAs and story sections lead to real destinations', async ({
   await expect(page.locator('main h1')).toHaveText('Contact.');
 
   await page.goto('/');
-  const exploreSystem = page.locator('[data-stage-toggle]');
-  const exploreSystemLabel = page.locator('[data-stage-label]');
-  await expect(exploreSystemLabel).toHaveText('Explore the system');
-  await exploreSystem.click();
-  await expect(exploreSystem).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('[data-stage-toggle]')).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await expect(exploreSystemLabel).toHaveText('Return to the starting point');
+  await expect(page.locator('.hero-field')).not.toHaveAttribute('data-stage');
   await page
     .locator('.cta-band')
     .getByRole('link', { name: 'Contact', exact: true })
@@ -374,7 +365,7 @@ test('reduced motion keeps the homepage complete and navigable', async ({
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  await expect(page.locator('.hero-field')).toHaveAttribute('data-stage', '3');
+  await expect(page.locator('.hero-field')).not.toHaveAttribute('data-stage');
   await expect(
     page.getByRole('heading', { name: /identity into interface/i }),
   ).toBeVisible();
@@ -436,34 +427,133 @@ test('homepage and affected routes produce requested visual evidence', async ({
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
+  await page.locator('.specimen').waitFor({ state: 'visible' });
   await settleRevealsForScreenshot(page);
   await page.screenshot({ path: `${evidenceDir}/home-desktop-first.png` });
   await page.screenshot({
     path: `${evidenceDir}/home-desktop-full.png`,
     fullPage: true,
   });
-  const hero = page.locator('.hero-field');
-  const heroTop = await hero.evaluate(
-    (element) => (element as HTMLElement).offsetTop,
-  );
-  const heroRange = await hero.evaluate(
-    (element) => (element as HTMLElement).offsetHeight - window.innerHeight,
-  );
-  for (const [index, progress] of [0.125, 0.375, 0.625, 0.875].entries()) {
-    await page.evaluate(
-      ({ top, range, progress: value }) =>
-        window.scrollTo(0, top + range * value),
-      { top: heroTop, range: heroRange, progress },
-    );
-    await expect(hero).toHaveAttribute('data-stage', String(index));
-    const innerBox = await page.locator('.hero-inner').boundingBox();
-    expect(innerBox).not.toBeNull();
-    expect(innerBox!.y).toBeGreaterThan(60);
-    expect(innerBox!.y).toBeLessThan(100);
-    await page.screenshot({
-      path: `${evidenceDir}/home-hero-stage-0${index + 1}.png`,
+  const diagnostics: Record<string, unknown> = {};
+  const measureHero = async (width: number, height: number, name: string) => {
+    await page.setViewportSize({ width, height });
+    await page.goto('/');
+    await page.locator('.specimen').waitFor({ state: 'visible' });
+    const metrics = await page.evaluate(() => {
+      const heroNode = document.querySelector<HTMLElement>('.hero-field')!;
+      const wrapper = document.querySelector<HTMLElement>('.hero-inner')!;
+      const heading = document.querySelector<HTMLElement>('.hero-copy h1')!;
+      const support = document.querySelector<HTMLElement>('.hero-copy p')!;
+      const actions = document.querySelector<HTMLElement>('.hero-actions')!;
+      const specimen = document.querySelector<HTMLElement>('.specimen')!;
+      const next = heroNode.nextElementSibling as HTMLElement;
+      const box = (node: HTMLElement) => {
+        const rect = node.getBoundingClientRect();
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+      };
+      return {
+        viewport: { width: innerWidth, height: innerHeight },
+        hero: box(heroNode),
+        wrapper: box(wrapper),
+        nextSection: box(next),
+        heading: box(heading),
+        supportingText: box(support),
+        actions: box(actions),
+        specimen: box(specimen),
+        heroPosition: getComputedStyle(heroNode).position,
+        wrapperPosition: getComputedStyle(wrapper).position,
+        heroScrollDistance: heroNode.offsetHeight,
+        documentScrollHeight: document.documentElement.scrollHeight,
+      };
     });
-  }
+    const flowAllowance = width <= 800 ? 1.3 : 1.1;
+    expect(metrics.hero.height).toBeLessThanOrEqual(height * flowAllowance);
+    expect(metrics.wrapperPosition).not.toBe('sticky');
+    expect(metrics.heroPosition).not.toBe('fixed');
+    expect(metrics.heading.y + metrics.heading.height).toBeLessThan(height);
+    expect(
+      metrics.supportingText.y + metrics.supportingText.height,
+    ).toBeLessThan(height);
+    expect(metrics.actions.y + metrics.actions.height).toBeLessThan(height);
+    expect(metrics.specimen.y).toBeLessThan(height);
+    expect(metrics.nextSection.y).toBeLessThanOrEqual(height * 1.25);
+    diagnostics[name] = metrics;
+    await page.screenshot({ path: `${evidenceDir}/hero-${name}.png` });
+    return metrics;
+  };
+  await measureHero(1440, 900, '1440x900');
+  await page.evaluate(() =>
+    window.scrollTo({ top: innerHeight * 0.5, behavior: 'instant' }),
+  );
+  await page.screenshot({
+    path: `${evidenceDir}/home-after-half-viewport.png`,
+  });
+  diagnostics.afterHalfViewport = await page.evaluate(() => ({
+    scrollY: scrollY,
+    heroTop: document.querySelector('.hero-field')!.getBoundingClientRect().top,
+    headingTop: document.querySelector('.hero-copy h1')!.getBoundingClientRect()
+      .top,
+  }));
+  await page.evaluate(() =>
+    window.scrollTo({ top: innerHeight, behavior: 'instant' }),
+  );
+  await page.screenshot({ path: `${evidenceDir}/home-after-one-viewport.png` });
+  diagnostics.afterOneViewport = await page.evaluate(() => ({
+    scrollY: scrollY,
+    heroTop: document.querySelector('.hero-field')!.getBoundingClientRect().top,
+    headingTop: document.querySelector('.hero-copy h1')!.getBoundingClientRect()
+      .top,
+  }));
+  await page.evaluate(() =>
+    window.scrollTo({
+      top: document.querySelector('.hero-field')!.clientHeight,
+      behavior: 'instant',
+    }),
+  );
+  await page.screenshot({
+    path: `${evidenceDir}/home-first-following-section.png`,
+  });
+  diagnostics.firstFollowingSection = await page
+    .locator('.hero-field')
+    .evaluate((node) => ({
+      heroHeight: node.clientHeight,
+      nextSectionTop: node.nextElementSibling!.getBoundingClientRect().top,
+    }));
+  await measureHero(1024, 768, '1024x768');
+  await measureHero(1800, 1000, '1800x1000');
+  await measureHero(390, 844, '390x844');
+  await measureHero(375, 812, '375x812');
+  await measureHero(768, 1024, '768x1024');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await page.locator('.specimen').waitFor({ state: 'visible' });
+  await page.screenshot({
+    path: `${evidenceDir}/home-reduced-motion.png`,
+    fullPage: true,
+  });
+  diagnostics.reducedMotion = await page
+    .locator('.hero-field')
+    .evaluate((node) => ({
+      heroHeight: node.clientHeight,
+      position: getComputedStyle(node).position,
+      wrapperPosition: getComputedStyle(node.querySelector('.hero-inner')!)
+        .position,
+    }));
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await settleRevealsForScreenshot(page);
+  await page.screenshot({ path: `${evidenceDir}/home-1440x900.png` });
+  await page.screenshot({
+    path: `${evidenceDir}/home-desktop-initial-viewport.png`,
+  });
+  await readFile(`${evidenceDir}/home-desktop-full.png`);
+  const { writeFile } = await import('node:fs/promises');
+  await writeFile(
+    `${evidenceDir}/hero-diagnostics.json`,
+    JSON.stringify(diagnostics, null, 2),
+  );
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await settleRevealsForScreenshot(page);
@@ -476,10 +566,15 @@ test('homepage and affected routes produce requested visual evidence', async ({
   const visualReview = [
     ['Homepage · desktop first viewport', 'home-desktop-first.png'],
     ['Homepage · desktop full page', 'home-desktop-full.png'],
-    ['Homepage · identity to interface 01', 'home-hero-stage-01.png'],
-    ['Homepage · identity to interface 02', 'home-hero-stage-02.png'],
-    ['Homepage · identity to interface 03', 'home-hero-stage-03.png'],
-    ['Homepage · identity to interface 04', 'home-hero-stage-04.png'],
+    ['Hero · 1440 × 900 initial', 'hero-1440x900.png'],
+    ['Hero · half viewport scroll', 'home-after-half-viewport.png'],
+    ['Hero · one viewport scroll', 'home-after-one-viewport.png'],
+    ['Hero · following section', 'home-first-following-section.png'],
+    ['Hero · 1024 × 768', 'hero-1024x768.png'],
+    ['Hero · 1800 × 1000', 'hero-1800x1000.png'],
+    ['Hero · 390 × 844', 'hero-390x844.png'],
+    ['Hero · 375 × 812', 'hero-375x812.png'],
+    ['Hero · 768 × 1024', 'hero-768x1024.png'],
     ['Homepage · mobile first viewport', 'home-mobile-first.png'],
     ['Homepage · mobile full page', 'home-mobile-full.png'],
     ['Work · desktop', 'work-desktop.png'],

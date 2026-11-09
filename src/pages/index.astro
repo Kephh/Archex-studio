@@ -7,11 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="An identity-to-interface studio bringing brand identity and digital experience together, from first impression to interaction."
   path="/"
 >
-  <section
-    class="hero-field"
-    data-stage="0"
-    aria-label="Identity-to-interface studio"
-  >
+  <section class="hero-field" aria-label="Identity-to-interface studio">
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="hero-label meta">
@@ -51,10 +47,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="glass-note glass-note-b">
           responsive by design<br /><b>Desktop → mobile</b>
         </div>
-        <span class="coordinate a">TYPE SCALE</span>
         <span class="coordinate b">INTERACTION</span>
-        <span class="coordinate c">INTERFACE SPECIMEN</span>
-        <div class="mark" aria-hidden="true"><span>A</span><i>01</i></div>
+        <div class="mark" aria-hidden="true"><span>A</span></div>
         <div class="specimen">
           <div class="specimen-head">
             <span>Digital experience</span><span>Ready to explore</span>
@@ -71,28 +65,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="field-orbit field-orbit-a" aria-hidden="true"></div>
         <div class="field-orbit field-orbit-b" aria-hidden="true"></div>
-        <div class="field-index" aria-hidden="true">
-          <span>BRAND → DIGITAL</span><b>01</b><i
-            >IDENTITY / INTERACTION / EXPERIENCE</i
-          >
-        </div>
-      </div>
-    </div>
-    <div class="hero-progress">
-      <button
-        class="stage-control"
-        type="button"
-        data-stage-toggle
-        aria-pressed="false"
-      >
-        <span data-stage-label>Explore the system</span><span aria-hidden="true"
-          >↗</span
-        >
-      </button>
-      <div class="hero-stage-state" aria-live="polite" aria-atomic="true">
-        <span data-live-stage>01 — Identity</span><span class="progress-track"
-          ><i></i></span
-        ><span>04 — Digital experience</span>
       </div>
     </div>
   </section>
