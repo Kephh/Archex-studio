@@ -109,14 +109,43 @@ test('responsive layout audit across all routes and requested viewports', async 
           .map((element) => {
             const rect = element.getBoundingClientRect();
             const style = getComputedStyle(element);
+            const describe = (node: HTMLElement) =>
+              `${node.tagName.toLowerCase()}${node.id ? `#${node.id}` : ''}${node.classList.length ? `.${Array.from(node.classList).join('.')}` : ''}`;
+            const ancestors: Array<Record<string, unknown>> = [];
+            let ancestor = element.parentElement;
+            while (ancestor && ancestors.length < 5) {
+              const ancestorStyle = getComputedStyle(ancestor);
+              const ancestorRect = ancestor.getBoundingClientRect();
+              ancestors.push({
+                selector: describe(ancestor),
+                x: Math.round(ancestorRect.x * 10) / 10,
+                right: Math.round(ancestorRect.right * 10) / 10,
+                overflowX: ancestorStyle.overflowX,
+                overflowY: ancestorStyle.overflowY,
+                position: ancestorStyle.position,
+                transform: ancestorStyle.transform,
+              });
+              ancestor = ancestor.parentElement;
+            }
             return {
-              selector: `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}${element.classList.length ? `.${Array.from(element.classList).join('.')}` : ''}`,
+              selector: describe(element),
               x: Math.round(rect.x * 10) / 10,
               right: Math.round(rect.right * 10) / 10,
               width: Math.round(rect.width * 10) / 10,
               scrollWidth: element.scrollWidth,
               clientWidth: element.clientWidth,
               position: style.position,
+              display: style.display,
+              overflowX: style.overflowX,
+              overflowY: style.overflowY,
+              whiteSpace: style.whiteSpace,
+              minWidth: style.minWidth,
+              maxWidth: style.maxWidth,
+              marginLeft: style.marginLeft,
+              marginRight: style.marginRight,
+              transform: style.transform,
+              boxSizing: style.boxSizing,
+              ancestors,
             };
           })
           .filter((element) => element.x < -1 || element.right > innerWidth + 1)
@@ -193,6 +222,69 @@ test('responsive layout audit across all routes and requested viewports', async 
           documentScrollWidth: document.documentElement.scrollWidth,
           bodyScrollWidth: document.body.scrollWidth,
         };
+        const gutter = document.querySelector<HTMLElement>('.shell');
+        const gutterPixels = gutter
+          ? parseFloat(getComputedStyle(gutter).paddingLeft)
+          : parseFloat(
+              getComputedStyle(document.querySelector('.hero-inner')!).paddingLeft,
+            );
+        const decorativePseudoElements = [
+          '.field-visual::before',
+          '.field-visual::after',
+          '.field-orbit',
+          '.capability::after',
+          '.archive-lead::before',
+          '.cta-band::after',
+        ].flatMap((selector) => {
+          const [elementSelector, pseudo] = selector.split('::');
+          const element = document.querySelector<HTMLElement>(elementSelector);
+          if (!element) return [];
+          const style = getComputedStyle(element, pseudo ? `::${pseudo}` : null);
+          const rect = element.getBoundingClientRect();
+          return [
+            {
+              selector,
+              parentX: Math.round(rect.x * 10) / 10,
+              parentRight: Math.round(rect.right * 10) / 10,
+              content: style.content,
+              position: style.position,
+              width: style.width,
+              height: style.height,
+              top: style.top,
+              right: style.right,
+              bottom: style.bottom,
+              left: style.left,
+              transform: style.transform,
+              overflowX: getComputedStyle(element).overflowX,
+            },
+          ];
+        });
+        const contentEdges = [
+          '.hero-copy',
+          '.page-intro h1',
+          '.page-intro p',
+          '.section-header h2',
+          '.hero-actions',
+          '.archive-lead',
+          '.archive-side',
+          '.archive-reserved',
+          '.capability-demo',
+          '.cap-tabs',
+          '.cap-demo-frame',
+          '.method-visual',
+          '.method-list',
+          '.contact-grid',
+          '.cta-inner',
+        ].flatMap((selector) => {
+          const element = document.querySelector<HTMLElement>(selector);
+          if (!element || element.getClientRects().length === 0) return [];
+          const rect = element.getBoundingClientRect();
+          return [{
+            selector,
+            x: Math.round(rect.x * 10) / 10,
+            right: Math.round(rect.right * 10) / 10,
+          }];
+        });
         document.documentElement.style.overflowX = previousHtmlOverflow;
         document.body.style.overflowX = previousBodyOverflow;
         return {
@@ -201,6 +293,9 @@ test('responsive layout audit across all routes and requested viewports', async 
             height: innerHeight,
             devicePixelRatio,
           },
+          gutterPixels,
+          decorativePseudoElements,
+          contentEdges,
           document: {
             scrollWidth: document.documentElement.scrollWidth,
             clientWidth: document.documentElement.clientWidth,
@@ -214,11 +309,39 @@ test('responsive layout audit across all routes and requested viewports', async 
           nav: box('.site-header .nav'),
           heading: box('main h1'),
           hero: box('.hero-field'),
+          fieldVisual: box('.field-visual'),
           heroInner: box('.hero-inner'),
           heroHeading: box('.hero-copy h1'),
+          heroHeadingLines: (() => {
+            const element = document.querySelector<HTMLElement>(
+              '.hero-copy h1',
+            );
+            if (!element) return null;
+            const style = getComputedStyle(element);
+            return Math.round(
+              element.getBoundingClientRect().height /
+                parseFloat(style.lineHeight),
+            );
+          })(),
           heroCopy: box('.hero-copy p'),
           heroActions: box('.hero-actions'),
           specimen: box('.specimen'),
+          specimenContained: (() => {
+            const specimen = document
+              .querySelector('.specimen')
+              ?.getBoundingClientRect();
+            const frame = document
+              .querySelector('.field-visual')
+              ?.getBoundingClientRect();
+            return Boolean(
+              specimen &&
+              frame &&
+              specimen.left >= frame.left - 1 &&
+              specimen.right <= frame.right + 1 &&
+              specimen.top >= frame.top - 1 &&
+              specimen.bottom <= frame.bottom + 1,
+            );
+          })(),
           pageIntro: box('.page-intro'),
           sectionHeader: box('.section-header'),
           archive: box('.archive-grid'),
@@ -288,6 +411,33 @@ test('responsive layout audit across all routes and requested viewports', async 
       );
       expect(metrics.unclippedDimensions.bodyScrollWidth).toBe(viewport.width);
       expect(
+        metrics.clippedText,
+        `${route.name} clipped text at ${viewport.width}x${viewport.height}`,
+      ).toHaveLength(0);
+      const expectedGutter =
+        viewport.width <= 600
+          ? Math.min(24, Math.max(18, viewport.width * 0.056))
+          : viewport.width <= 800
+            ? Math.min(38, Math.max(24, viewport.width * 0.042))
+            : viewport.width <= 1100
+              ? Math.min(44, Math.max(32, viewport.width * 0.039))
+              : Math.min(80, Math.max(20, viewport.width * 0.05));
+      expect(
+        Math.abs(metrics.gutterPixels - expectedGutter),
+        `shared gutter at ${viewport.width}px`,
+      ).toBeLessThan(1);
+      if (viewport.width <= 800) {
+        for (const edge of metrics.contentEdges as Array<{
+          selector: string;
+          x: number;
+        }>) {
+          expect(
+            Math.abs(edge.x - expectedGutter),
+            `${route.name} ${edge.selector} alignment at ${viewport.width}px`,
+          ).toBeLessThanOrEqual(1.5);
+        }
+      }
+      expect(
         metrics.pageTitleOverflow,
         `${route.name} heading at ${viewport.width}px`,
       ).toBe(false);
@@ -298,6 +448,16 @@ test('responsive layout audit across all routes and requested viewports', async 
         ).toBe(false);
         expect(metrics.heroInner?.position).not.toBe('sticky');
         expect(metrics.heroInner?.position).not.toBe('fixed');
+        if (viewport.width <= 600) {
+          expect(metrics.heroHeadingLines).toBeLessThanOrEqual(2);
+          expect(
+            metrics.specimenContained,
+            JSON.stringify({
+              fieldVisual: metrics.fieldVisual,
+              specimen: metrics.specimen,
+            }),
+          ).toBe(true);
+        }
       }
       if (route.name === 'studio' && viewport.height < 600) {
         expect(metrics.methodVisual?.position).not.toBe('sticky');
