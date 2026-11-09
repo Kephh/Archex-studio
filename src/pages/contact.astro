@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import EditorialCompanion from '../components/EditorialCompanion.astro';
 ---
 
 <BaseLayout
@@ -10,12 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="shell">
     <header class="page-intro">
       <h1>Contact.</h1>
-      <svg class="intro-art intro-art-contact" viewBox="0 0 320 140" role="img" aria-label="A message taking shape">
-        <path class="art-line" d="M42 25h236v82H42z" />
-        <path class="art-accent" d="m44 28 116 70L276 28" />
-        <path class="art-dash" d="M42 107 112 62M278 107l-70-45" />
-        <circle class="art-dot" cx="160" cy="98" r="4" />
-      </svg>
+      <EditorialCompanion variant="contact" />
     </header>
     <section class="section reveal">
       <div class="contact-grid">

@@ -1,0 +1,450 @@
+---
+const { variant } = Astro.props;
+---
+
+{
+  variant === 'work' && (
+    <svg
+      class="editorial-companion work-companion"
+      viewBox="0 0 500 290"
+      role="img"
+      aria-labelledby="work-title work-desc"
+    >
+      <title id="work-title">The project archive begins with Archex Web</title>
+      <desc id="work-desc">
+        One featured first project leads a quiet sequence of three reserved
+        future positions.
+      </desc>
+      <path class="plate-shadow" d="M28 22h420v226H28z" />
+      <path class="plate" d="M18 12h420v226H18z" />
+      <path
+        class="construction"
+        d="M34 29h388M34 217h388M34 29v188M422 29v188"
+      />
+      <path class="fold" d="M337 12v226" />
+      <text class="micro" x="38" y="50">
+        ARCHIVE / 01—04
+      </text>
+      <text class="folio-number" x="37" y="157">
+        01
+      </text>
+      <path class="signal-rule" d="M40 172h212" />
+      <text class="project-name" x="40" y="198">
+        ARCHEX WEB
+      </text>
+      <text class="micro muted" x="40" y="211">
+        FIRST PROJECT
+      </text>
+      <circle class="active-mark" cx="385" cy="67" r="18" />
+      <text class="sequence-number active-number" x="385" y="71">
+        01
+      </text>
+      <path class="sequence-line" d="M385 85v96" />
+      <circle class="quiet-mark" cx="385" cy="112" r="10" />
+      <circle class="quiet-mark" cx="385" cy="146" r="10" />
+      <circle class="quiet-mark" cx="385" cy="180" r="10" />
+      <text class="micro muted" x="356" y="211">
+        3 RESERVED
+      </text>
+      <path class="corner" d="M438 238h28v-28" />
+      <text class="index" x="437" y="263">
+        A—01
+      </text>
+    </svg>
+  )
+}
+
+{
+  variant === 'capabilities' && (
+    <svg
+      class="editorial-companion capabilities-companion"
+      viewBox="0 0 500 290"
+      role="img"
+      aria-labelledby="cap-title cap-desc"
+    >
+      <title id="cap-title">
+        Brand identity and digital experience connected by creative direction
+      </title>
+      <desc id="cap-desc">
+        Two equally weighted disciplines meet through one central creative
+        direction.
+      </desc>
+      <path class="plate" d="M18 12h464v226H18z" />
+      <path
+        class="construction"
+        d="M34 29h432M34 217h432M34 29v188M466 29v188"
+      />
+      <text class="micro" x="38" y="50">
+        ONE IDEA / TWO EXPRESSIONS
+      </text>
+      <path class="guide" d="M90 112h320" />
+      <path class="guide-accent" d="M164 112h172" />
+      <circle class="anchor anchor-left" cx="112" cy="112" r="50" />
+      <circle class="anchor anchor-right" cx="388" cy="112" r="50" />
+      <circle class="anchor-inner" cx="112" cy="112" r="37" />
+      <path class="identity-glyph" d="m92 124 20-38 20 38m-31-15h22" />
+      <rect
+        class="interface-frame"
+        x="367"
+        y="88"
+        width="42"
+        height="48"
+        rx="1"
+      />
+      <path class="interface-detail" d="M376 99h24M376 107h17M376 120h24" />
+      <path class="direction-seal" d="M250 83 279 112 250 141 221 112z" />
+      <circle class="direction-core" cx="250" cy="112" r="5" />
+      <path class="signal-tick" d="M250 72v-8m0 104v-8" />
+      <text class="discipline" x="112" y="183" text-anchor="middle">
+        Brand Identity
+      </text>
+      <text class="discipline" x="388" y="183" text-anchor="middle">
+        Digital Experience
+      </text>
+      <text class="direction-label" x="250" y="199" text-anchor="middle">
+        Creative Direction
+      </text>
+      <text class="micro muted" x="38" y="211">
+        CHARACTER
+      </text>
+      <text class="micro muted" x="420" y="211" text-anchor="end">
+        INTERACTION
+      </text>
+      <path class="corner" d="M482 238h-28v-28" />
+      <text class="index" x="18" y="263">
+        A—02
+      </text>
+    </svg>
+  )
+}
+
+{
+  variant === 'studio' && (
+    <svg
+      class="editorial-companion studio-companion"
+      viewBox="0 0 500 290"
+      role="img"
+      aria-labelledby="studio-title studio-desc"
+    >
+      <title id="studio-title">
+        Four connected stages of the studio method
+      </title>
+      <desc id="studio-desc">
+        Recognise, Translate, Test and Carry form a continuous path from idea to
+        coherent expression.
+      </desc>
+      <path class="plate" d="M18 12h464v226H18z" />
+      <path
+        class="construction"
+        d="M34 29h432M34 217h432M34 29v188M466 29v188"
+      />
+      <text class="micro" x="38" y="50">
+        A CONTINUOUS METHOD
+      </text>
+      <path
+        class="journey-underlay"
+        d="M74 124c35-63 68-63 103 0s68 63 103 0 68-63 103 0 34 33 43 0"
+      />
+      <path
+        class="journey"
+        d="M74 124c35-63 68-63 103 0s68 63 103 0 68-63 103 0 34 33 43 0"
+      />
+      <>
+        <circle class="stage-node" cx="74" cy="124" r="20" />
+        <path class="glyph-recognise" d="M67 124h14m-7-7v14" />
+      </>
+      <>
+        <circle class="stage-node" cx="177" cy="124" r="20" />
+        <path class="glyph-translate" d="m170 124 7-7 7 7-7 7z" />
+      </>
+      <>
+        <circle class="stage-node" cx="280" cy="124" r="20" />
+        <path class="glyph-test" d="M272 124h16m-8-8v16" />
+      </>
+      <>
+        <circle class="stage-node stage-final" cx="383" cy="124" r="20" />
+        <path class="glyph-carry" d="M376 130v-12h14v12m-10-12v-5h7v5" />
+      </>
+      <text class="stage-number" x="74" y="174" text-anchor="middle">
+        01
+      </text>
+      <text class="stage-number" x="177" y="174" text-anchor="middle">
+        02
+      </text>
+      <text class="stage-number" x="280" y="174" text-anchor="middle">
+        03
+      </text>
+      <text class="stage-number" x="383" y="174" text-anchor="middle">
+        04
+      </text>
+      <text class="stage-name" x="74" y="195" text-anchor="middle">
+        Recognise
+      </text>
+      <text class="stage-name" x="177" y="195" text-anchor="middle">
+        Translate
+      </text>
+      <text class="stage-name" x="280" y="195" text-anchor="middle">
+        Test
+      </text>
+      <text class="stage-name" x="383" y="195" text-anchor="middle">
+        Carry
+      </text>
+      <text class="micro muted" x="38" y="211">
+        FROM ESSENCE
+      </text>
+      <text class="micro muted" x="462" y="211" text-anchor="end">
+        TO EXPRESSION
+      </text>
+      <path class="corner" d="M482 238h-28v-28" />
+      <text class="index" x="18" y="263">
+        A—03
+      </text>
+    </svg>
+  )
+}
+
+{
+  variant === 'contact' && (
+    <svg
+      class="editorial-companion contact-companion"
+      viewBox="0 0 500 290"
+      role="img"
+      aria-labelledby="contact-title contact-desc"
+    >
+      <title id="contact-title">An idea taking shape</title>
+      <desc id="contact-desc">
+        An open frame and a line of thought resolve into a clear form, an
+        invitation to consider what a project could become.
+      </desc>
+      <path class="paper-shadow" d="M60 43h385v190H60z" />
+      <path class="paper-sheet" d="M48 31h385v190H48z" />
+      <path class="paper-rule" d="M66 49h349M66 202h349M66 49v153M415 49v153" />
+      <text class="micro" x="70" y="72">
+        A NOTE TO BEGIN
+      </text>
+      <text class="question-mark" x="68" y="157">
+        ?
+      </text>
+      <path
+        class="thought-line"
+        d="M142 148c25 0 27-35 52-35s27 35 52 35 27-35 52-35"
+      />
+      <path class="thought-line signal-thought" d="M298 113h51" />
+      <path class="resolve-frame" d="M349 86h43v54h-43z" />
+      <path class="resolve-mark" d="m359 118 10-17 10 17m-15-6h11" />
+      <text class="note-copy" x="142" y="175">
+        What needs to take shape?
+      </text>
+      <text class="micro muted" x="70" y="196">
+        IDEA
+      </text>
+      <text class="micro muted" x="392" y="196" text-anchor="end">
+        POSSIBILITY
+      </text>
+      <path class="corner" d="M433 221h28v-28" />
+      <text class="index" x="48" y="250">
+        A—04
+      </text>
+    </svg>
+  )
+}
+
+<style>
+  .editorial-companion {
+    display: block;
+    width: min(100%, 31rem);
+    height: auto;
+    justify-self: end;
+    overflow: visible;
+    color: var(--ink);
+  }
+  .plate,
+  .paper-sheet {
+    fill: var(--paper-soft);
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+  .plate-shadow,
+  .paper-shadow {
+    fill: color-mix(in srgb, var(--signal) 12%, var(--paper));
+  }
+  .construction,
+  .fold,
+  .paper-rule,
+  .sequence-line,
+  .guide,
+  .guide-accent,
+  .signal-rule,
+  .corner {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+  .fold {
+    stroke-dasharray: 2 4;
+  }
+  .signal-rule,
+  .guide-accent {
+    stroke: var(--signal);
+  }
+  .micro,
+  .index,
+  .sequence-number,
+  .stage-number {
+    fill: var(--graphite);
+    font: 500 10px var(--sans);
+    letter-spacing: 1.3px;
+  }
+  .muted {
+    fill: #8c877e;
+  }
+  .index {
+    fill: var(--signal);
+    text-anchor: end;
+  }
+  .folio-number {
+    fill: var(--ink);
+    font: 400 92px/0.85 var(--serif);
+    letter-spacing: -5px;
+  }
+  .project-name,
+  .discipline,
+  .direction-label,
+  .stage-name,
+  .note-copy {
+    fill: var(--ink);
+    font: 500 14px var(--sans);
+  }
+  .active-mark {
+    fill: var(--signal);
+  }
+  .active-number {
+    fill: var(--paper-soft);
+    text-anchor: middle;
+    letter-spacing: 0;
+  }
+  .quiet-mark {
+    fill: var(--paper);
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+  .sequence-line {
+    stroke-dasharray: 2 5;
+  }
+  .anchor {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 1;
+  }
+  .anchor-right {
+    fill: var(--paper-soft);
+  }
+  .anchor-inner {
+    fill: none;
+    stroke: var(--line);
+    stroke-dasharray: 2 3;
+  }
+  .identity-glyph,
+  .interface-detail,
+  .signal-tick,
+  .glyph-recognise,
+  .glyph-translate,
+  .glyph-test,
+  .glyph-carry,
+  .resolve-mark {
+    fill: none;
+    stroke: var(--signal);
+    stroke-width: 1.5;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+  }
+  .interface-frame {
+    fill: var(--paper-soft);
+    stroke: var(--ink);
+    stroke-width: 1;
+  }
+  .direction-seal {
+    fill: var(--paper-soft);
+    stroke: var(--signal);
+    stroke-width: 1.4;
+  }
+  .direction-core {
+    fill: var(--signal);
+  }
+  .direction-label {
+    font-size: 12px;
+  }
+  .journey-underlay {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 7;
+    opacity: 0.28;
+  }
+  .journey {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.2;
+  }
+  .stage-node {
+    fill: var(--paper-soft);
+    stroke: var(--ink);
+    stroke-width: 1.2;
+  }
+  .stage-final {
+    stroke: var(--signal);
+  }
+  .stage-number {
+    text-anchor: middle;
+  }
+  .stage-name {
+    font-size: 12px;
+  }
+  .paper-sheet {
+    fill: var(--paper-soft);
+  }
+  .paper-shadow {
+    fill: color-mix(in srgb, var(--signal) 10%, var(--paper));
+  }
+  .question-mark {
+    fill: var(--signal);
+    font: 400 92px/0.85 var(--serif);
+  }
+  .thought-line {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.2;
+  }
+  .signal-thought {
+    stroke: var(--signal);
+  }
+  .resolve-frame {
+    fill: var(--paper);
+    stroke: var(--line-dark);
+    stroke-width: 1;
+  }
+  .note-copy {
+    font: 400 16px var(--serif);
+  }
+
+  @media (max-width: 700px) {
+    .editorial-companion {
+      width: min(100%, 31rem);
+      justify-self: center;
+    }
+    .micro,
+    .index,
+    .sequence-number,
+    .stage-number {
+      font-size: 13px;
+    }
+    .project-name,
+    .discipline,
+    .direction-label,
+    .stage-name,
+    .note-copy {
+      font-size: 16px;
+    }
+  }
+</style>
