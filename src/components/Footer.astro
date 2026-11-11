@@ -1,10 +1,37 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer class="site-footer">
-  <a class="wordmark" href="/" aria-label="Archex Studio home"
-    >archex<span>—</span>studio</a
-  >
-  <nav aria-label="Footer">
+  <div class="footer-brand">
+    <a class="wordmark" href="/" aria-label="Archex Studio home"
+      >archex<span>—</span>studio</a
+    >
+  </div>
+  <nav aria-label="Footer navigation">
     <a href="/work/">Work</a> · <a href="/capabilities/">Capabilities</a> · <a
       href="/studio/">Studio</a
-    > · <a href="/contact/">Contact</a>
+    > · <a href="/contact/">Contact</a> · <a
+      href="https://www.archexweb.in/privacy/"
+      target="_blank"
+      rel="noopener noreferrer">Privacy</a
+    > · <a
+      href="https://www.archexweb.in/terms/"
+      target="_blank"
+      rel="noopener noreferrer">Terms</a
+    >
   </nav>
 </footer>
+
+<style>
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .footer-lineage {
+    font-size: 0.72rem;
+    color: var(--graphite, #777);
+    letter-spacing: 0.02em;
+  }
+</style>
