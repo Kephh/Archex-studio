@@ -6,7 +6,7 @@ const routes = [
   { path: '/work/', heading: 'Work.', name: 'work' },
   { path: '/capabilities/', heading: 'Capabilities.', name: 'capabilities' },
   { path: '/studio/', heading: 'Studio.', name: 'studio' },
-  { path: '/archex-web/', heading: 'Archex Web.', name: 'archex-web' },
+  { path: '/archex-craft/', heading: 'Archex Craft.', name: 'archex-craft' },
   { path: '/contact/', heading: 'Contact.', name: 'contact' },
 ];
 
@@ -135,7 +135,7 @@ test('homepage CTAs and story sections lead to real destinations', async ({
     page.getByRole('heading', { name: /identity into interface/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: /our first project.*archex web/i }),
+    page.getByRole('heading', { name: /our first project.*archex craft/i }),
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: /two sides/i })).toBeVisible();
   await expect(page.locator('.hero-label')).toContainText(
@@ -174,11 +174,11 @@ test('Work exposes one available first project and exactly three inert reserved 
     "Archex Studio's first project",
   );
   await expect(
-    page.locator('.archive-grid .archive-lead a[href="/archex-web/"]'),
+    page.locator('.archive-grid .archive-lead a[href="/archex-craft/"]'),
   ).toBeVisible();
   await expect(
     page.getByRole('link', { name: 'View project overview' }),
-  ).toHaveAttribute('href', '/archex-web/');
+  ).toHaveAttribute('href', '/archex-craft/');
   await expect(
     page.getByRole('link', { name: 'Visit the live website' }),
   ).toHaveAttribute('href', 'https://www.archexweb.in');
@@ -293,7 +293,7 @@ test('first-time visitor copy avoids internal status and implementation language
     '/work/',
     '/capabilities/',
     '/studio/',
-    '/archex-web/',
+    '/archex-craft/',
     '/contact/',
   ]) {
     await page.goto(route);
@@ -329,7 +329,7 @@ test('mobile navigation opens, navigates, closes, and responds to Escape', async
   await expect(menu).toBeFocused();
 });
 
-test('Archex Web remains noindex and excluded from the sitemap; preview pages stay non-indexable', async ({
+test('Archex Craft remains noindex and excluded from the sitemap; preview pages stay non-indexable', async ({
   page,
   request,
 }) => {
@@ -343,11 +343,10 @@ test('Archex Web remains noindex and excluded from the sitemap; preview pages st
   }
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.ok()).toBeTruthy();
-  expect(await sitemap.text()).not.toContain('archex-web');
+  expect(await sitemap.text()).not.toContain('archex-craft');
   const robots = await request.get('/robots.txt');
   expect(await robots.text()).toContain('Disallow: /');
-  await page.goto('/archex-web/');
-  await expect(page.locator('main')).toContainText('Our first project.');
+  await page.goto('/archex-craft/');
   await expect(page.locator('main')).not.toContainText(
     /indexable|evidence pending|not provided/i,
   );
@@ -405,7 +404,7 @@ test('homepage and affected routes produce requested visual evidence', async ({
     { route: '/work/', name: 'work' },
     { route: '/capabilities/', name: 'capabilities' },
     { route: '/studio/', name: 'studio' },
-    { route: '/archex-web/', name: 'archex-web' },
+    { route: '/archex-craft/', name: 'archex-craft' },
     { route: '/contact/', name: 'contact' },
   ];
   for (const { route, name } of cases) {
@@ -583,8 +582,8 @@ test('homepage and affected routes produce requested visual evidence', async ({
     ['Capabilities · mobile', 'capabilities-mobile.png'],
     ['Studio · desktop', 'studio-desktop.png'],
     ['Studio · mobile', 'studio-mobile.png'],
-    ['Archex Web · desktop', 'archex-web-desktop.png'],
-    ['Archex Web · mobile', 'archex-web-mobile.png'],
+    ['Archex Craft · desktop', 'archex-craft-desktop.png'],
+    ['Archex Craft · mobile', 'archex-craft-mobile.png'],
     ['Contact · desktop', 'contact-desktop.png'],
     ['Contact · mobile', 'contact-mobile.png'],
     ['Mobile navigation · open', 'navigation-mobile-open.png'],

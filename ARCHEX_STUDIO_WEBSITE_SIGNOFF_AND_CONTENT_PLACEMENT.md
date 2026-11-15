@@ -8,26 +8,26 @@ The Astro site lives at the repository root. Routes are implemented at:
 - `/work/`
 - `/capabilities/`
 - `/studio/`
-- `/archex-web/`
+- `/archex-craft/`
 - `/contact/`
 
 The Phase 3A.1 prototype remains preserved at `prototypes/phase-3a/index.html`.
 
-## Archex Web evidence placement
+## Archex Craft evidence placement
 
-The Archex Web route is intentionally `noindex,nofollow` and is excluded from the sitemap until sufficient evidence is available.
+The Archex Craft route is intentionally `noindex,nofollow` and is excluded from the sitemap until sufficient evidence is available.
 
 When evidence is approved:
 
-1. Add verified project data to `src/data/projects.ts` only for the existing Archex Web position.
-2. Replace the evidence-pending sections in `src/pages/archex-web.astro` with factual objective, contribution, process, identity evidence, interface evidence, credits and supported outcomes.
+1. Add verified project data to `src/data/projects.ts` only for the existing Archex Craft position.
+2. Replace the evidence-pending sections in `src/pages/archex-craft.astro` with factual objective, contribution, process, identity evidence, interface evidence, credits and supported outcomes.
 3. Add approved screenshots under a production asset directory with width, height, responsive sources and contextual alt text.
 4. Keep unsupported technologies, metrics, timelines, credits and results omitted.
 5. Reassess the route's `noindex` status only after the page contains substantial original evidence.
 
 ## Reserved concept positions
 
-Keep exactly three reserved entries after Archex Web:
+Keep exactly three reserved entries after Archex Craft:
 
 - Reserved concept project 01
 - Reserved concept project 02
@@ -45,4 +45,4 @@ Contact integration is deferred. Do not add a form endpoint, email address, CRM 
 - Keep `PUBLIC_ALLOW_INDEXING=false` for previews and until the custom domain is verified.
 - Set `PUBLIC_ALLOW_INDEXING=true` only after the production domain and site have been confirmed.
 - Configure only the `studio` DNS host record using the exact CNAME target returned by Vercel.
-- Do not modify the separate `https://archexweb.in` deployment, root-domain routing, email records or nameservers.
+- Do not modify the separate `https://craft.archexweb.in` deployment, root-domain routing, email records or nameservers.

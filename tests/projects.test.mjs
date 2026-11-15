@@ -4,7 +4,7 @@ import { projects } from '../src/data/projects.ts';
 
 test('portfolio contains exactly one real project and three reserved positions', () => {
   assert.equal(projects.length, 4);
-  assert.equal(projects[0].id, 'archex-web');
+  assert.equal(projects[0].id, 'archex-craft');
   assert.equal(
     projects.filter((project) => project.status === 'reserved').length,
     3,
@@ -18,9 +18,9 @@ test('reserved projects have no routes and no indexability', () => {
   }
 });
 
-test('Archex Web remains non-indexable and future work stays unnamed', () => {
+test('Archex Craft remains non-indexable and future work stays unnamed', () => {
   assert.equal(projects[0].indexable, false);
-  assert.equal(projects[0].route, '/archex-web/');
+  assert.equal(projects[0].route, '/archex-craft/');
   assert.deepEqual(
     projects.slice(1).map((project) => project.label),
     ['Future position 01', 'Future position 02', 'Future position 03'],

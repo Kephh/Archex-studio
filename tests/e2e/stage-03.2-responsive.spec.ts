@@ -6,7 +6,7 @@ const routes = [
   { path: '/work/', name: 'work' },
   { path: '/capabilities/', name: 'capabilities' },
   { path: '/studio/', name: 'studio' },
-  { path: '/archex-web/', name: 'archex-web' },
+  { path: '/archex-craft/', name: 'archex-craft' },
   { path: '/contact/', name: 'contact' },
 ];
 
@@ -226,8 +226,8 @@ test('responsive layout audit across all routes and requested viewports', async 
         const gutterPixels = gutter
           ? parseFloat(getComputedStyle(gutter).paddingLeft)
           : parseFloat(
-              getComputedStyle(document.querySelector('.hero-inner')!).paddingLeft,
-            );
+            getComputedStyle(document.querySelector('.hero-inner')!).paddingLeft,
+          );
         const decorativePseudoElements = [
           '.field-visual::before',
           '.field-visual::after',
@@ -320,7 +320,7 @@ test('responsive layout audit across all routes and requested viewports', async 
             const style = getComputedStyle(element);
             return Math.round(
               element.getBoundingClientRect().height /
-                parseFloat(style.lineHeight),
+              parseFloat(style.lineHeight),
             );
           })(),
           heroCopy: box('.hero-copy p'),

@@ -13,13 +13,13 @@ Review the site from a first-time founder or business owner’s perspective. Cla
 
 **Before Stage 03.1 edits:** The working tree was clean on `main` at `e981c4c`, which was also the `origin/main` tracking commit. That commit contains the Stage 03 content and Playwright work. The package version at this baseline is `1.0.0`. The Stage 03 completion report describes the state when it was written, when its changes were uncommitted; it does not describe the current Git history.
 
-**Public check:** Read-only HTTP requests to `https://archex-studio.vercel.app/` and all five subroutes returned HTTP 200. Each route’s title and main heading matched the local source. The same Stage 03-era wording was present both publicly and locally, including “Archex Studio / 01—05”, “One reference. Held honestly.”, “Open project framework”, “Choose a side of the system”, the visible indexing/evidence notes on Archex Web, and the repeated Contact preparation CTA. No content discrepancy was found in the checked page text. This was a route/title/heading/copy comparison, not a byte-for-byte comparison of generated bundles or hashed assets.
+**Public check:** Read-only HTTP requests to `https://archex-studio.vercel.app/` and all five subroutes returned HTTP 200. Each route’s title and main heading matched the local source. The same Stage 03-era wording was present both publicly and locally, including “Archex Studio / 01—05”, “One reference. Held honestly.”, “Open project framework”, “Choose a side of the system”, the visible indexing/evidence notes on Archex Craft, and the repeated Contact preparation CTA. No content discrepancy was found in the checked page text. This was a route/title/heading/copy comparison, not a byte-for-byte comparison of generated bundles or hashed assets.
 
 **Version used for this stage:** The local Stage 03 source was refined on the new review branch. The public preview was left untouched and therefore still shows the pre-03.1 wording. No production website was used as the implementation-test target.
 
 ## 3. Initial first-time visitor findings
 
-The site already explained that Archex Studio works across identities and digital experiences, but the hero’s “Living Grid” and “01—05” labels read as internal art direction. Several hero annotations read like a specification. The Archex Web sections were accurate but defensive and hard to scan because they emphasized evidence limitations. Work sounded like an incomplete archive, Capabilities described the specimen more than the visitor benefit, and Contact repeated the unavailable-channel status in multiple places.
+The site already explained that Archex Studio works across identities and digital experiences, but the hero’s “Living Grid” and “01—05” labels read as internal art direction. Several hero annotations read like a specification. The Archex Craft sections were accurate but defensive and hard to scan because they emphasized evidence limitations. Work sounded like an incomplete archive, Capabilities described the specimen more than the visitor benefit, and Contact repeated the unavailable-channel status in multiple places.
 
 The separate live site link was valid but used a host that redirected to its canonical `www` host. A read-only request confirmed the final `https://www.archexweb.in/` destination returns HTTP 200.
 
@@ -38,7 +38,7 @@ Inspected the package manifest/lockfile and Git history; Playwright configuratio
 
 - `.gitignore` — exact exception for this required report
 - `playwright.config.ts` — Stage 03.1 report and test-results paths
-- `src/pages/index.astro`, `work.astro`, `capabilities.astro`, `studio.astro`, `contact.astro`, and `archex-web.astro`
+- `src/pages/index.astro`, `work.astro`, `capabilities.astro`, `studio.astro`, `contact.astro`, and `archex-craft.astro`
 - `src/scripts/site.js` and `src/styles/global.css`
 - `src/data/projects.ts` and `src/components/ProjectStatus.astro`
 - `tests/e2e/stage-03.spec.ts` and `tests/projects.test.mjs`
@@ -47,7 +47,7 @@ Inspected the package manifest/lockfile and Git history; Playwright configuratio
 
 ## 7. Homepage copy improvements
 
-**Implemented:** The browser title now describes Archex Studio as “Identity to Interface”. The public hero descriptor is “Identity-to-Interface Studio”; “Living Grid” and “01—05” were removed from visitor-facing hero copy. The headline and core description were preserved. The homepage’s first-project section now leads with “Our first project. Archex Web.” and explains that it is a separate website made by the same owner and team, not an external client engagement. Visitors get separate “View the project overview” and “Visit the live website” links. The three homepage future positions now use simple future-work language.
+**Implemented:** The browser title now describes Archex Studio as “Identity to Interface”. The public hero descriptor is “Identity-to-Interface Studio”; “Living Grid” and “01—05” were removed from visitor-facing hero copy. The headline and core description were preserved. The homepage’s first-project section now leads with “Our first project. Archex Craft.” and explains that it is a separate website made by the same owner and team, not an external client engagement. Visitors get separate “View the project overview” and “Visit the live website” links. The three homepage future positions now use simple future-work language.
 
 ## 8. Hero annotation review
 
@@ -57,11 +57,11 @@ Inspected the package manifest/lockfile and Git history; Playwright configuratio
 
 ## 9. Work archive and reserved positions
 
-**Implemented:** The page now says the archive begins with Archex Web, the studio’s first project, and that three positions remain open for what comes next. The internal “project framework” CTA became “View project overview”; the external link is clearly “Visit the live website”. The archive still has exactly four positions. The three future positions are non-links, have no hover lift that could imply clickability, and say “Future work” / “Position reserved for a future project.” No project details or active-work claims were added.
+**Implemented:** The page now says the archive begins with Archex Craft, the studio’s first project, and that three positions remain open for what comes next. The internal “project framework” CTA became “View project overview”; the external link is clearly “Visit the live website”. The archive still has exactly four positions. The three future positions are non-links, have no hover lift that could imply clickability, and say “Future work” / “Position reserved for a future project.” No project details or active-work claims were added.
 
-## 10. Archex Web project presentation
+## 10. Archex Craft project presentation
 
-**Implemented:** Removed visible “evidence pending”, “not indexable”, “Known carefully”, “NOT PROVIDED”, and similar production-record text. The route now identifies Archex Web as the first project, explains that it is a separate website made by the same owner and team, and states that it was not made for an external client. It notes briefly that a fuller account is being prepared, then provides a direct live-site link and a return-to-Work link. The project is presented with an existing typographic graphic composition, not a simulated website screenshot. The page’s HTML robots directive remains `noindex,nofollow`; the route remains excluded from the sitemap.
+**Implemented:** Removed visible “evidence pending”, “not indexable”, “Known carefully”, “NOT PROVIDED”, and similar production-record text. The route now identifies Archex Craft as the first project, explains that it is a separate website made by the same owner and team, and states that it was not made for an external client. It notes briefly that a fuller account is being prepared, then provides a direct live-site link and a return-to-Work link. The project is presented with an existing typographic graphic composition, not a simulated website screenshot. The page’s HTML robots directive remains `noindex,nofollow`; the route remains excluded from the sitemap.
 
 ## 11. Capabilities improvements
 
@@ -79,20 +79,20 @@ Inspected the package manifest/lockfile and Git history; Playwright configuratio
 
 | Route | Studio / capabilities clarity | Work / process clarity | Enquiry and navigation |
 |---|---|---|---|
-| Home | The first viewport identifies an identity-to-interface studio; the lead copy names identities and digital experiences. | Archex Web is identified as the first project; the method section links to Studio. | “See the work”, “Explore capabilities”, and “Contact” have real destinations. |
+| Home | The first viewport identifies an identity-to-interface studio; the lead copy names identities and digital experiences. | Archex Craft is identified as the first project; the method section links to Studio. | “See the work”, “Explore capabilities”, and “Contact” have real destinations. |
 | Work | The page makes clear this is the beginning of the portfolio. | One first project and three future positions are distinct; no fake work appears. | Overview, live site, archive navigation, and Contact links work. |
 | Capabilities | Brand Identity and Digital Experience are named as equal disciplines; Creative Direction connects them. | Interactive specimen changes on either discipline; capability groups are practical. | Controls are labeled and keyboard-operable; navigation destinations resolve. |
 | Studio | The opening text gives the studio point of view. | Four named, explained stages remain available and operable. | Method control and route navigation work. |
-| Archex Web | The page identifies what the site is and why it appears in the archive. | It is the studio’s own first project; no unsupported case-study details are presented. | Live website and Return to Work links are separate and clear. |
+| Archex Craft | The page identifies what the site is and why it appears in the archive. | It is the studio’s own first project; no unsupported case-study details are presented. | Live website and Return to Work links are separate and clear. |
 | Contact | The destination is clear from navigation and heading. | The page explains what a useful project conversation considers without repeating status. | Status is honest: the page is not accepting enquiries yet. |
 
 **Review finding:** No visible indexing instruction, dead route, fake contact flow, repeated contact-preparation CTA, or reserved-project link remains. The enquiry limitation is still a material business-launch blocker.
 
 ## 15. Playwright route and interaction results
 
-**Tested and passed:** `npm run test:e2e` completed with **13 passed**. The suite checks all six route responses and headings, internal destinations, the hero control and both Contact CTAs, exactly four Work positions and their destinations, both capability modes, all four Studio stages, Contact status/no form, visitor-facing copy, mobile-menu navigation/Escape, Archex Web noindex/sitemap rules, reduced motion, scroll reveals, and screenshot generation.
+**Tested and passed:** `npm run test:e2e` completed with **13 passed**. The suite checks all six route responses and headings, internal destinations, the hero control and both Contact CTAs, exactly four Work positions and their destinations, both capability modes, all four Studio stages, Contact status/no form, visitor-facing copy, mobile-menu navigation/Escape, Archex Craft noindex/sitemap rules, reduced motion, scroll reveals, and screenshot generation.
 
-The route/viewport sweep visited all 36 route and viewport combinations. Browser console errors, uncaught page errors, failed first-party requests, first-party HTTP errors, and broken internal destinations were not observed. The external Archex Web destination was checked read-only: the non-`www` host redirects (308) to `www`; the final host returns 200. It was not navigated as part of local application E2E tests.
+The route/viewport sweep visited all 36 route and viewport combinations. Browser console errors, uncaught page errors, failed first-party requests, first-party HTTP errors, and broken internal destinations were not observed. The external Archex Craft destination was checked read-only: the non-`www` host redirects (308) to `www`; the final host returns 200. It was not navigated as part of local application E2E tests.
 
 ## 16. Responsive test matrix
 
@@ -107,7 +107,7 @@ The route/viewport sweep visited all 36 route and viewport combinations. Browser
 | Desktop | 1440 × 900 | Passed |
 | Wide desktop | 1800 × 1000 | Passed |
 
-Visual screenshots were captured at desktop and mobile for all six routes. The contact sheet was inspected; individual mobile Work, Capabilities, Archex Web, and Contact screenshots and the final scroll-stage hero were also inspected.
+Visual screenshots were captured at desktop and mobile for all six routes. The contact sheet was inspected; individual mobile Work, Capabilities, Archex Craft, and Contact screenshots and the final scroll-stage hero were also inspected.
 
 ## 17. Reduced-motion results
 
@@ -119,9 +119,9 @@ Visual screenshots were captured at desktop and mobile for all six routes. The c
 
 ## 19. SEO and sitemap verification
 
-**Tested and passed against generated HTML:** The restored default local build emits `noindex,nofollow` and no canonical on preview routes; preview `robots.txt` says `Disallow: /`, and its sitemap is empty. A separate production-like build with `VERCEL_ENV=production`, `PUBLIC_ALLOW_INDEXING=true`, and `PUBLIC_SITE_URL=https://studio.archexweb.in` emitted `index,follow` and matching canonicals for Home, Work, Capabilities, Studio, and Contact. Archex Web remained `noindex,nofollow` without a canonical and was absent from the five-URL sitemap. The production-like build also emitted `Allow: /` and the configured sitemap URL in `robots.txt`. The environment was cleared and the default local build was restored after inspection.
+**Tested and passed against generated HTML:** The restored default local build emits `noindex,nofollow` and no canonical on preview routes; preview `robots.txt` says `Disallow: /`, and its sitemap is empty. A separate production-like build with `VERCEL_ENV=production`, `PUBLIC_ALLOW_INDEXING=true`, and `PUBLIC_SITE_URL=https://studio.archexweb.in` emitted `index,follow` and matching canonicals for Home, Work, Capabilities, Studio, and Contact. Archex Craft remained `noindex,nofollow` without a canonical and was absent from the five-URL sitemap. The production-like build also emitted `Allow: /` and the configured sitemap URL in `robots.txt`. The environment was cleared and the default local build was restored after inspection.
 
-Titles and descriptions are meaningful for each route. No technical indexing instructions are visible in the Archex Web page body.
+Titles and descriptions are meaningful for each route. No technical indexing instructions are visible in the Archex Craft page body.
 
 ## 20. Lint investigation
 
@@ -157,7 +157,7 @@ All visual evidence is saved under `artifacts/stage-03.1/playwright/`:
 - `work-desktop.png`, `work-mobile.png`
 - `capabilities-desktop.png`, `capabilities-mobile.png`
 - `studio-desktop.png`, `studio-mobile.png`
-- `archex-web-desktop.png`, `archex-web-mobile.png`
+- `archex-craft-desktop.png`, `archex-craft-mobile.png`
 - `contact-desktop.png`, `contact-mobile.png`
 - `navigation-mobile-open.png`, `home-reduced-motion.png`
 - Playwright HTML report: `report/index.html`
@@ -165,26 +165,26 @@ All visual evidence is saved under `artifacts/stage-03.1/playwright/`:
 
 **Contact sheet:** `artifacts/stage-03.1/playwright/STAGE-03.1-VISUAL-REVIEW.png`. It places the requested route, viewport, hero-stage, navigation, and reduced-motion screenshots together. Screenshots are unaltered; the contact sheet only scales them into labeled cells. No screenshot baseline comparison was used. The final E2E run passed, so no failure trace was produced; configuration retains traces on failure.
 
-**Visual review:** The desktop and mobile layouts preserve the existing typography, grid, editorial structure, colors, and interaction style. The refreshed hero captures show all four existing scroll states in frame. The Work page’s three future positions read as static reserved spaces; Capabilities visibly separates its two choices; Archex Web reads as a typographic project introduction; Contact is complete while its status remains explicit. Screenshot generation and overflow tests were supplemented with visual inspection; no claim of pixel-perfect design is made.
+**Visual review:** The desktop and mobile layouts preserve the existing typography, grid, editorial structure, colors, and interaction style. The refreshed hero captures show all four existing scroll states in frame. The Work page’s three future positions read as static reserved spaces; Capabilities visibly separates its two choices; Archex Craft reads as a typographic project introduction; Contact is complete while its status remains explicit. Screenshot generation and overflow tests were supplemented with visual inspection; no claim of pixel-perfect design is made.
 
 ## 24. Remaining issues
 
 - Nine pre-existing Prettier warnings remain; details are in section 20.
 - No enquiry channel is connected. The site correctly says it is not accepting enquiries.
-- No additional Archex Web contribution, design, technology, or outcome detail was supplied, so the overview remains brief and factual.
+- No additional Archex Craft contribution, design, technology, or outcome detail was supplied, so the overview remains brief and factual.
 - A formal screen-reader/accessibility audit, performance audit, and live preview visual comparison were not performed.
 
 ## 25. Public launch blockers
 
 **Blocker:** A real enquiry channel must be connected and tested before Archex Studio’s public business launch. This site is not ready to receive enquiries. This stage did not invent contact details or conceal the limitation.
 
-A fuller Archex Web case study remains deferred until approved screenshots and contribution details are available. The three future portfolio positions remain intentionally unbuilt.
+A fuller Archex Craft case study remains deferred until approved screenshots and contribution details are available. The three future portfolio positions remain intentionally unbuilt.
 
 ## 26–27. Git status and deployment safety
 
 **At start:** `main` was clean at `e981c4c` and pointed to `origin/main`. **Now:** Changes are uncommitted on `stage-03-1-visitor-clarity-review`; no commit was created. Stage 03.1 changes include the listed page copy, capability interaction labels/state, hero overflow and annotation refinements, project metadata/test updates, Playwright evidence paths, screenshots, and reports.
 
-**No deployment or production change occurred.** Nothing was pushed, merged, or deployed. DNS, domain settings, the Archex Web deployment, analytics, and contact integrations were not changed. The public Vercel preview still shows the pre-03.1 content checked before edits.
+**No deployment or production change occurred.** Nothing was pushed, merged, or deployed. DNS, domain settings, the Archex Craft deployment, analytics, and contact integrations were not changed. The public Vercel preview still shows the pre-03.1 content checked before edits.
 
 ## Status summary
 
@@ -192,4 +192,4 @@ A fuller Archex Web case study remains deferred until approved screenshots and c
 - **Tested and passed:** Build, typecheck, unit tests, 13 Playwright tests, all 36 route/viewport combinations, reduced-motion behaviour, SEO output checks, link checks, screenshot generation, and visual inspection.
 - **Tested and failed:** Repo-wide lint, due to nine pre-existing warnings in untouched files.
 - **Not tested:** Deployment, formal screen-reader and performance audits, or byte-for-byte local/public bundle equivalence.
-- **Deferred:** Real enquiry-channel integration and any expanded Archex Web case-study claims pending approved evidence.
+- **Deferred:** Real enquiry-channel integration and any expanded Archex Craft case-study claims pending approved evidence.

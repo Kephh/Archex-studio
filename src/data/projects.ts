@@ -11,11 +11,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'archex-web',
-    title: 'Archex Web',
+    id: 'archex-craft',
+    title: 'Archex Craft',
     status: 'live',
     label: 'First project',
-    route: '/archex-web/',
+    route: '/archex-craft/',
     indexable: false,
   },
   {

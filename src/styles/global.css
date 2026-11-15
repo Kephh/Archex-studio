@@ -1434,12 +1434,16 @@ a {
   max-width: 26rem;
   color: #d3cec4;
 }
+.case-section,
+.page-intro + .section:has(.case-layout) {
+  padding-top: clamp(32px, 5vw, 64px);
+}
 .case-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(270px, 0.92fr);
   gap: clamp(24px, 5vw, 74px);
   align-items: stretch;
-  margin-top: clamp(54px, 8vw, 112px);
+  margin-top: 0;
 }
 .case-lead {
   position: relative;

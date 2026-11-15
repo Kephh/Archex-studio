@@ -6,15 +6,15 @@
 
 ## 1. Stage objective
 
-Refine content and interaction across the six main routes while preserving the existing Living Grid creative direction. Establish accurate first-project language for Archex Web, make the contact status honest, clarify the four-stage studio method, keep exactly four work positions, and explain Brand Identity and Digital Experience as equal disciplines connected by Creative Direction.
+Refine content and interaction across the six main routes while preserving the existing Living Grid creative direction. Establish accurate first-project language for Archex Craft, make the contact status honest, clarify the four-stage studio method, keep exactly four work positions, and explain Brand Identity and Digital Experience as equal disciplines connected by Creative Direction.
 
 ## 2. Initial repository findings
 
 - The repository is an Astro static site using npm and `package-lock.json`; package version was `0.2.0` and remains unchanged.
-- The initial inspection was on `main` with a clean working tree. Existing routes were `/`, `/work/`, `/capabilities/`, `/studio/`, `/archex-web/`, and `/contact/`.
+- The initial inspection was on `main` with a clean working tree. Existing routes were `/`, `/work/`, `/capabilities/`, `/studio/`, `/archex-craft/`, and `/contact/`.
 - Playwright was not installed. Existing build, typecheck, unit test, and lint scripts were present.
 - The homepage already had the Living Grid hero, scroll-driven states, and reveal behaviour. The existing hero and broad design language were retained.
-- Contact had no configured enquiry channel. The Archex Web route was evidence-pending and non-indexable.
+- Contact had no configured enquiry channel. The Archex Craft route was evidence-pending and non-indexable.
 
 ## 3. Playwright setup and configuration
 
@@ -37,15 +37,15 @@ Inspected the package manifest and lockfile, Astro routes and shared components,
 
 - `package.json`, `package-lock.json`, `.gitignore`
 - `src/components/Header.astro`
-- `src/pages/index.astro`, `work.astro`, `capabilities.astro`, `studio.astro`, `contact.astro`, `archex-web.astro`
+- `src/pages/index.astro`, `work.astro`, `capabilities.astro`, `studio.astro`, `contact.astro`, `archex-craft.astro`
 - `src/scripts/site.js`
 - `src/styles/global.css`
 
 The `.gitignore` exception exposes this exact report file while leaving the broader `docs/*` ignore in place. Several existing source files appear in Git status in this workspace, but they have no content diff in this Stage 03 change set; they were not reformatted or rewritten.
 
-## 7. Archex Web language changes
+## 7. Archex Craft language changes
 
-**Implemented:** The site now states that Archex Web was Archex Studio’s first project and a separate real website created by the same owner/team. It explicitly avoids presenting the project as an external client engagement. Objectives, contribution details, technology, credits, metrics, and outcomes remain unclaimed; supporting details stay evidence-pending. The route remains `noindex,nofollow` and outside the sitemap.
+**Implemented:** The site now states that Archex Craft was Archex Studio’s first project and a separate real website created by the same owner/team. It explicitly avoids presenting the project as an external client engagement. Objectives, contribution details, technology, credits, metrics, and outcomes remain unclaimed; supporting details stay evidence-pending. The route remains `noindex,nofollow` and outside the sitemap.
 
 ## 8. Contact changes
 
@@ -57,7 +57,7 @@ The `.gitignore` exception exposes this exact report file while leaving the broa
 
 ## 10. Work page changes
 
-**Implemented:** Kept exactly four portfolio positions: the available Archex Web project and three reserved concept positions. Archex Web is described as the studio’s first project. The reserved positions are clearly reserved and are not links or buttons. No imaginary project names, imagery, routes, client details, or outcomes were added.
+**Implemented:** Kept exactly four portfolio positions: the available Archex Craft project and three reserved concept positions. Archex Craft is described as the studio’s first project. The reserved positions are clearly reserved and are not links or buttons. No imaginary project names, imagery, routes, client details, or outcomes were added.
 
 ## 11. Capabilities changes
 
@@ -96,7 +96,7 @@ This confirms route rendering and overflow assertions; it is not a substitute fo
 
 ## 17. SEO verification
 
-**Tested and passed:** The local preview build emits `noindex,nofollow` and no canonical URLs for all routes; preview `robots.txt` disallows crawling. The sitemap excludes `/archex-web/`. A separate production-like build using `VERCEL_ENV=production`, `PUBLIC_ALLOW_INDEXING=true`, and `PUBLIC_SITE_URL=https://studio.archexweb.in` was inspected: indexable pages use the configured canonical origin, Archex Web remains `noindex,nofollow` without a canonical, and the sitemap includes the intended main routes but excludes Archex Web. The environment variables were removed and a default local build was restored afterward. No production site was changed.
+**Tested and passed:** The local preview build emits `noindex,nofollow` and no canonical URLs for all routes; preview `robots.txt` disallows crawling. The sitemap excludes `/archex-craft/`. A separate production-like build using `VERCEL_ENV=production`, `PUBLIC_ALLOW_INDEXING=true`, and `PUBLIC_SITE_URL=https://studio.archexweb.in` was inspected: indexable pages use the configured canonical origin, Archex Craft remains `noindex,nofollow` without a canonical, and the sitemap includes the intended main routes but excludes Archex Craft. The environment variables were removed and a default local build was restored afterward. No production site was changed.
 
 ## 18. Production build result
 
@@ -111,7 +111,7 @@ Screenshots and the HTML test report are under `artifacts/stage-03/playwright/`:
 - `work-desktop.png`, `work-mobile.png`
 - `capabilities-desktop.png`, `capabilities-mobile.png`
 - `studio-desktop.png`, `studio-mobile.png`
-- `archex-web-desktop.png`, `archex-web-mobile.png`
+- `archex-craft-desktop.png`, `archex-craft-mobile.png`
 - `contact-desktop.png`, `contact-mobile.png`
 - `navigation-mobile-open.png`, `home-reduced-motion.png`
 - `report/index.html` and `test-results/` (failure screenshots/traces are retained when needed)
@@ -120,13 +120,13 @@ The screenshot helper explicitly reveals homepage sections before full-page capt
 
 ## 20. Visual inspection findings
 
-**Inspected:** Desktop and mobile route screenshots show the retained dark grid hero, clear type hierarchy, restrained editorial surfaces, and stacked mobile layouts. The Work page presents Archex Web as the only available item and visibly reserves three positions. Capabilities connects the two disciplines clearly; Studio reads as a four-step method rather than generic cards; Contact communicates the integration status within a finished dark panel. The Archex Web evidence page pairs a clear first-project statement with explicit evidence limits. The corrected homepage full-page screenshots show the content below the scroll-driven hero; initial review identified a capture setup issue, which was corrected and recaptured. No production screenshot comparison was performed.
+**Inspected:** Desktop and mobile route screenshots show the retained dark grid hero, clear type hierarchy, restrained editorial surfaces, and stacked mobile layouts. The Work page presents Archex Craft as the only available item and visibly reserves three positions. Capabilities connects the two disciplines clearly; Studio reads as a four-step method rather than generic cards; Contact communicates the integration status within a finished dark panel. The Archex Craft evidence page pairs a clear first-project statement with explicit evidence limits. The corrected homepage full-page screenshots show the content below the scroll-driven hero; initial review identified a capture setup issue, which was corrected and recaptured. No production screenshot comparison was performed.
 
 ## 21. Known issues
 
 - `npm run lint` was **tested and failed** because Prettier reports 11 formatting warnings in existing files outside the Stage 03 content/style edits: `src/components/CapabilityExplorer.astro`, `Footer.astro`, `Handoff.astro`, `ProjectStatus.astro`, `src/data/projects.ts`, `src/env.d.ts`, `src/layouts/BaseLayout.astro`, `src/pages/404.astro`, `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`, and `astro.config.mjs`. These files were not reformatted as part of this scope.
 - No contact integration is available; the UI discloses this status.
-- Archex Web project evidence remains limited; further project details should be added only when supporting material is supplied.
+- Archex Craft project evidence remains limited; further project details should be added only when supporting material is supplied.
 
 ## 22. Not-tested items
 
@@ -136,7 +136,7 @@ The screenshot helper explicitly reveals homepage sections before full-page capt
 
 ## 23. Deferred work
 
-Deferred until evidence or integration is available: connect a real enquiry channel and supply verified Archex Web screenshots/contribution details. The three reserved concept positions remain intentionally unbuilt. Deployment and domain operations were outside this stage.
+Deferred until evidence or integration is available: connect a real enquiry channel and supply verified Archex Craft screenshots/contribution details. The three reserved concept positions remain intentionally unbuilt. Deployment and domain operations were outside this stage.
 
 ## 24. Git status and exact change summary
 
