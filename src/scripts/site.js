@@ -150,6 +150,27 @@
     }),
   );
 
+  const methodControls = document.querySelectorAll('button[data-method]');
+  const methodPanelTitle = document.querySelector('.method-panel [data-method-title]');
+  const methodPanelCopy = document.querySelector('.method-panel [data-method-copy]');
+  if (methodControls.length && (methodPanelTitle || methodPanelCopy)) {
+    methodControls.forEach((control) =>
+      control.addEventListener('click', () => {
+        methodControls.forEach((item) =>
+          item.setAttribute('aria-pressed', String(item === control)),
+        );
+        const title = control.dataset.methodTitle;
+        const copy = control.dataset.methodCopy;
+        if (title && methodPanelTitle) {
+          methodPanelTitle.replaceChildren(document.createTextNode(title));
+        }
+        if (copy && methodPanelCopy) {
+          methodPanelCopy.replaceChildren(document.createTextNode(copy));
+        }
+      }),
+    );
+  }
+
   const studioSteps = [...document.querySelectorAll('[data-studio-step]')];
   const studioButtons = [...document.querySelectorAll('[data-studio-stage]')];
   const methodIndex = document.querySelector('[data-method-index]');

@@ -1,17 +1,24 @@
 export function GET() {
-  const allowIndexing =
-    import.meta.env.VERCEL_ENV === 'production' &&
-    import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';
+  const isExplicitlyDisallowed =
+    import.meta.env.PUBLIC_ALLOW_INDEXING === 'false';
   const siteUrl =
     import.meta.env.PUBLIC_SITE_URL ||
     (import.meta.env.VERCEL_URL
       ? `https://${import.meta.env.VERCEL_URL}`
       : 'https://studio.archexweb.in');
-  const lines = [
-    'User-agent: *',
-    allowIndexing ? 'Allow: /' : 'Disallow: /',
-    allowIndexing ? `Sitemap: ${siteUrl}/sitemap.xml` : '',
-  ].filter(Boolean);
+  const lines = isExplicitlyDisallowed
+    ? [
+        'User-agent: *',
+        'Disallow: /',
+        `Sitemap: ${siteUrl}/sitemap.xml`,
+      ]
+    : [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /archex-craft/',
+        '',
+        `Sitemap: ${siteUrl}/sitemap.xml`,
+      ];
   return new Response(`${lines.join('\n')}\n`, {
     headers: { 'Content-Type': 'text/plain' },
   });
