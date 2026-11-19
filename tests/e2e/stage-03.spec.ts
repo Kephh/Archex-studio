@@ -329,23 +329,32 @@ test('mobile navigation opens, navigates, closes, and responds to Escape', async
   await expect(menu).toBeFocused();
 });
 
-test('Archex Craft remains noindex and excluded from the sitemap; preview pages stay non-indexable', async ({
+test('Archex Craft remains noindex and excluded from the sitemap; public routes are indexable', async ({
   page,
   request,
 }) => {
   for (const route of routes) {
     await page.goto(route.path);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
-      'content',
-      'noindex,nofollow',
-    );
-    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    if (route.path === '/archex-craft/') {
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        'content',
+        'noindex,nofollow',
+      );
+      await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    } else {
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        'content',
+        'index,follow',
+      );
+      await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
+    }
   }
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.ok()).toBeTruthy();
   expect(await sitemap.text()).not.toContain('archex-craft');
   const robots = await request.get('/robots.txt');
-  expect(await robots.text()).toContain('Disallow: /');
+  expect(await robots.text()).toContain('Allow: /');
+  expect(await robots.text()).toContain('Disallow: /archex-craft/');
   await page.goto('/archex-craft/');
   await expect(page.locator('main')).not.toContainText(
     /indexable|evidence pending|not provided/i,

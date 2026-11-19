@@ -17,10 +17,7 @@ const siteUrl =
     ? `https://${import.meta.env.VERCEL_URL}`
     : 'https://studio.archexweb.in');
 const canonical = new URL(path, siteUrl).toString();
-const allowIndexing =
-  import.meta.env.VERCEL_ENV === 'production' &&
-  import.meta.env.PUBLIC_ALLOW_INDEXING === 'true' &&
-  !noindex;
+const allowIndexing = !noindex;
 ---
 
 <!doctype html>
