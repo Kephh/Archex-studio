@@ -176,6 +176,8 @@
   const methodIndex = document.querySelector('[data-method-index]');
   const methodWord = document.querySelector('[data-method-word]');
   const methodVisual = document.querySelector('.method-visual');
+  let isManualStudioActive = false;
+  let manualStudioTimer;
   const activateStudio = (index) => {
     studioSteps.forEach((step, i) =>
       step.classList.toggle('is-active', i === index),
@@ -191,15 +193,20 @@
     if (methodVisual) methodVisual.dataset.active = String(index);
   };
   studioButtons.forEach((button) =>
-    button.addEventListener('click', () =>
-      activateStudio(Number(button.dataset.studioStage)),
-    ),
+    button.addEventListener('click', () => {
+      clearTimeout(manualStudioTimer);
+      isManualStudioActive = true;
+      activateStudio(Number(button.dataset.studioStage));
+      manualStudioTimer = setTimeout(() => {
+        isManualStudioActive = false;
+      }, 1500);
+    }),
   );
   if (studioSteps.length && !reducedMotion) {
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
-          if (entry.isIntersecting)
+          if (!isManualStudioActive && entry.isIntersecting)
             activateStudio(Number(entry.target.dataset.studioStep));
         }),
       { threshold: 0.55 },

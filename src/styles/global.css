@@ -2721,3 +2721,232 @@ a {
     transform: none;
   }
 }
+
+/* Needs-First Design System Sections */
+.services-plain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.service-plain-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3.5vw, 42px);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+}
+.service-num {
+  margin-bottom: 14px;
+  color: var(--signal);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.service-plain-card h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font: 400 clamp(1.4rem, 2.2vw, 1.85rem)/1.15 var(--serif);
+  letter-spacing: -0.03em;
+}
+.service-plain-card p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.principle-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 3vw, 36px);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+}
+.principle-num {
+  margin-bottom: 12px;
+  color: var(--signal);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.principle-card h4 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font: 600 1.05rem/1.35 var(--sans);
+  letter-spacing: -0.015em;
+}
+.principle-card p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.section-footer-action {
+  margin-top: 14px;
+  text-align: right;
+}
+.inline-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.inline-link:hover {
+  color: var(--signal);
+}
+
+.process-steps-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.process-step-item {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(18px, 2.4vw, 28px);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+}
+.process-step-num {
+  margin-bottom: 12px;
+  color: var(--signal);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.process-step-content h4 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font: 400 clamp(1.2rem, 1.8vw, 1.45rem)/1.2 var(--serif);
+  letter-spacing: -0.02em;
+}
+.process-step-content p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.craft-bridge-box {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(32px, 5vw, 64px);
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--line-dark);
+}
+.craft-bridge-content .eyebrow {
+  margin-bottom: 12px;
+  color: var(--signal-bright);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+.craft-bridge-content h3 {
+  margin: 0 0 14px;
+  color: var(--paper);
+  font: 400 clamp(1.8rem, 3.2vw, 2.7rem)/1.1 var(--serif);
+  letter-spacing: -0.035em;
+}
+.craft-bridge-content p {
+  max-width: 44ch;
+  margin: 0;
+  color: #d3cec4;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+.craft-bridge-content strong {
+  color: var(--paper-soft);
+}
+.craft-bridge-action {
+  display: flex;
+  justify-content: flex-end;
+}
+.craft-bridge-action .button {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: transparent;
+}
+.craft-bridge-action .button:hover {
+  background: var(--signal);
+  color: var(--paper-soft);
+}
+
+.faqs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.faq-item {
+  padding: clamp(22px, 3.2vw, 36px);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+}
+.faq-item h3 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font: 600 1.05rem/1.35 var(--sans);
+  letter-spacing: -0.015em;
+}
+.faq-item p {
+  margin: 0;
+  color: var(--graphite);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.cta-subtext {
+  max-width: 42ch;
+  margin: 10px auto 26px;
+  color: #d3cec4;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.capability-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.capability-link:hover {
+  color: var(--signal);
+}
+
+@media (max-width: 900px) {
+  .process-steps-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .services-plain-grid,
+  .principles-grid,
+  .process-steps-list,
+  .faqs-grid {
+    grid-template-columns: 1fr;
+  }
+  .craft-bridge-box {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: clamp(24px, 5vw, 36px);
+  }
+  .craft-bridge-action {
+    justify-content: flex-start;
+  }
+}

@@ -181,7 +181,7 @@ test('Work exposes one available first project and exactly three inert reserved 
   ).toHaveAttribute('href', '/archex-craft/');
   await expect(
     page.getByRole('link', { name: 'Visit the live website' }),
-  ).toHaveAttribute('href', 'https://www.archexweb.in');
+  ).toHaveAttribute('href', 'https://craft.archexweb.in');
   await expect(page.locator('.archive-grid .archive-lead')).toHaveCount(1);
   const reserved = page.locator('.archive-reserved article');
   await expect(reserved).toHaveCount(3);
@@ -352,7 +352,7 @@ test('Archex Craft remains noindex and excluded from the sitemap; preview pages 
   );
   await expect(
     page.getByRole('link', { name: 'Visit the live website' }),
-  ).toHaveAttribute('href', 'https://www.archexweb.in');
+  ).toHaveAttribute('href', 'https://craft.archexweb.in');
   await expect(
     page.getByRole('link', { name: 'Return to Work' }),
   ).toHaveAttribute('href', '/work/');

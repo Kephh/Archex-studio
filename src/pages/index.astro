@@ -3,28 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Archex Studio — Identity to Interface"
-  description="An identity-to-interface studio bringing brand identity and digital experience together, from first impression to interaction."
+  title="Archex Studio — Identity into Interface"
+  description="We help businesses build clear brands and better digital experiences, from first impression to interaction."
   path="/"
 >
+  {/* 01. Hero Section */}
   <section class="hero-field" aria-label="Identity-to-interface studio">
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="hero-label meta">
-          <span>Identity-to-Interface Studio</span><span
-            >Brand · Digital · Experience</span
-          >
+          <span>Identity-to-Interface Studio</span><span>ARCHEX / STUDIO</span>
         </div>
         <h1>Identity <em>into</em> interface.</h1>
         <p>
-          We develop identities and digital experiences that hold together from
-          first impression to interaction.
+          <strong>We help businesses build clear brands and better digital experiences.</strong><br />
+          From creating your visual identity to designing websites and applications, we make it easier for people to understand, recognise and use your business.
         </p>
         <div class="hero-actions">
-          <a class="button on-dark" href="/work/">See the work</a>
-          <a class="button secondary" href="/capabilities/"
-            >Explore capabilities</a
-          >
+          <a class="button on-dark" href="/contact/">Discuss a design project</a>
+          <a class="button secondary" href="#disciplines">Explore our services</a>
         </div>
       </div>
       <div
@@ -69,15 +66,268 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  {/* 02. Two Design Disciplines */}
+  <section id="disciplines" class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow">OUR DISCIPLINES</div>
+      <h2 class="section-title">Two sides<br />of one system.</h2>
+      <div class="section-intro">
+        <p>
+          Brand identity and digital experience have equal weight. Creative
+          direction is the connection between them.
+        </p>
+      </div>
+    </div>
+    <div class="capability-grid">
+      <article class="capability">
+        <div class="eyebrow">01 / Brand Identity</div>
+        <h3>
+          Make it<br />recognisable.
+        </h3>
+        <p>
+          Shape a clear point of view and a visual system people can recognise
+          across the places your brand appears.
+        </p>
+        <div class="capability-list">
+          <span>Brand strategy & positioning</span>
+          <span>Logo & visual marks</span>
+          <span>Typography & colour systems</span>
+          <span>Brand guidelines</span>
+        </div>
+        <a class="capability-link" href="/capabilities/"
+          >Explore Brand Identity <span aria-hidden="true">→</span></a
+        >
+      </article>
+      <article class="capability">
+        <div class="eyebrow">02 / Digital Product Design</div>
+        <h3>Make it<br />usable.</h3>
+        <p>
+          Plan and design digital experiences that carry that identity into
+          clear, responsive, and intuitive everyday use.
+        </p>
+        <div class="capability-list">
+          <span>Website design & UI</span>
+          <span>Web & mobile application UX</span>
+          <span>User flows & wireframing</span>
+          <span>Design systems & tokens</span>
+        </div>
+        <a class="capability-link" href="/capabilities/"
+          >Explore Digital Experience <span aria-hidden="true">→</span></a
+        >
+      </article>
+    </div>
+  </section>
+
+  {/* 03. What We Can Help With — Plain Language */}
   <section class="section section-rule shell reveal">
     <div class="section-header">
+      <div class="eyebrow">WHAT WE DO</div>
+      <h2 class="section-title">Services explained<br />in plain language.</h2>
+      <div class="section-intro">
+        <p>
+          No agency buzzwords or design obscurity. Here is exactly what we
+          design and why each piece matters to your business.
+        </p>
+      </div>
+    </div>
+    <div class="services-plain-grid">
+      <article class="service-plain-card">
+        <span class="service-num">01</span>
+        <h3>Brand strategy</h3>
+        <p>
+          Clarifying who you are, what you offer, and why it matters to your
+          audience before making visual decisions. We uncover your core
+          positioning so every design choice has purpose.
+        </p>
+      </article>
+      <article class="service-plain-card">
+        <span class="service-num">02</span>
+        <h3>Visual identity</h3>
+        <p>
+          Designing your logo, typography hierarchy, colour palette, and
+          visual rules to create a distinct, coherent market presence that builds
+          immediate trust and recognition.
+        </p>
+      </article>
+      <article class="service-plain-card">
+        <span class="service-num">03</span>
+        <h3>UI/UX design</h3>
+        <p>
+          Creating website and application layouts, user flows, and interaction
+          patterns focused on clarity, speed, and ease of use so customers find
+          what they need without friction.
+        </p>
+      </article>
+      <article class="service-plain-card">
+        <span class="service-num">04</span>
+        <h3>Design systems</h3>
+        <p>
+          Building organised UI component libraries, design token
+          specifications, and documentation so your digital products stay
+          consistent as your team and business scale.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  {/* 04. Our Design Approach — 4 Principles */}
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow">PHILOSOPHY</div>
+      <h2 class="section-title">How we approach<br />every design.</h2>
+      <div class="section-intro">
+        <p>
+          Good design is not decorative flourish. It is clear thinking made
+          visible through rigorous, intentional principles.
+        </p>
+      </div>
+    </div>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <span class="principle-num">01</span>
+        <h4>Understand before designing</h4>
+        <p>
+          We ground every aesthetic choice in your business goals, target
+          audience, and functional requirements before touching pixels.
+        </p>
+      </div>
+      <div class="principle-card">
+        <span class="principle-num">02</span>
+        <h4>Audience-first interaction</h4>
+        <p>
+          We design for the real person using the screen, ensuring every
+          interaction feels natural, immediate, and legible.
+        </p>
+      </div>
+      <div class="principle-card">
+        <span class="principle-num">03</span>
+        <h4>Clarity over complexity</h4>
+        <p>
+          We strip away unnecessary ornament, confusing terminology, and visual
+          friction to let your core value stand out.
+        </p>
+      </div>
+      <div class="principle-card">
+        <span class="principle-num">04</span>
+        <h4>Design for implementation</h4>
+        <p>
+          We design with engineering reality in mind, producing clean specs and
+          tokens ready for build in code without translation loss.
+        </p>
+      </div>
+    </div>
+    <div class="section-footer-action">
+      <a class="inline-link" href="/studio/"
+        >Read our full studio methodology <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </section>
+
+  {/* 05. The Design Process — 5 Steps */}
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow">WORKING METHOD</div>
+      <h2 class="section-title">
+        A clear, collaborative<br />design process.
+      </h2>
+      <div class="section-intro">
+        <p>
+          A structured five-step path from first conversation to final production
+          assets, with transparency at every milestone.
+        </p>
+      </div>
+    </div>
+    <div class="process-steps-list">
+      <div class="process-step-item">
+        <div class="process-step-num">Step 01</div>
+        <div class="process-step-content">
+          <h4>Understand</h4>
+          <p>
+            We learn about your business, target audience, competitors, and
+            goals to establish a clear project foundation.
+          </p>
+        </div>
+      </div>
+      <div class="process-step-item">
+        <div class="process-step-num">Step 02</div>
+        <div class="process-step-content">
+          <h4>Define</h4>
+          <p>
+            We outline project scope, user journeys, design requirements, and
+            technical constraints.
+          </p>
+        </div>
+      </div>
+      <div class="process-step-item">
+        <div class="process-step-num">Step 03</div>
+        <div class="process-step-content">
+          <h4>Design</h4>
+          <p>
+            We explore visual directions, wireframes, and interface layouts
+            through collaborative review cycles.
+          </p>
+        </div>
+      </div>
+      <div class="process-step-item">
+        <div class="process-step-num">Step 04</div>
+        <div class="process-step-content">
+          <h4>Refine</h4>
+          <p>
+            We polish typography, colours, interaction details, and edge cases
+            based on structured feedback.
+          </p>
+        </div>
+      </div>
+      <div class="process-step-item">
+        <div class="process-step-num">Step 05</div>
+        <div class="process-step-content">
+          <h4>Deliver</h4>
+          <p>
+            We package production-ready design files, tokens, guidelines, and
+            handoff documentation for your engineering team.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 06. Micro-CTA Bridge to Craft */}
+  <section class="section section-rule shell reveal">
+    <div class="craft-bridge-box">
+      <div class="craft-bridge-content">
+        <div class="eyebrow">NEED MORE THAN DESIGN?</div>
+        <h3>Your design can become a working product.</h3>
+        <p>
+          Archex Studio focuses on how your brand and product look, feel, and
+          function for users. If you need your website or software engineered,
+          <strong>Archex Craft</strong> is our dedicated engineering practice that
+          turns these designs into fast, reliable production code.
+        </p>
+      </div>
+      <div class="craft-bridge-action">
+        <a
+          class="button on-dark"
+          href="https://craft.archexweb.in"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Meet Craft — Software & Engineering <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 07. Studio Archive / Ecosystem Showcase */}
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow">STUDIO ARCHIVE</div>
       <h2 class="section-title">Our first project.<br />Archex Craft.</h2>
       <div class="section-intro">
         <p>
-          Archex Craft is our first project — a separate website created by
-          the same owner and team behind Archex Studio, rather than an external
-          client engagement. Explore the live website or view the project
-          overview.
+          Archex Craft is our first project — an internal website designed for
+          our engineering practice, demonstrating our complete
+          identity-to-interface system. Explore the live website or view the
+          project overview.
         </p>
       </div>
     </div>
@@ -123,80 +373,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  {/* 08. Studio FAQs */}
   <section class="section section-rule shell reveal">
     <div class="section-header">
-      <h2 class="section-title">Two sides<br />of one system.</h2>
+      <div class="eyebrow">FREQUENTLY ASKED QUESTIONS</div>
+      <h2 class="section-title">
+        Common questions<br />about working with Studio.
+      </h2>
       <div class="section-intro">
         <p>
-          Brand identity and digital experience have equal weight. Creative
-          direction is the connection between them.
+          Clear answers to understand how we collaborate, what we deliver, and
+          how we help your business succeed.
         </p>
       </div>
     </div>
-    <div class="capability-grid">
-      <article class="capability">
-        <div class="eyebrow">Translate / 01</div><h3>
-          Make it<br />recognisable.
-        </h3><p>
-          Direction, identity systems, typography and visual communication give
-          an idea a shape people can remember.
-        </p><div class="capability-list">
-          <span>Direction</span><span>Identity systems</span><span
-            >Art direction</span
-          >
-        </div>
-      </article>
-      <article class="capability">
-        <div class="eyebrow">Carry / 02</div><h3>Make it<br />usable.</h3><p>
-          Websites, interfaces, interactions and responsive systems carry that
-          idea into use.
-        </p><div class="capability-list">
-          <span>Craft design</span><span>UI/UX</span><span>Interaction</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section-rule shell reveal">
-    <div class="method">
-      <blockquote class="method-quote">
-        Make the first impression hold up in the hand.
-      </blockquote>
-      <div>
-        <div class="method-controls">
-          <button
-            class="method-control"
-            type="button"
-            data-method
-            data-method-title="Recognise the essential."
-            data-method-copy="Find the character that must survive every expression."
-            aria-pressed="true">Recognise</button
-          >
-          <button
-            class="method-control"
-            type="button"
-            data-method
-            data-method-title="Carry the system through."
-            data-method-copy="Keep the experience coherent across screens, states, and responsive conditions."
-            aria-pressed="false">Carry</button
-          >
-        </div>
-        <div class="method-panel">
-          <h3 data-method-title>Recognise the essential.</h3><p
-            data-method-copy
-          >
-            Find the character that must survive every expression.
-          </p>
-        </div>
-        <a href="/studio/">Read the studio approach</a>
+    <div class="faqs-grid">
+      <div class="faq-item">
+        <h3>Can I hire Studio just for brand design without web design?</h3>
+        <p>
+          Yes. We frequently partner with businesses solely to establish their
+          brand strategy, logo mark, typography system, colour palette, and
+          brand guidelines.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I hire Studio just for digital product or UI/UX design?</h3>
+        <p>
+          Yes. If you already have established brand guidelines, we design
+          websites, web apps, mobile interfaces, or scalable design systems that
+          honour your existing brand identity.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>What deliverables do you provide at the end of a project?</h3>
+        <p>
+          You receive organized Figma files, production-ready vector assets (SVG,
+          PNG, web fonts), design token specifications, brand manuals, and
+          developer handoff documentation.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>How does Studio collaborate with Archex Craft or external developers?</h3>
+        <p>
+          We design with engineering reality in mind. We provide explicit
+          component states, responsive breakpoints, layout grids, and token
+          values that frontend engineers can implement directly without guesswork.
+        </p>
       </div>
     </div>
   </section>
+
+  {/* 09. Closing CTA Band */}
   <section class="cta-band">
     <div class="cta-inner">
-      <h2>Have something worth shaping?</h2><a
-        class="button on-dark"
-        href="/contact/">Contact <span aria-hidden="true">↗</span></a
+      <h2>Have a brand or digital experience in mind?</h2>
+      <p class="cta-subtext">
+        Tell us what you're looking to create. We'll help you shape a clear
+        identity and an intuitive product.
+      </p>
+      <a class="button on-dark" href="/contact/"
+        >Contact <span aria-hidden="true">↗</span></a
       >
     </div>
   </section>
