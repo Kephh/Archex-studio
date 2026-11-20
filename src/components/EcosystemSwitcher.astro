@@ -1,0 +1,404 @@
+---
+// EcosystemSwitcher.astro — Universal Archex Practice Switcher (Studio Edition)
+// Provides 1-click navigation across Archex Gateway, Craft, Studio, and GTM
+interface Props {
+  currentPractice?: 'parent' | 'craft' | 'studio' | 'gtm';
+  class?: string;
+}
+
+const { currentPractice = 'studio', class: className = '' } = Astro.props;
+---
+
+<div class={`ecosystem-switcher ${className}`} id="ecosystem-switcher-root">
+  <button
+    type="button"
+    class="switcher-trigger"
+    id="ecosystem-switcher-btn"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-controls="ecosystem-menu"
+    aria-label="Switch Archex practice"
+  >
+    <span class="switcher-dot" aria-hidden="true"></span>
+    <span class="switcher-label">Archex Studio</span>
+    <span class="switcher-arrow" aria-hidden="true">▾</span>
+  </button>
+
+  <div
+    class="switcher-dropdown"
+    id="ecosystem-menu"
+    role="menu"
+    aria-labelledby="ecosystem-switcher-btn"
+  >
+    <div class="dropdown-header">
+      <span class="dropdown-eyebrow">ARCHEX ECOSYSTEM</span>
+      <span class="dropdown-note">One organization. Specialist practices.</span>
+    </div>
+
+    <ul class="practice-list" role="none">
+      <!-- 01: Parent Gateway -->
+      <li role="none">
+        <a
+          href="https://www.archexweb.in/"
+          class={`practice-item ${currentPractice === 'parent' ? 'is-current' : ''}`}
+          role="menuitem"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-indicator-col">
+            <span class="practice-dot practice-dot--parent" aria-hidden="true"></span>
+          </div>
+          <div class="item-content">
+            <div class="item-title-row">
+              <span class="practice-name">Archex</span>
+              <span class="practice-role">Gateway</span>
+              <span class="ext-arrow" aria-hidden="true">↗</span>
+            </div>
+            <span class="practice-desc">Parent brand &amp; central gateway. Coordinates the practices.</span>
+          </div>
+        </a>
+      </li>
+
+      <!-- 02: Craft (Engineering) -->
+      <li role="none">
+        <a
+          href="https://craft.archexweb.in/"
+          class={`practice-item ${currentPractice === 'craft' ? 'is-current' : ''}`}
+          role="menuitem"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="item-indicator-col">
+            <span class="practice-dot practice-dot--craft" aria-hidden="true"></span>
+          </div>
+          <div class="item-content">
+            <div class="item-title-row">
+              <span class="practice-name">Archex Craft</span>
+              <span class="practice-role">Build</span>
+              <span class="ext-arrow" aria-hidden="true">↗</span>
+            </div>
+            <span class="practice-desc">Websites, applications, custom software &amp; AI integrations.</span>
+          </div>
+        </a>
+      </li>
+
+      <!-- 03: Studio (Design) -->
+      <li role="none">
+        <a
+          href="/"
+          class={`practice-item ${currentPractice === 'studio' ? 'is-current' : ''}`}
+          role="menuitem"
+          aria-current={currentPractice === 'studio' ? 'page' : undefined}
+        >
+          <div class="item-indicator-col">
+            <span class="practice-dot practice-dot--studio" aria-hidden="true"></span>
+          </div>
+          <div class="item-content">
+            <div class="item-title-row">
+              <span class="practice-name">Archex Studio</span>
+              <span class="practice-role">Design</span>
+              {currentPractice === 'studio' && <span class="current-badge">Current</span>}
+            </div>
+            <span class="practice-desc">Brand strategy, visual identity, UI/UX &amp; digital design.</span>
+          </div>
+        </a>
+      </li>
+
+      <!-- 04: GTM (In development) -->
+      <li role="none">
+        <div class="practice-item practice-item--disabled" role="menuitem" aria-disabled="true">
+          <div class="item-indicator-col">
+            <span class="practice-dot practice-dot--gtm" aria-hidden="true"></span>
+          </div>
+          <div class="item-content">
+            <div class="item-title-row">
+              <span class="practice-name">Archex GTM</span>
+              <span class="practice-role">Grow</span>
+              <span class="dev-badge">In Development</span>
+            </div>
+            <span class="practice-desc">Go-to-market positioning &amp; customer acquisition. Coming soon.</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="dropdown-footer">
+      <a href="https://www.archexweb.in/contact?practice=studio" class="dropdown-footer-link" target="_blank" rel="noopener noreferrer">
+        <span>Not sure which practice fits? Contact central desk</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ecosystem-switcher {
+    position: relative;
+    display: inline-block;
+  }
+
+  .switcher-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 11px;
+    background: var(--paper-soft, #faf9f5);
+    border: 1px solid var(--line, #c9c4ba);
+    border-radius: 999px;
+    color: var(--ink, #141414);
+    font-family: var(--sans, sans-serif);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+  }
+
+  .switcher-trigger:hover,
+  .switcher-trigger[aria-expanded="true"] {
+    background: #ffffff;
+    border-color: var(--graphite, #5e5b55);
+    color: var(--ink, #141414);
+  }
+
+  .switcher-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal, #9c3e2f);
+    display: inline-block;
+  }
+
+  .switcher-arrow {
+    font-size: 9px;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .switcher-trigger[aria-expanded="true"] .switcher-arrow {
+    transform: rotate(180deg);
+  }
+
+  .switcher-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 320px;
+    max-width: 90vw;
+    background: #ffffff;
+    border: 1px solid var(--line, #c9c4ba);
+    border-radius: 8px;
+    box-shadow: 0 16px 36px rgba(20, 20, 19, 0.08), 0 4px 12px rgba(20, 20, 19, 0.04);
+    padding: 12px 0 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    z-index: 1000;
+  }
+
+  .switcher-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-header {
+    padding: 0 16px 10px;
+    border-bottom: 1px solid rgba(201, 196, 186, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .dropdown-eyebrow {
+    font-family: var(--sans, monospace);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--graphite, #5e5b55);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .dropdown-note {
+    font-size: 11px;
+    color: var(--graphite, #5e5b55);
+  }
+
+  .practice-list {
+    list-style: none;
+    padding: 6px 0;
+    margin: 0;
+  }
+
+  .practice-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--ink, #141414);
+    transition: background-color 0.15s ease;
+  }
+
+  .practice-item:hover:not(.practice-item--disabled) {
+    background-color: var(--paper-soft, #faf9f5);
+  }
+
+  .practice-item.is-current {
+    background-color: rgba(156, 62, 47, 0.06);
+  }
+
+  .practice-item--disabled {
+    opacity: 0.72;
+    cursor: default;
+  }
+
+  .item-indicator-col {
+    padding-top: 5px;
+  }
+
+  .practice-dot {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .practice-dot--parent { background: #141414; }
+  .practice-dot--craft { background: #254b73; }
+  .practice-dot--studio { background: var(--signal, #9c3e2f); }
+  .practice-dot--gtm { background: #a29d93; }
+
+  .item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .item-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .practice-name {
+    font-family: var(--sans, sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink, #141414);
+  }
+
+  .practice-role {
+    font-family: var(--sans, monospace);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite, #5e5b55);
+  }
+
+  .ext-arrow {
+    font-size: 11px;
+    color: var(--graphite, #5e5b55);
+    margin-left: auto;
+  }
+
+  .current-badge {
+    font-family: var(--sans, monospace);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    background: var(--line, #c9c4ba);
+    color: var(--ink-soft, #272625);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+
+  .dev-badge {
+    font-family: var(--sans, monospace);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    background: #e8e5dc;
+    color: var(--graphite, #5e5b55);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+
+  .practice-desc {
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--graphite, #5e5b55);
+  }
+
+  .dropdown-footer {
+    border-top: 1px solid rgba(201, 196, 186, 0.4);
+    padding: 10px 16px;
+    background: var(--paper-soft, #faf9f5);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .dropdown-footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--signal, #9c3e2f);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .dropdown-footer-link:hover {
+    color: var(--signal-bright, #f27b61);
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  function initEcosystemSwitcher() {
+    const root = document.getElementById('ecosystem-switcher-root');
+    const trigger = document.getElementById('ecosystem-switcher-btn');
+    const menu = document.getElementById('ecosystem-menu');
+
+    if (!root || !trigger || !menu) return;
+
+    function openMenu() {
+      trigger.setAttribute('aria-expanded', 'true');
+      menu.classList.add('is-open');
+    }
+
+    function closeMenu() {
+      trigger.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      if (isOpen) closeMenu();
+      else openMenu();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!root.contains(e.target as Node)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+        trigger.focus();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEcosystemSwitcher);
+  } else {
+    initEcosystemSwitcher();
+  }
+</script>

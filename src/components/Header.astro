@@ -1,19 +1,25 @@
 ---
+import EcosystemSwitcher from './EcosystemSwitcher.astro';
+
 interface Props {
   path: string;
 }
 const { path } = Astro.props;
 const links = [
-  { href: '/work/', label: 'Work' },
-  { href: '/capabilities/', label: 'Capabilities' },
+  { href: '/capabilities/', label: 'What We Design' },
+  { href: '/work/', label: 'Selected Work' },
   { href: '/studio/', label: 'Studio' },
 ];
 ---
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label="Archex Studio home"
-    >archex<span>—</span>studio</a
-  >
+  <div class="header-brand-cluster">
+    <a class="wordmark" href="/" aria-label="Archex Studio home"
+      >archex<span>—</span>studio</a
+    >
+    <EcosystemSwitcher currentPractice="studio" />
+  </div>
+
   <button
     class="menu"
     type="button"
@@ -34,7 +40,16 @@ const links = [
     <a
       class="nav-cta"
       href="/contact/"
-      aria-current={path === '/contact/' ? 'page' : undefined}>Contact</a
+      aria-current={path === '/contact/' ? 'page' : undefined}>Discuss a Project</a
     >
   </nav>
 </header>
+
+<style>
+  .header-brand-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>

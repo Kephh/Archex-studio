@@ -3,34 +3,137 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Archex Craft — Archex Studio"
-  description="Archex Craft is Archex Studio's first project, a separate website by the same owner and team."
+  title="Archex Craft Case Study — Archex Studio"
+  description="How Archex Studio created the brand identity, typography hierarchy, and digital interface design system for Archex Craft."
   path="/archex-craft/"
-  noindex
 >
   <div class="shell">
     <header class="page-intro">
-      <h1>Archex Craft.</h1>
+      <div class="eyebrow" style="color: var(--signal); margin-bottom: 8px;">CASE STUDY // IN-HOUSE DESIGN SYSTEM</div>
+      <h1 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); font-weight: 400; line-height: 1.1; margin: 0 0 16px;">
+        Archex Craft<span style="color: var(--signal);">.</span>
+      </h1>
+      <p style="font-size: clamp(17px, 2vw, 20px); color: var(--graphite); max-width: 680px; line-height: 1.5; margin: 0;">
+        Designing a brand identity and interface system for an engineering practice grounded in technical clarity, modularity, and structural precision.
+      </p>
     </header>
-    <section class="section case-section reveal">
-      <div class="case-layout">
-        <div class="case-lead">
-          <div class="eyebrow">A separate website by the same team</div><h2>
-            Our first<br />project.
+
+    <!-- Case Study Summary Metrics Grid -->
+    <section class="section reveal" style="padding-top: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">PRACTICE</span>
+          <strong style="display: block; font-size: 16px; margin-top: 4px; color: var(--ink);">Archex Craft</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">DISCIPLINES</span>
+          <strong style="display: block; font-size: 16px; margin-top: 4px; color: var(--ink);">Brand Identity, UI/UX, Design Tokens</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">DELIVERABLES</span>
+          <strong style="display: block; font-size: 16px; margin-top: 4px; color: var(--ink);">Figma System, Code Tokens, Spec Guide</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">PRODUCTION</span>
+          <strong style="display: block; font-size: 16px; margin-top: 4px; color: var(--ink);">
+            <a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer" style="color: var(--signal); text-decoration: underline;">
+              craft.archexweb.in ↗
+            </a>
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 01: The Challenge -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+        <div>
+          <span class="eyebrow">01 / THE CHALLENGE</span>
+          <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 0; color: var(--ink);">
+            Communicating engineering rigor without generic SaaS tropes.
           </h2>
-        </div><aside class="case-aside">
-          <p>
-            Archex Craft is a software engineering practice focused on building
-            high-performance websites, custom applications, and intelligent
-            business solutions. Explore how we turn ideas into dependable
-            digital products.
+        </div>
+        <div>
+          <p style="color: var(--graphite); line-height: 1.65; font-size: 16px; margin: 0 0 16px;">
+            Most agency websites in the software space fall into two extremes: either visually cluttered with hyper-saturated neon gradients and floating 3D spheres, or dry and indistinguishable from basic utility documentation.
           </p>
-          <a href="https://craft.archexweb.in" rel="noopener noreferrer"
-            >Visit the live website</a
+          <p style="color: var(--graphite); line-height: 1.65; font-size: 16px; margin: 0;">
+            For Archex Craft, the goal was to create a digital home that reads like a serious engineering workshop: calm, confident, tactile, and deeply structured. Every element needed to reflect how Craft approaches software delivery: purposeful, tested, and built to last.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 02: Design Decisions & Specimen -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <span class="eyebrow">02 / CORE DESIGN DECISIONS</span>
+      <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 32px; color: var(--ink);">
+        Three architectural design decisions.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 28px;">
+          <span style="font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--signal);">DECISION 01</span>
+          <h3 style="font-size: 18px; font-weight: 600; margin: 8px 0 12px; color: var(--ink);">The Architectural Canvas</h3>
+          <p style="font-size: 14px; color: var(--graphite); line-height: 1.6; margin: 0;">
+            A dark-charcoal foundation with subtle grid lines reminiscent of blueprints. This gives code snippets, terminal commands, and system diagrams a native environment where technical details can be examined with high clarity.
+          </p>
+        </div>
+
+        <div style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 28px;">
+          <span style="font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--signal);">DECISION 02</span>
+          <h3 style="font-size: 18px; font-weight: 600; margin: 8px 0 12px; color: var(--ink);">Typographic Hierarchy</h3>
+          <p style="font-size: 14px; color: var(--graphite); line-height: 1.6; margin: 0;">
+            High-contrast pairing between crisp monospaced coordinates for data and status indicators, combined with a geometric sans-serif for headlines and dense, readable body text.
+          </p>
+        </div>
+
+        <div style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 28px;">
+          <span style="font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--signal);">DECISION 03</span>
+          <h3 style="font-size: 18px; font-weight: 600; margin: 8px 0 12px; color: var(--ink);">Design-to-Code Tokens</h3>
+          <p style="font-size: 14px; color: var(--graphite); line-height: 1.6; margin: 0;">
+            All spacing, radius, typography, and color decisions were documented as JSON design tokens mapped directly to Tailwind utility classes, guaranteeing zero translation loss during implementation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 03: The Outcome & Live Link -->
+    <section class="section reveal" style="padding: 48px 0;">
+      <div style="background: #141414; color: #f2efe8; border-radius: 12px; padding: clamp(32px, 6vw, 64px); display: flex; flex-direction: column; gap: 24px;">
+        <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em; color: var(--signal-bright); text-transform: uppercase;">03 / PRODUCTION OUTCOME</span>
+        <h2 style="font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); font-weight: 400; margin: 0; line-height: 1.2;">
+          A cohesive digital identity live in production.
+        </h2>
+        <p style="color: #a29d93; max-width: 640px; font-size: 16px; line-height: 1.6; margin: 0;">
+          Archex Craft now operates on this unified design system across its entire web presence, catalog, and documentation. You can explore the live implementation directly.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px;">
+          <a
+            class="button on-dark"
+            style="background: #f2efe8; color: #141414;"
+            href="https://craft.archexweb.in"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-          <a href="/work/">Return to Work</a>
-        </aside>
+            Visit Live Archex Craft Website ↗
+          </a>
+          <a
+            class="button secondary"
+            style="border-color: #4c4944; color: #f2efe8;"
+            href="/work/"
+          >
+            ← Return to Selected Work
+          </a>
+        </div>
       </div>
     </section>
   </div>
+
+  <section class="cta-band">
+    <div class="cta-inner">
+      <h2>Need a brand or interface designed with this care?</h2>
+      <a class="button on-dark" href="/contact/">Discuss your design project <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 </BaseLayout>

@@ -3,25 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Archex Studio — Identity into Interface"
-  description="We help businesses build clear brands and better digital experiences, from first impression to interaction."
+  title="Archex Studio — Brand Identity & UI/UX Design"
+  description="We create brand identities and digital interface designs that make businesses easier to recognise, understand and use."
   path="/"
 >
   {/* 01. Hero Section */}
-  <section class="hero-field" aria-label="Identity-to-interface studio">
+  <section class="hero-field" aria-label="Brand identity and digital design studio">
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="hero-label meta">
-          <span>Identity-to-Interface Studio</span><span>ARCHEX / STUDIO</span>
+          <span>Brand Identity &amp; UI/UX Design</span><span>ARCHEX / STUDIO</span>
         </div>
-        <h1>Identity <em>into</em> interface.</h1>
+        <h1>A clear brand.<br /><em>A better digital</em> experience.</h1>
         <p>
-          <strong>We help businesses build clear brands and better digital experiences.</strong><br />
-          From creating your visual identity to designing websites and applications, we make it easier for people to understand, recognise and use your business.
+          We create brand identities and digital interface designs that make businesses easier to recognise, understand and use.
         </p>
         <div class="hero-actions">
           <a class="button on-dark" href="/contact/">Discuss a design project</a>
-          <a class="button secondary" href="#disciplines">Explore our services</a>
+          <a class="button secondary" href="/work/">View selected work <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div
@@ -317,59 +316,122 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  {/* 07. Studio Archive / Ecosystem Showcase */}
+  {/* 07. Featured Case Study / Studio Portfolio */}
   <section class="section section-rule shell reveal">
     <div class="section-header">
-      <div class="eyebrow">STUDIO ARCHIVE</div>
-      <h2 class="section-title">Our first project.<br />Archex Craft.</h2>
+      <div class="eyebrow">FEATURED CASE STUDY</div>
+      <h2 class="section-title">Brand &amp; Interface<br />System for Archex Craft.</h2>
       <div class="section-intro">
         <p>
-          Archex Craft is our first project — an internal website designed for
-          our engineering practice, demonstrating our complete
-          identity-to-interface system. Explore the live website or view the
-          project overview.
+          Archex Craft is our engineering practice. We developed its complete visual identity, typography system, component specifications, and responsive design tokens.
         </p>
       </div>
     </div>
     <div class="evidence">
       <div class="evidence-frame">
         <div class="evidence-copy">
-          <div class="eyebrow">01 / First project</div>
+          <div class="eyebrow">01 / FEATURED CASE STUDY</div>
           <h3>Archex<br />Craft.</h3>
-          <p>The beginning of this archive.</p>
+          <p>Brand identity, design system &amp; interface specifications.</p>
         </div>
       </div>
       <dl class="meta-list">
         <div>
-          <dt>Project overview</dt><dd>
-            <a href="/archex-craft/">View the project overview</a>
+          <dt>Case study</dt><dd>
+            <a href="/archex-craft/">View design system breakdown →</a>
           </dd>
         </div>
         <div>
-          <dt>Created by</dt><dd>The same owner and team</dd>
+          <dt>Deliverables</dt><dd>Brand identity, design tokens, component library</dd>
         </div>
         <div>
-          <dt>Live website</dt><dd>
-            <a href="https://craft.archexweb.in" rel="noopener noreferrer"
-              >Visit the craft website</a
+          <dt>Engineered by</dt><dd>
+            <a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer"
+              >Archex Craft in production ↗</a
             >
           </dd>
         </div>
       </dl>
     </div>
-    <div class="reserved-grid">
-      <article class="reserved">
-        <small>02 / Future position 01</small><strong>Future<br />work</strong
-        ><small>Position reserved for a future project.</small>
-      </article>
-      <article class="reserved">
-        <small>03 / Future position 02</small><strong>Future<br />work</strong
-        ><small>Position reserved for a future project.</small>
-      </article>
-      <article class="reserved">
-        <small>04 / Future position 03</small><strong>Future<br />work</strong
-        ><small>Position reserved for a future project.</small>
-      </article>
+
+    <!-- Selected Client Works Row on Homepage -->
+    <div class="home-portfolio-preview" style="margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line);">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <span class="eyebrow" style="color: var(--signal);">CLIENT COMMISSIONS</span>
+          <h3 style="font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); font-weight: 400; margin: 4px 0 0; color: var(--ink);">
+            Recent brand &amp; digital works.
+          </h3>
+        </div>
+        <a href="/work/" class="inline-link" style="font-size: 13px;">View all selected works →</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- AÉRA -->
+        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
+              <span style="font-weight: 600; color: var(--signal);">01 / ARCHITECTURE</span>
+              <span>Spatial Design</span>
+            </div>
+            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">AÉRA</h4>
+            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Studio of Interior Architecture</p>
+            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
+              Editorial, image-forward web portfolio crafted for an interior architecture studio with restrained Playfair typography and spatial storytelling.
+            </p>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+            <a href="https://aero-demo-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
+              Visit live website ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Morrow Café -->
+        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
+              <span style="font-weight: 600; color: var(--signal);">02 / HOSPITALITY</span>
+              <span>Specialty Coffee</span>
+            </div>
+            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">Morrow Café</h4>
+            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Coffee, Kitchen &amp; Slow Moments</p>
+            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
+              Warm visual identity and digital presence for a specialty coffee house and seasonal kitchen with custom menu storytelling and operating telemetry.
+            </p>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+            <a href="https://morrow-cafe-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
+              Visit live website ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Baked & Crust -->
+        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
+              <span style="font-weight: 600; color: var(--signal);">03 / ARTISAN FOOD</span>
+              <span>Bakery &amp; Patisserie</span>
+            </div>
+            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">Baked &amp; Crust</h4>
+            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Artisan Bakery &amp; Custom Cakes</p>
+            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
+              Visual identity and storefront digital ordering experience for an artisan bakery in Kolkata, featuring celebration cake consultations and dessert gifting.
+            </p>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+            <a href="https://baked-n-crust.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
+              Visit live website ↗
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
+      <a class="button on-dark" href="/archex-craft/">Read Case Study <span aria-hidden="true">→</span></a>
+      <a class="button secondary" href="/work/">Explore Studio Portfolio <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -432,7 +494,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         identity and an intuitive product.
       </p>
       <a class="button on-dark" href="/contact/"
-        >Contact <span aria-hidden="true">↗</span></a
+        >Discuss a project <span aria-hidden="true">→</span></a
       >
     </div>
   </section>

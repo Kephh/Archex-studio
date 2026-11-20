@@ -4,43 +4,327 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
 ---
 
 <BaseLayout
-  title="Contact — Archex Studio"
-  description="Archex Studio brings brand identity and digital experience together."
+  title="Contact & Project Enquiry — Archex Studio"
+  description="Discuss a brand identity, UI/UX design, or design system project with Archex Studio. Direct design review and initial consultation."
   path="/contact/"
 >
   <div class="shell">
     <header class="page-intro">
-      <h1>Contact.</h1>
+      <div class="eyebrow" style="color: var(--signal); margin-bottom: 8px;">DESIGN ENQUIRY // STUDIO DESK</div>
+      <h1 style="font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); font-weight: 400; line-height: 1.1; margin: 0 0 16px;">
+        Start a design conversation<span style="color: var(--signal);">.</span>
+      </h1>
       <EditorialCompanion variant="contact" />
     </header>
-    <section class="section reveal">
-      <div class="contact-grid">
-        <div class="contact-copy contact-intro">
-          <span class="contact-line" aria-hidden="true">01</span><div>
-            <p>
-              A useful project begins with a clear understanding of what needs
-              to take shape, where it is now, and what should feel different.
+
+    <section class="section reveal" style="padding-top: 24px; padding-bottom: 64px;">
+      <div class="studio-contact-grid">
+        <!-- Left Column: Context, Standards & Direct Channels -->
+        <div class="studio-contact-info">
+          <div class="info-block">
+            <span class="eyebrow">OUR ENGAGEMENT PHILOSOPHY</span>
+            <h2 style="font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); font-weight: 400; color: var(--ink); margin: 12px 0 16px;">
+              Make the first conversation useful.
+            </h2>
+            <p style="color: var(--graphite); line-height: 1.6; margin: 0 0 16px;">
+              A good design engagement begins with a clear understanding of what needs to take shape, what currently exists, and what should feel different to your customers.
+            </p>
+            <p style="color: var(--graphite); line-height: 1.6; margin: 0 0 24px;">
+              We read every brief carefully before scheduling an introductory conversation. You will speak directly with the designers doing the work, not a business development intermediary.
             </p>
           </div>
-        </div><div class="contact-card">
-          <h2>Make the next conversation useful.</h2>
-          <p>
-            Our enquiry channel is being prepared and we are not accepting enquiries yet directly through this website.
-          </p>
-          <p>
-            Brand identity and digital experience work best when they begin with
-            the same clear idea and carry it through every interaction. If you are ready to discuss a project with our ecosystem, you can start a conversation via Archex Craft.
-          </p>
-          <div style="margin-top: 2rem; position: relative; z-index: 1;">
-            <a
-              class="button on-dark"
-              href="https://craft.archexweb.in/contact"
-            >
-              Start an enquiry via Archex Craft <span aria-hidden="true">↗</span>
-            </a>
+
+          <!-- Direct Channels Box -->
+          <div class="direct-channels-card">
+            <h3 style="font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 16px; color: var(--ink);">
+              Direct Touchpoints
+            </h3>
+
+            <div class="channel-row">
+              <span class="channel-label">Email Desk:</span>
+              <a href="mailto:hello@archexweb.in" class="channel-value" style="color: var(--signal); text-decoration: underline;">
+                hello@archexweb.in
+              </a>
+            </div>
+
+            <div class="channel-row">
+              <span class="channel-label">Response Time:</span>
+              <span class="channel-value">Within 1 business day (direct designer review)</span>
+            </div>
+
+            <div class="channel-row">
+              <span class="channel-label">Central Gateway:</span>
+              <a
+                href="https://www.archexweb.in/contact?practice=studio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="channel-value"
+                style="color: var(--signal); text-decoration: underline;"
+              >
+                archexweb.in/contact?practice=studio ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Design Enquiry Form -->
+        <div class="studio-form-wrapper">
+          <div class="form-card">
+            <div class="form-header">
+              <span class="form-eyebrow">STUDIO PROJECT BRIEF</span>
+              <h3 style="font-size: 20px; font-weight: 600; margin: 6px 0 12px; color: var(--paper);">
+                Tell us about your design requirements
+              </h3>
+              <p style="font-size: 13px; color: #d3cec4; margin: 0 0 20px; line-height: 1.5;">
+                Share your initial brief below. We'll get back to you with thoughtful initial perspectives and potential next steps.
+              </p>
+            </div>
+
+            <form class="studio-brief-form" id="studioEnquiryForm" novalidate>
+              <!-- Service Selection -->
+              <div class="form-group">
+                <label for="designRequirement" class="form-label">What do you need designed? *</label>
+                <select id="designRequirement" name="designRequirement" required class="form-input form-select">
+                  <option value="" disabled selected>Select primary requirement</option>
+                  <option value="brand-identity">Brand Identity &amp; Visual Strategy</option>
+                  <option value="ui-ux-design">UI/UX &amp; Digital Product Design</option>
+                  <option value="design-system">Design System &amp; Component Tokens</option>
+                  <option value="brand-and-product">Complete Brand + Digital Interface System</option>
+                  <option value="other">Other / Need guidance on scope</option>
+                </select>
+              </div>
+
+              <!-- Name & Email -->
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="fullName" class="form-label">Your Name *</label>
+                  <input type="text" id="fullName" name="fullName" placeholder="Aarav Mehta" required class="form-input" />
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input type="email" id="email" name="email" placeholder="aarav@company.com" required class="form-input" />
+                </div>
+              </div>
+
+              <!-- Company / Project Name -->
+              <div class="form-group">
+                <label for="companyName" class="form-label">Company or Project Name (Optional)</label>
+                <input type="text" id="companyName" name="companyName" placeholder="e.g. Studio Craft Ltd." class="form-input" />
+              </div>
+
+              <!-- Brief / Objectives -->
+              <div class="form-group">
+                <label for="projectBrief" class="form-label">Project Brief &amp; Goals *</label>
+                <textarea
+                  id="projectBrief"
+                  name="projectBrief"
+                  rows="4"
+                  placeholder="Describe your brand, audience, key challenges, or what you want the new design to accomplish..."
+                  required
+                  class="form-input form-textarea"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-actions">
+                <button type="submit" class="button on-dark form-submit-btn">
+                  <span>Send Design Brief</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+
+              <!-- Confirmation Alert Banner -->
+              <div class="form-confirmation" id="studioFormAlert" role="alert" aria-live="polite">
+                <strong>Brief received with thanks.</strong><br />
+                Our creative lead will review your requirements and respond within one business day.
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </section>
   </div>
 </BaseLayout>
+
+<style>
+  .studio-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(32px, 6vw, 64px);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .studio-contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .direct-channels-card {
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .channel-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+  }
+
+  .channel-label {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .channel-value {
+    color: var(--graphite);
+  }
+
+  .studio-form-wrapper {
+    position: relative;
+  }
+
+  .form-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: clamp(24px, 4vw, 40px);
+  }
+
+  .form-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--signal-bright);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .studio-brief-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .form-row-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #d3cec4;
+  }
+
+  .form-input {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 4px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-family: var(--sans);
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--signal-bright);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .form-select {
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .form-select option {
+    background: #141414;
+    color: #ffffff;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    justify-content: center;
+    background: var(--signal-bright);
+    color: #141414;
+    font-weight: 600;
+    padding: 12px 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .form-submit-btn:hover {
+    background: #ffa089;
+  }
+
+  .form-confirmation {
+    display: none;
+    padding: 14px 18px;
+    border-radius: 6px;
+    background: rgba(242, 123, 97, 0.15);
+    border: 1px solid var(--signal-bright);
+    color: #f2efe8;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .form-confirmation.is-visible {
+    display: block;
+  }
+</style>
+
+<script>
+  function initStudioForm() {
+    const form = document.getElementById('studioEnquiryForm') as HTMLFormElement;
+    const alert = document.getElementById('studioFormAlert');
+
+    if (!form || !alert) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Show confirmation
+      alert.classList.add('is-visible');
+      form.reset();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStudioForm);
+  } else {
+    initStudioForm();
+  }
+</script>

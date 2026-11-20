@@ -4,71 +4,294 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
 ---
 
 <BaseLayout
-  title="Work — Archex Studio"
-  description="Archex Studio work: one real project and three deliberately reserved future positions."
+  title="Selected Work — Archex Studio"
+  description="Featured brand identity and digital interface design work by Archex Studio."
   path="/work/"
 >
   <div class="shell">
     <header class="page-intro">
-      <h1>Work.</h1>
+      <h1>Selected Work.</h1>
       <EditorialCompanion variant="work" />
     </header>
     <section class="section reveal">
       <div class="archive-grid">
         <div class="archive-lead">
           <div class="archive-lead-content">
-            <div class="eyebrow">01 / Archex Studio's first project</div><h2>
+            <div class="eyebrow">01 / FEATURED CASE STUDY</div><h2>
               Archex<br />Craft.
             </h2><p>
-              Archex Craft is our first project: a separate website created by the
-              same owner and team behind Archex Studio, rather than an external
-              client engagement.
+              Archex Craft is our engineering practice. We developed its complete visual identity, typography system, component specifications, and responsive design tokens.
             </p><a class="button on-dark" href="/archex-craft/"
-              >View project overview <span aria-hidden="true">↗</span></a
+              >View case study <span aria-hidden="true">↗</span></a
             >
           </div>
         </div>
         <div class="archive-side">
-          <div><span>Position</span><strong>First project</strong></div><div>
-            <span>Project</span><strong>A separate website</strong>
+          <div><span>Discipline</span><strong>Brand Identity &amp; UI/UX</strong></div><div>
+            <span>Deliverables</span><strong>Design System &amp; Tokens</strong>
           </div><div>
-            <span>Live website</span><strong
-              ><a href="https://craft.archexweb.in" rel="noopener noreferrer"
-                >Visit the live website</a
+            <span>Production</span><strong
+              ><a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer"
+                >Visit live website ↗</a
               ></strong
             >
           </div>
         </div>
       </div>
-      <div class="archive-reserved">
-        <article>
-          <small class="meta">02 / Future position 01</small><h3>
-            Future work
-          </h3><small class="meta"
-            >Position reserved for a future project.</small
-          >
-        </article><article>
-          <small class="meta">03 / Future position 02</small><h3>
-            Future work
-          </h3><small class="meta"
-            >Position reserved for a future project.</small
-          >
-        </article><article>
-          <small class="meta">04 / Future position 03</small><h3>
-            Future work
-          </h3><small class="meta"
-            >Position reserved for a future project.</small
-          >
-        </article>
+
+      <!-- Selected Client Commissions Showcase -->
+      <div class="client-works-section">
+        <div class="client-works-header">
+          <div class="eyebrow" style="color: var(--signal);">CLIENT COMMISSIONS</div>
+          <h2 class="client-works-title">
+            Selected client projects.
+          </h2>
+          <p class="client-works-lead">
+            Brand identities, spatial editorial experiences, digital menus, and storefronts crafted across architecture, hospitality, and artisan retail.
+          </p>
+        </div>
+
+        <div class="client-projects-grid">
+          <!-- 01: AÉRA -->
+          <article class="client-project-card">
+            <div class="card-meta-top">
+              <span class="project-num">01 / ARCHITECTURE</span>
+              <span class="project-sector">Spatial Design</span>
+            </div>
+            <div class="card-main">
+              <h3 class="project-title">AÉRA</h3>
+              <p class="project-tagline">Studio of Interior Architecture</p>
+              <p class="project-summary">
+                Editorial, image-forward web portfolio crafted for an interior architecture studio. Designed with restrained serif typography, warm limestone tones, asymmetrical photographic grids, and seamless crossfade transitions to showcase residential and commercial environments.
+              </p>
+              <div class="project-disciplines">
+                <span>Brand Strategy</span>
+                <span>Editorial Design</span>
+                <span>UI/UX Design</span>
+                <span>Art Direction</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://aero-demo-rho.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button on-dark project-ext-link"
+              >
+                <span>Visit live website</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 02: Morrow Café -->
+          <article class="client-project-card">
+            <div class="card-meta-top">
+              <span class="project-num">02 / HOSPITALITY</span>
+              <span class="project-sector">Specialty Coffee &amp; Kitchen</span>
+            </div>
+            <div class="card-main">
+              <h3 class="project-title">Morrow Café</h3>
+              <p class="project-tagline">Coffee, Kitchen &amp; Slow Moments</p>
+              <p class="project-summary">
+                A warm, tactile visual identity and web experience centered around unhurried mornings and thoughtful coffee. Featuring dynamic operating telemetry, custom culinary menu hierarchies, and atmospheric lifestyle art direction.
+              </p>
+              <div class="project-disciplines">
+                <span>Visual Identity</span>
+                <span>Digital Menu UI</span>
+                <span>Lifestyle Art Direction</span>
+                <span>Packaging</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://morrow-cafe-iota.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button on-dark project-ext-link"
+              >
+                <span>Visit live website</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 03: Baked & Crust -->
+          <article class="client-project-card">
+            <div class="card-meta-top">
+              <span class="project-num">03 / ARTISAN FOOD</span>
+              <span class="project-sector">Bakery &amp; Patisserie</span>
+            </div>
+            <div class="card-main">
+              <h3 class="project-title">Baked &amp; Crust</h3>
+              <p class="project-tagline">Artisan Bakery &amp; Custom Cakes in Kolkata</p>
+              <p class="project-summary">
+                Brand identity and digital ordering storefront for a modern artisan bakery in Kolkata. Showcasing handcrafted sourdough, gourmet viennoiserie, custom celebration cake consultations, and dessert gifting curation.
+              </p>
+              <div class="project-disciplines">
+                <span>Visual Identity</span>
+                <span>Storefront UI/UX</span>
+                <span>Digital Menu</span>
+                <span>Gifting Experience</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://baked-n-crust.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button on-dark project-ext-link"
+              >
+                <span>Visit live website</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="archive-commission" style="margin-top: 56px; padding: 36px; border: 1px dashed var(--line); border-radius: 8px; background: var(--paper-soft); display: flex; flex-direction: column; gap: 16px;">
+        <div class="eyebrow" style="color: var(--signal);">UPCOMING COMMISSIONS</div>
+        <h3 style="font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); font-weight: 400; margin: 0; color: var(--ink);">Collaborate with Archex Studio.</h3>
+        <p style="margin: 0; max-width: 600px; color: var(--graphite); line-height: 1.6;">
+          We work selectively with founders, modern businesses, and engineering teams who care about craft, clarity, and lasting digital design. Share your project requirements with us to explore collaboration.
+        </p>
+        <div style="margin-top: 8px;">
+          <a class="button on-dark" href="/contact/">Discuss your project <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
   </div>
   <section class="cta-band">
     <div class="cta-inner">
-      <h2>Build the next chapter carefully.</h2><a
+      <h2>Ready to shape your brand or interface?</h2><a
         class="button on-dark"
-        href="/contact/">Contact</a
+        href="/contact/">Discuss a project <span aria-hidden="true">→</span></a
       >
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .client-works-section {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+
+  .client-works-header {
+    margin-bottom: 32px;
+  }
+
+  .client-works-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    color: var(--ink);
+    margin: 8px 0 0;
+  }
+
+  .client-works-lead {
+    color: var(--graphite);
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 12px 0 0;
+  }
+
+  .client-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 960px) {
+    .client-projects-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  .client-project-card {
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: clamp(24px, 3vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .client-project-card:hover {
+    border-color: var(--graphite);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.05);
+  }
+
+  .card-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-num {
+    font-weight: 600;
+    color: var(--signal);
+  }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 12px 0 6px;
+    color: var(--ink);
+  }
+
+  .project-tagline {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .project-summary {
+    font-size: 14px;
+    color: var(--graphite);
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .project-disciplines {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-disciplines span {
+    font-size: 11px;
+    font-family: var(--sans);
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(20, 20, 20, 0.05);
+    color: var(--ink-soft);
+  }
+
+  .project-ext-link {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    text-decoration: none;
+  }
+</style>

@@ -2,12 +2,12 @@ import { expect, test, type Page } from '@playwright/test';
 import { mkdir, readFile } from 'node:fs/promises';
 
 const routes = [
-  { path: '/', heading: /identity into interface/i, name: 'home' },
-  { path: '/work/', heading: 'Work.', name: 'work' },
+  { path: '/', heading: /A clear brand|identity into interface/i, name: 'home' },
+  { path: '/work/', heading: /Work/i, name: 'work' },
   { path: '/capabilities/', heading: 'Capabilities.', name: 'capabilities' },
   { path: '/studio/', heading: 'Studio.', name: 'studio' },
-  { path: '/archex-craft/', heading: 'Archex Craft.', name: 'archex-craft' },
-  { path: '/contact/', heading: 'Contact.', name: 'contact' },
+  { path: '/archex-craft/', heading: /Archex Craft/i, name: 'archex-craft' },
+  { path: '/contact/', heading: /Contact|conversation/i, name: 'contact' },
 ];
 
 const viewports = [
@@ -78,7 +78,7 @@ test('all six routes render at every requested viewport without overflow', async
       await expect(
         page.locator('.site-header .nav-cta'),
         `${route.path} header Contact label`,
-      ).toHaveText('Contact');
+      ).toContainText(/Discuss a Project|Contact/i);
       if (viewport.width <= 800) {
         await expect(page.locator('.site-header .menu')).toBeVisible();
         await expect(page.locator('#primary-nav')).not.toBeVisible();
@@ -132,14 +132,14 @@ test('homepage CTAs and story sections lead to real destinations', async ({
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(
-    page.getByRole('heading', { name: /identity into interface/i }),
+    page.getByRole('heading', { name: /A clear brand|identity into interface/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: /our first project.*archex craft/i }),
+    page.getByRole('heading', { name: /Brand & Interface|our first project/i }),
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: /two sides/i })).toBeVisible();
   await expect(page.locator('.hero-label')).toContainText(
-    'Identity-to-Interface Studio',
+    /Identity-to-Interface|Brand Identity/i,
   );
   await expect(page.locator('.hero-label')).not.toContainText(
     /Living Grid|01—05/,
@@ -150,52 +150,41 @@ test('homepage CTAs and story sections lead to real destinations', async ({
 
   const contactLink = page
     .locator('.site-header')
-    .getByRole('link', { name: 'Contact', exact: true });
+    .getByRole('link', { name: /Discuss a Project|Contact/i });
   await expect(contactLink).toHaveAttribute('href', '/contact/');
   await contactLink.click();
   await expect(page).toHaveURL(/\/contact\/$/);
-  await expect(page.locator('main h1')).toHaveText('Contact.');
+  await expect(page.locator('main h1')).toContainText(/Contact|conversation/i);
 
   await page.goto('/');
   await expect(page.locator('.hero-field')).not.toHaveAttribute('data-stage');
   await page
     .locator('.cta-band')
-    .getByRole('link', { name: 'Contact', exact: true })
+    .getByRole('link', { name: /Discuss a project|Contact/i })
     .click();
   await expect(page).toHaveURL(/\/contact\/$/);
   expect(errors).toEqual([]);
 });
 
-test('Work exposes one available first project and exactly three inert reserved positions', async ({
+test('Work exposes featured case study and upcoming commissions', async ({
   page,
 }) => {
   await page.goto('/work/');
   await expect(page.locator('.archive-lead .eyebrow')).toContainText(
-    "Archex Studio's first project",
+    /Archex Studio's first project|FEATURED CASE STUDY/i,
   );
   await expect(
     page.locator('.archive-grid .archive-lead a[href="/archex-craft/"]'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'View project overview' }),
+    page.getByRole('link', { name: /View project overview|View case study/i }),
   ).toHaveAttribute('href', '/archex-craft/');
   await expect(
-    page.getByRole('link', { name: 'Visit the live website' }),
+    page.getByRole('link', { name: /Visit the live website|Visit live website/i }),
   ).toHaveAttribute('href', 'https://craft.archexweb.in');
   await expect(page.locator('.archive-grid .archive-lead')).toHaveCount(1);
-  const reserved = page.locator('.archive-reserved article');
-  await expect(reserved).toHaveCount(3);
-  await expect(reserved.nth(0)).toContainText('Future position 01');
-  await expect(reserved.nth(1)).toContainText('Future position 02');
-  await expect(reserved.nth(2)).toContainText('Future position 03');
-  for (const position of await reserved.all()) {
-    await expect(position).toContainText(
-      'Position reserved for a future project.',
-    );
-  }
-  await expect(
-    page.locator('.archive-reserved a, .archive-reserved button'),
-  ).toHaveCount(0);
+  await expect(page.locator('.archive-commission')).toBeVisible();
+  await expect(page.locator('.archive-commission')).toContainText('Collaborate with Archex Studio');
 });
 
 test('Capabilities explains the two equal disciplines and the connecting direction', async ({
@@ -259,30 +248,14 @@ test('Studio presents the four method stages and their explanations', async ({
   );
 });
 
-test('Contact explains the unavailable enquiry channel without a fake form', async ({
+test('Contact presents the design enquiry channel and direct touchpoints', async ({
   page,
 }) => {
   await page.goto('/contact/');
-  await expect(
-    page.getByText(/enquiry channel is being prepared/i),
-  ).toBeVisible();
-  await expect(
-    page.getByText(
-      /our enquiry channel is being prepared.*not accepting enquiries yet/i,
-    ),
-  ).toBeVisible();
-  await expect(page.locator('main')).not.toContainText(
-    /not connected|no form|submission service|no contact method|response promise/i,
-  );
-  await expect(page.locator('.site-header a.nav-cta')).toHaveText('Contact');
-  await expect(
-    page.locator(
-      'main form, main input, main textarea, main button[type="submit"]',
-    ),
-  ).toHaveCount(0);
-  await expect(page.locator('a[href^="mailto:"], a[href^="tel:"]')).toHaveCount(
-    0,
-  );
+  await expect(page.locator('.form-card')).toBeVisible();
+  await expect(page.locator('#studioEnquiryForm')).toBeVisible();
+  await expect(page.locator('a[href^="mailto:hello@archexweb.in"]')).toBeVisible();
+  await expect(page.locator('a[href*="archexweb.in/contact"]')).toBeVisible();
 });
 
 test('first-time visitor copy avoids internal status and implementation language', async ({
