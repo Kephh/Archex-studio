@@ -18,7 +18,11 @@ const links = [
       >archex<span>—</span>studio</a
     >
     <div class="desktop-switcher-wrap">
-      <EcosystemSwitcher currentPractice="studio" idPrefix="desktop" variant="desktop" />
+      <EcosystemSwitcher
+        currentPractice="studio"
+        idPrefix="desktop"
+        variant="desktop"
+      />
     </div>
   </div>
 
@@ -26,7 +30,8 @@ const links = [
     class="menu"
     type="button"
     aria-expanded="false"
-    aria-controls="primary-nav">Menu</button
+    aria-controls="primary-nav"
+    aria-label="Toggle navigation menu">Menu</button
   >
   <nav id="primary-nav" class="nav" aria-label="Primary">
     {
@@ -42,14 +47,19 @@ const links = [
     <a
       class="nav-cta"
       href="/contact/"
-      aria-current={path === '/contact/' ? 'page' : undefined}>Discuss a Project</a
+      aria-current={path === '/contact/' ? 'page' : undefined}
+      >Discuss a Project</a
     >
 
     <div class="mobile-nav-ecosystem">
       <div class="mobile-ecosystem-header">
         <span class="mobile-ecosystem-eyebrow">ARCHEX ECOSYSTEM</span>
       </div>
-      <EcosystemSwitcher currentPractice="studio" idPrefix="mobile" variant="mobile" />
+      <EcosystemSwitcher
+        currentPractice="studio"
+        idPrefix="mobile"
+        variant="mobile"
+      />
     </div>
   </nav>
 </header>

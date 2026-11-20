@@ -43,7 +43,7 @@ const {
     role="menu"
     aria-labelledby={`${idPrefix}-switcher-btn`}
   >
-    <div class="dropdown-header">
+    <div class="dropdown-header" role="none">
       <span class="dropdown-eyebrow">ARCHEX ECOSYSTEM</span>
       <span class="dropdown-note">One organization. Specialist practices.</span>
     </div>
@@ -59,7 +59,8 @@ const {
           rel="noopener noreferrer"
         >
           <div class="item-indicator-col">
-            <span class="practice-dot practice-dot--parent" aria-hidden="true"></span>
+            <span class="practice-dot practice-dot--parent" aria-hidden="true"
+            ></span>
           </div>
           <div class="item-content">
             <div class="item-title-row">
@@ -67,7 +68,9 @@ const {
               <span class="practice-role">Gateway</span>
               <span class="ext-arrow" aria-hidden="true">↗</span>
             </div>
-            <span class="practice-desc">Parent brand &amp; central gateway. Coordinates the practices.</span>
+            <span class="practice-desc"
+              >Parent brand &amp; central gateway. Coordinates the practices.</span
+            >
           </div>
         </a>
       </li>
@@ -82,7 +85,8 @@ const {
           rel="noopener noreferrer"
         >
           <div class="item-indicator-col">
-            <span class="practice-dot practice-dot--craft" aria-hidden="true"></span>
+            <span class="practice-dot practice-dot--craft" aria-hidden="true"
+            ></span>
           </div>
           <div class="item-content">
             <div class="item-title-row">
@@ -90,7 +94,9 @@ const {
               <span class="practice-role">Build</span>
               <span class="ext-arrow" aria-hidden="true">↗</span>
             </div>
-            <span class="practice-desc">Websites, applications, custom software &amp; AI integrations.</span>
+            <span class="practice-desc"
+              >Websites, applications, custom software &amp; AI integrations.</span
+            >
           </div>
         </a>
       </li>
@@ -104,24 +110,37 @@ const {
           aria-current={currentPractice === 'studio' ? 'page' : undefined}
         >
           <div class="item-indicator-col">
-            <span class="practice-dot practice-dot--studio" aria-hidden="true"></span>
+            <span class="practice-dot practice-dot--studio" aria-hidden="true"
+            ></span>
           </div>
           <div class="item-content">
             <div class="item-title-row">
               <span class="practice-name">Archex Studio</span>
               <span class="practice-role">Design</span>
-              {currentPractice === 'studio' && <span class="current-badge">Current</span>}
+              {
+                currentPractice === 'studio' && (
+                  <span class="current-badge">Current</span>
+                )
+              }
             </div>
-            <span class="practice-desc">Brand strategy, visual identity, UI/UX &amp; digital design.</span>
+            <span class="practice-desc"
+              >Brand strategy, visual identity, UI/UX &amp; digital design.</span
+            >
           </div>
         </a>
       </li>
 
       <!-- 04: GTM (In development) -->
       <li role="none">
-        <div class="practice-item practice-item--disabled" role="menuitem" aria-disabled="true">
+        <div
+          class="practice-item practice-item--disabled"
+          role="menuitem"
+          aria-disabled="true"
+          tabindex="-1"
+        >
           <div class="item-indicator-col">
-            <span class="practice-dot practice-dot--gtm" aria-hidden="true"></span>
+            <span class="practice-dot practice-dot--gtm" aria-hidden="true"
+            ></span>
           </div>
           <div class="item-content">
             <div class="item-title-row">
@@ -129,14 +148,22 @@ const {
               <span class="practice-role">Grow</span>
               <span class="dev-badge">In Development</span>
             </div>
-            <span class="practice-desc">Go-to-market positioning &amp; customer acquisition. Coming soon.</span>
+            <span class="practice-desc"
+              >Go-to-market positioning &amp; customer acquisition. Coming soon.</span
+            >
           </div>
         </div>
       </li>
     </ul>
 
-    <div class="dropdown-footer">
-      <a href="https://www.archexweb.in/contact?practice=studio" class="dropdown-footer-link" target="_blank" rel="noopener noreferrer">
+    <div class="dropdown-footer" role="none">
+      <a
+        href="https://www.archexweb.in/contact?practice=studio"
+        class="dropdown-footer-link"
+        role="menuitem"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <span>Not sure which practice fits? Contact central desk</span>
         <span aria-hidden="true">↗</span>
       </a>
@@ -169,7 +196,7 @@ const {
   }
 
   .switcher-trigger:hover,
-  .switcher-trigger[aria-expanded="true"] {
+  .switcher-trigger[aria-expanded='true'] {
     background: #ffffff;
     border-color: var(--graphite, #5e5b55);
     color: var(--ink, #141414);
@@ -209,7 +236,7 @@ const {
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .switcher-trigger[aria-expanded="true"] .switcher-arrow {
+  .switcher-trigger[aria-expanded='true'] .switcher-arrow {
     transform: rotate(180deg);
   }
 
@@ -222,12 +249,17 @@ const {
     background: #ffffff;
     border: 1px solid var(--line, #c9c4ba);
     border-radius: 8px;
-    box-shadow: 0 16px 36px rgba(20, 20, 19, 0.08), 0 4px 12px rgba(20, 20, 19, 0.04);
+    box-shadow:
+      0 16px 36px rgba(20, 20, 19, 0.08),
+      0 4px 12px rgba(20, 20, 19, 0.04);
     padding: 12px 0 0;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
-    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    transition:
+      opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.2s;
     z-index: 1000;
   }
 
@@ -305,10 +337,18 @@ const {
     border-radius: 50%;
   }
 
-  .practice-dot--parent { background: #141414; }
-  .practice-dot--craft { background: #254b73; }
-  .practice-dot--studio { background: var(--signal, #9c3e2f); }
-  .practice-dot--gtm { background: #a29d93; }
+  .practice-dot--parent {
+    background: #141414;
+  }
+  .practice-dot--craft {
+    background: #254b73;
+  }
+  .practice-dot--studio {
+    background: var(--signal, #9c3e2f);
+  }
+  .practice-dot--gtm {
+    background: #a29d93;
+  }
 
   .item-content {
     flex: 1;
@@ -445,25 +485,31 @@ const {
       if (root.getAttribute('data-initialized') === 'true') return;
       root.setAttribute('data-initialized', 'true');
 
-      const trigger = root.querySelector('.switcher-trigger');
-      const menu = root.querySelector('.switcher-dropdown');
+      const trigger = root.querySelector(
+        '.switcher-trigger',
+      ) as HTMLElement | null;
+      const menu = root.querySelector(
+        '.switcher-dropdown',
+      ) as HTMLElement | null;
 
       if (!trigger || !menu) return;
+      const triggerEl = trigger;
+      const menuEl = menu;
 
       function openMenu() {
-        trigger.setAttribute('aria-expanded', 'true');
-        menu.classList.add('is-open');
+        triggerEl.setAttribute('aria-expanded', 'true');
+        menuEl.classList.add('is-open');
       }
 
       function closeMenu() {
-        trigger.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('is-open');
+        triggerEl.setAttribute('aria-expanded', 'false');
+        menuEl.classList.remove('is-open');
       }
 
-      trigger.addEventListener('click', (e) => {
+      triggerEl.addEventListener('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        const isOpen = triggerEl.getAttribute('aria-expanded') === 'true';
         if (isOpen) {
           closeMenu();
         } else {
@@ -487,9 +533,12 @@ const {
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+        if (
+          e.key === 'Escape' &&
+          triggerEl.getAttribute('aria-expanded') === 'true'
+        ) {
           closeMenu();
-          (trigger as HTMLElement).focus();
+          triggerEl.focus();
         }
       });
     });

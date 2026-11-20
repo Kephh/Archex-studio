@@ -25,17 +25,35 @@ const allowIndexing = !noindex;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2efe8" />
     <meta name="description" content={description} />
     <meta
       name="robots"
       content={allowIndexing ? 'index,follow' : 'noindex,nofollow'}
     />
     {allowIndexing && <link rel="canonical" href={canonical} />}
+    <link
+      rel="preload"
+      href="/fonts/instrument-sans-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/dm-serif-display.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     {allowIndexing && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content="Archex Studio" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <title>{title}</title>
