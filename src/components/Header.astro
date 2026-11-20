@@ -17,7 +17,9 @@ const links = [
     <a class="wordmark" href="/" aria-label="Archex Studio home"
       >archex<span>—</span>studio</a
     >
-    <EcosystemSwitcher currentPractice="studio" />
+    <div class="desktop-switcher-wrap">
+      <EcosystemSwitcher currentPractice="studio" idPrefix="desktop" variant="desktop" />
+    </div>
   </div>
 
   <button
@@ -42,6 +44,13 @@ const links = [
       href="/contact/"
       aria-current={path === '/contact/' ? 'page' : undefined}>Discuss a Project</a
     >
+
+    <div class="mobile-nav-ecosystem">
+      <div class="mobile-ecosystem-header">
+        <span class="mobile-ecosystem-eyebrow">ARCHEX ECOSYSTEM</span>
+      </div>
+      <EcosystemSwitcher currentPractice="studio" idPrefix="mobile" variant="mobile" />
+    </div>
   </nav>
 </header>
 
@@ -50,6 +59,43 @@ const links = [
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    flex-wrap: wrap;
+  }
+
+  .desktop-switcher-wrap {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .mobile-nav-ecosystem {
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    .desktop-switcher-wrap {
+      display: none !important;
+    }
+
+    .mobile-nav-ecosystem {
+      display: block;
+      margin-top: 16px;
+      padding-top: 4px;
+      border-top: none;
+    }
+
+    .mobile-ecosystem-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .mobile-ecosystem-eyebrow {
+      font-family: var(--sans, monospace);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--graphite, #5e5b55);
+    }
   }
 </style>

@@ -4,31 +4,44 @@
 interface Props {
   currentPractice?: 'parent' | 'craft' | 'studio' | 'gtm';
   class?: string;
+  idPrefix?: string;
+  variant?: 'desktop' | 'mobile';
 }
 
-const { currentPractice = 'studio', class: className = '' } = Astro.props;
+const {
+  currentPractice = 'studio',
+  class: className = '',
+  idPrefix = 'ecosystem',
+  variant = 'desktop',
+} = Astro.props;
 ---
 
-<div class={`ecosystem-switcher ${className}`} id="ecosystem-switcher-root">
+<div
+  class={`ecosystem-switcher ecosystem-switcher--${variant} ${className}`}
+  id={`${idPrefix}-switcher-root`}
+>
   <button
     type="button"
     class="switcher-trigger"
-    id="ecosystem-switcher-btn"
+    id={`${idPrefix}-switcher-btn`}
     aria-expanded="false"
     aria-haspopup="true"
-    aria-controls="ecosystem-menu"
+    aria-controls={`${idPrefix}-menu`}
     aria-label="Switch Archex practice"
   >
-    <span class="switcher-dot" aria-hidden="true"></span>
-    <span class="switcher-label">Archex Studio</span>
+    <span class="trigger-label-group">
+      <span class="switcher-dot" aria-hidden="true"></span>
+      <span class="switcher-label">Archex Studio</span>
+      <span class="switcher-badge">Design</span>
+    </span>
     <span class="switcher-arrow" aria-hidden="true">▾</span>
   </button>
 
   <div
     class="switcher-dropdown"
-    id="ecosystem-menu"
+    id={`${idPrefix}-menu`}
     role="menu"
-    aria-labelledby="ecosystem-switcher-btn"
+    aria-labelledby={`${idPrefix}-switcher-btn`}
   >
     <div class="dropdown-header">
       <span class="dropdown-eyebrow">ARCHEX ECOSYSTEM</span>
@@ -162,6 +175,27 @@ const { currentPractice = 'studio', class: className = '' } = Astro.props;
     color: var(--ink, #141414);
   }
 
+  .trigger-label-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .switcher-badge {
+    font-family: var(--sans, monospace);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--graphite, #5e5b55);
+    background: rgba(20, 20, 20, 0.06);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .ecosystem-switcher--desktop .switcher-badge {
+    display: none;
+  }
+
   .switcher-dot {
     width: 6px;
     height: 6px;
@@ -236,8 +270,14 @@ const { currentPractice = 'studio', class: className = '' } = Astro.props;
     align-items: flex-start;
     gap: 12px;
     padding: 10px 16px;
+    min-height: 48px;
     text-decoration: none;
     color: var(--ink, #141414);
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    border-bottom: none !important;
+    justify-content: flex-start !important;
     transition: background-color 0.15s ease;
   }
 
@@ -343,11 +383,16 @@ const { currentPractice = 'studio', class: className = '' } = Astro.props;
   .dropdown-footer-link {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between !important;
+    min-height: 44px;
     font-size: 11px;
     font-weight: 500;
     color: var(--signal, #9c3e2f);
     text-decoration: none;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    border-bottom: none !important;
     transition: color 0.15s ease;
   }
 
@@ -355,50 +400,104 @@ const { currentPractice = 'studio', class: className = '' } = Astro.props;
     color: var(--signal-bright, #f27b61);
     text-decoration: underline;
   }
+
+  /* Mobile variant styles */
+  .ecosystem-switcher--mobile {
+    display: block;
+    width: 100%;
+  }
+
+  .ecosystem-switcher--mobile .switcher-trigger {
+    width: 100%;
+    min-height: 46px;
+    justify-content: space-between;
+    padding: 10px 14px;
+    font-size: 13px;
+    background: #ffffff;
+    border: 1px solid var(--line, #c9c4ba);
+    border-radius: 8px;
+  }
+
+  .ecosystem-switcher--mobile .switcher-dropdown {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(20, 20, 19, 0.06);
+    border: 1px solid var(--line, #c9c4ba);
+    border-radius: 8px;
+    background: #ffffff;
+    display: none;
+  }
+
+  .ecosystem-switcher--mobile .switcher-dropdown.is-open {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
 </style>
 
 <script>
-  function initEcosystemSwitcher() {
-    const root = document.getElementById('ecosystem-switcher-root');
-    const trigger = document.getElementById('ecosystem-switcher-btn');
-    const menu = document.getElementById('ecosystem-menu');
+  function initEcosystemSwitchers() {
+    const switchers = document.querySelectorAll('.ecosystem-switcher');
+    switchers.forEach((root) => {
+      if (root.getAttribute('data-initialized') === 'true') return;
+      root.setAttribute('data-initialized', 'true');
 
-    if (!root || !trigger || !menu) return;
+      const trigger = root.querySelector('.switcher-trigger');
+      const menu = root.querySelector('.switcher-dropdown');
 
-    function openMenu() {
-      trigger.setAttribute('aria-expanded', 'true');
-      menu.classList.add('is-open');
-    }
+      if (!trigger || !menu) return;
 
-    function closeMenu() {
-      trigger.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('is-open');
-    }
-
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-      if (isOpen) closeMenu();
-      else openMenu();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!root.contains(e.target as Node)) {
-        closeMenu();
+      function openMenu() {
+        trigger.setAttribute('aria-expanded', 'true');
+        menu.classList.add('is-open');
       }
-    });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
-        trigger.focus();
+      function closeMenu() {
+        trigger.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
       }
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMenu();
+        } else {
+          // Close other open switchers
+          switchers.forEach((other) => {
+            if (other !== root) {
+              const otherTrigger = other.querySelector('.switcher-trigger');
+              const otherMenu = other.querySelector('.switcher-dropdown');
+              otherTrigger?.setAttribute('aria-expanded', 'false');
+              otherMenu?.classList.remove('is-open');
+            }
+          });
+          openMenu();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!root.contains(e.target as Node)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+          closeMenu();
+          (trigger as HTMLElement).focus();
+        }
+      });
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEcosystemSwitcher);
+    document.addEventListener('DOMContentLoaded', initEcosystemSwitchers);
   } else {
-    initEcosystemSwitcher();
+    initEcosystemSwitchers();
   }
 </script>

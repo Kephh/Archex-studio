@@ -554,6 +554,15 @@ test('mobile navigation, capabilities and Studio controls respond to touch', asy
   await page.screenshot({
     path: `${output}/interactions/mobile-menu-open.png`,
   });
+  const switcher = page.locator('#mobile-switcher-btn');
+  if (await switcher.count() > 0) {
+    await switcher.tap();
+    await expect(page.locator('#mobile-menu')).toBeVisible();
+    await page.screenshot({
+      path: `${output}/interactions/mobile-switcher-open.png`,
+    });
+    await switcher.tap();
+  }
   const scrollBeforeTouch = await page.evaluate(() => window.scrollY);
   const cdp = await context.newCDPSession(page);
   await cdp.send('Input.dispatchTouchEvent', {
