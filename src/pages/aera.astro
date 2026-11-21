@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+
+const project = projects.find((p) => p.id === 'aera')!;
+---
+
+<BaseLayout
+  title="AÉRA Case Study — Archex Studio"
+  description="Brand identity, typography hierarchy, and editorial digital portfolio for AÉRA Studio of Interior Architecture."
+  path="/aera/"
+>
+  <div class="shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="padding: 24px 0 12px; font-size: 13px; color: var(--graphite);">
+      <a href="/work/" style="color: var(--graphite); text-decoration: none;">Selected Projects</a>
+      <span style="margin: 0 8px; color: var(--line);">/</span>
+      <span style="color: var(--ink);">AÉRA</span>
+    </nav>
+
+    <header class="page-intro" style="padding-top: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
+        <span class="eyebrow" style="color: var(--signal); margin: 0;">01 / SPATIAL DESIGN &amp; ARCHITECTURE</span>
+        <span style="font-family: var(--sans); font-size: 11px; font-weight: 600; padding: 3px 10px; background: rgba(156, 62, 47, 0.12); color: var(--signal); border: 1px solid rgba(156, 62, 47, 0.28); border-radius: 4px; letter-spacing: 0.08em;">
+          {project.classificationLabel}
+        </span>
+      </div>
+      <h1 style="font-family: var(--serif); font-size: clamp(38px, 5.5vw, 68px); font-weight: 400; line-height: 1.08; margin: 0 0 18px; color: var(--ink);">
+        AÉRA<span style="color: var(--signal);">.</span>
+      </h1>
+      <p style="font-size: clamp(17px, 2.2vw, 21px); color: var(--graphite); max-width: 740px; line-height: 1.5; margin: 0;">
+        Editorial, image-forward web portfolio crafted for a studio of interior architecture. Restrained serif typography, warm limestone mineral palettes, and spatial storytelling.
+      </p>
+    </header>
+
+    <!-- Project Metrics Grid -->
+    <section class="section reveal" style="padding-top: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); margin-top: 28px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px;">
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">PROJECT TYPE</span>
+          <strong style="display: block; font-size: 15px; margin-top: 4px; color: var(--ink);">Studio Concept / Pitch</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">DISCIPLINES</span>
+          <strong style="display: block; font-size: 15px; margin-top: 4px; color: var(--ink);">Brand Strategy, Editorial UI/UX</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">DELIVERABLES</span>
+          <strong style="display: block; font-size: 15px; margin-top: 4px; color: var(--ink);">Identity Mark, 12-Col Grid, Web UI</strong>
+        </div>
+        <div>
+          <span style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite);">LIVE DESTINATION</span>
+          <strong style="display: block; font-size: 15px; margin-top: 4px; color: var(--ink);">
+            <a href="https://aero-demo-rho.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--signal); text-decoration: underline;">
+              Visit live website ↗
+            </a>
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 01: The Brief & Challenge -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; align-items: start;">
+        <div>
+          <span class="eyebrow">01 / THE CHALLENGE</span>
+          <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 0; color: var(--ink);">
+            Translating physical spatial intimacy into a digital surface.
+          </h2>
+        </div>
+        <div>
+          <p style="color: var(--graphite); line-height: 1.65; font-size: 16px; margin: 0 0 16px;">
+            {project.caseStudy.challenge}
+          </p>
+          <p style="color: var(--graphite); line-height: 1.65; font-size: 16px; margin: 0;">
+            {project.caseStudy.solution}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 02: Creative Direction & Visual Palette -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <span class="eyebrow">02 / CREATIVE DIRECTION</span>
+      <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 16px; color: var(--ink);">
+        Restrained materials and architectural poise.
+      </h2>
+      <p style="font-size: 16px; color: var(--graphite); max-width: 680px; line-height: 1.6; margin: 0 0 32px;">
+        {project.caseStudy.creativeDirection}
+      </p>
+
+      {/* Color Palette Display */}
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        {project.caseStudy.palette.map((item) => (
+          <div style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 18px;">
+            <div style={`width: 100%; height: 48px; background: ${item.hex}; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 12px;`}></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <strong style="font-size: 14px; color: var(--ink);">{item.name}</strong>
+              <span style="font-family: var(--sans); font-size: 11px; color: var(--graphite); font-weight: 500;">{item.hex}</span>
+            </div>
+            <p style="font-size: 12px; color: var(--graphite); margin: 6px 0 0;">{item.note}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Typography Specimen Box */}
+      <div style="background: #1c1c1b; color: #ded9d0; border-radius: 8px; padding: 32px; border: 1px solid var(--line-dark);">
+        <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--signal-bright);">TYPOGRAPHY SPECIMEN</span>
+        <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: baseline;">
+          <div>
+            <div style="font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; color: #fff;">
+              AÉRA Studio.
+            </div>
+            <span style="font-size: 12px; color: #8c877e; margin-top: 6px; display: block;">Primary Serif: Playfair Display / DM Serif Display</span>
+          </div>
+          <div>
+            <p style="font-family: var(--sans); font-size: 14px; line-height: 1.6; color: #c4bfb6; margin: 0;">
+              Precision architectural annotations, project coordinates (51.5074° N, 0.1278° W), spatial dimensioning, and photographic credit metadata set in high-clarity Instrument Sans.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 03: Visual Identity & Interface Architecture -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <span class="eyebrow">03 / INTERFACE ARCHITECTURE</span>
+      <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 24px; color: var(--ink);">
+        Desktop &amp; mobile exhibition layouts.
+      </h2>
+
+      {/* Stylized Interface Mockup Frame */}
+      <div style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,0.06);">
+        <div style="background: #e8e3d9; padding: 10px 16px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; gap: 6px;">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #d0c9bd;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #d0c9bd;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: #d0c9bd;"></span>
+          </div>
+          <span style="font-family: var(--sans); font-size: 11px; color: var(--graphite); letter-spacing: 0.05em;">aera-studio.com // SELECTED RESIDENTIAL WORKS</span>
+          <span style="font-size: 11px; color: var(--graphite);">1440 × 900</span>
+        </div>
+        <div style="padding: 36px 32px; background: #EFECE6;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 14px; margin-bottom: 28px;">
+            <span style="font-family: var(--serif); font-size: 22px; letter-spacing: 0.04em; color: #161616; font-weight: 500;">A É R A</span>
+            <div style="display: flex; gap: 20px; font-size: 12px; color: #403e3c; text-transform: uppercase; letter-spacing: 0.08em;">
+              <span>Architecture</span>
+              <span>Interiors</span>
+              <span>Practice</span>
+              <span>Contact</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center;">
+            <div style="background: #ded7cb; height: 260px; border-radius: 4px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; border: 1px solid rgba(0,0,0,0.08);">
+              <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #575249;">PROJECT 01 // KENSINGTON</span>
+              <span style="font-family: var(--serif); font-size: 20px; color: #161616;">Limestone Residence</span>
+            </div>
+            <div>
+              <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--signal); font-weight: 600;">PORTFOLIO DIRECTION</span>
+              <h3 style="font-family: var(--serif); font-size: 26px; font-weight: 400; color: #161616; margin: 8px 0 12px;">Quiet light and stone monoliths.</h3>
+              <p style="font-size: 13px; line-height: 1.6; color: #575249; margin: 0 0 16px;">
+                Asymmetrical visual rhythm alternates between expansive architectural spans and intimate material vignettes: fluted plaster, raw travertine, and smoked bronze hardware.
+              </p>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <span style="font-size: 11px; padding: 4px 8px; background: rgba(0,0,0,0.05); border-radius: 3px; color: #403e3c;">Fluid Touch Navigation</span>
+                <span style="font-size: 11px; padding: 4px 8px; background: rgba(0,0,0,0.05); border-radius: 3px; color: #403e3c;">Asymmetric Grid</span>
+                <span style="font-size: 11px; padding: 4px 8px; background: rgba(0,0,0,0.05); border-radius: 3px; color: #403e3c;">Blueprint Lightbox</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Section 04: Key Deliverables & Interactions -->
+    <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+        <div>
+          <span class="eyebrow">KEY DELIVERABLES</span>
+          <h3 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 10px 0 16px; color: var(--ink);">Delivered System Assets</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;">
+            {project.caseStudy.deliverables.map((item) => (
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--graphite);">
+                <span style="color: var(--signal); font-weight: bold;">—</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <span class="eyebrow">KEY INTERACTIONS</span>
+          <h3 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 10px 0 16px; color: var(--ink);">Experiential Dynamics</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;">
+            {project.caseStudy.keyInteractions.map((item) => (
+              <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--graphite);">
+                <span style="color: var(--signal); font-weight: bold;">—</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Next / Outcome & Link -->
+    <section class="section reveal" style="padding: 48px 0; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <span class="eyebrow">EXTERNAL DESTINATION</span>
+        <h2 style="font-family: var(--serif); font-size: 28px; font-weight: 400; margin: 6px 0 8px; color: var(--ink);">Explore the live experience.</h2>
+        <p style="font-size: 14px; color: var(--graphite); margin: 0; max-width: 520px;">
+          Experience the spatial portfolio website with interactive photography grids and editorial project views.
+        </p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a class="button on-dark" href="https://aero-demo-rho.vercel.app/" target="_blank" rel="noopener noreferrer">
+          Launch Live Website <span aria-hidden="true">↗</span>
+        </a>
+        <a class="button secondary" href="/morrow-cafe/">
+          Next Project: Morrow Café <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

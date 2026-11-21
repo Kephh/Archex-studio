@@ -1,62 +1,122 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EditorialCompanion from '../components/EditorialCompanion.astro';
+import { projects } from '../data/projects';
 ---
 
 <BaseLayout
-  title="Selected Work — Archex Studio"
-  description="Featured brand identity and digital interface design work by Archex Studio."
+  title="Selected Projects & Case Studies — Archex Studio"
+  description="Curated brand identities, editorial web portfolios, digital menus, and interface design systems by Archex Studio."
   path="/work/"
 >
   <div class="shell">
     <header class="page-intro">
-      <h1>Selected Work.</h1>
+      <div class="page-intro-copy">
+        <div class="eyebrow" style="color: var(--signal); margin-bottom: 8px;">ARCHIVE // SELECTED PROJECTS</div>
+        <h1 style="font-family: var(--serif); font-size: clamp(38px, 5.5vw, 72px); font-weight: 400; line-height: 1.06; margin: 0 0 16px;">
+          Selected Work<span style="color: var(--signal);">.</span>
+        </h1>
+        <p style="font-size: clamp(16px, 2vw, 19px); color: var(--graphite); line-height: 1.5; margin: 0; max-width: 580px;">
+          Brand identities, spatial editorial experiences, digital menus, and design systems crafted with intention across architecture, hospitality, technology, and artisan retail.
+        </p>
+      </div>
       <EditorialCompanion variant="work" />
     </header>
+
     <section class="section reveal">
+      <!-- 01. In-House Featured Flagship: Archex Craft -->
       <div class="archive-grid">
         <div class="archive-lead">
           <div class="archive-lead-content">
-            <div class="eyebrow">01 / FEATURED CASE STUDY</div><h2>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+              <span class="eyebrow" style="color: var(--signal); margin: 0;">01 / FEATURED CASE STUDY</span>
+              <span class="badge in-house">IN-HOUSE</span>
+            </div>
+            <h2>
               Archex<br />Craft.
-            </h2><p>
+            </h2>
+            <p>
               Archex Craft is our engineering practice. We developed its complete visual identity, typography system, component specifications, and responsive design tokens.
-            </p><a class="button on-dark" href="/archex-craft/"
-              >View case study <span aria-hidden="true">↗</span></a
-            >
+            </p>
+            <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+              <a class="button on-dark" href="/archex-craft/">
+                View case study <span aria-hidden="true">→</span>
+              </a>
+              <a class="button secondary" href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer">
+                Visit live website <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="archive-side">
-          <div><span>Discipline</span><strong>Brand Identity &amp; UI/UX</strong></div><div>
-            <span>Deliverables</span><strong>Design System &amp; Tokens</strong>
-          </div><div>
-            <span>Production</span><strong
-              ><a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer"
-                >Visit live website ↗</a
-              ></strong
-            >
+          <div>
+            <span>Classification</span>
+            <strong>In-House Practice</strong>
+          </div>
+          <div>
+            <span>Discipline</span>
+            <strong>Brand Identity &amp; UI/UX</strong>
+          </div>
+          <div>
+            <span>Deliverables</span>
+            <strong>Design System &amp; Tokens</strong>
+          </div>
+          <div>
+            <span>Production</span>
+            <strong>
+              <a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer">
+                craft.archexweb.in ↗
+              </a>
+            </strong>
           </div>
         </div>
       </div>
 
-      <!-- Selected Commissions Showcase -->
+      <!-- Selected Projects Grid -->
       <div class="client-works-section">
         <div class="client-works-header">
-          <div class="eyebrow" style="color: var(--signal);">SELECTED COMMISSIONS</div>
-          <h2 class="client-works-title">
-            Selected projects.
-          </h2>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+            <div>
+              <span class="eyebrow" style="color: var(--signal);">PORTFOLIO INDEX</span>
+              <h2 class="client-works-title" style="margin: 4px 0 0;">
+                Selected Projects.
+              </h2>
+            </div>
+            <div class="classification-legend" style="display: flex; gap: 16px; font-size: 11px; font-family: var(--sans);">
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <span class="badge-dot concept"></span> CONCEPT — Self-initiated / pitch exploration
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <span class="badge-dot in-house"></span> IN-HOUSE — Archex ecosystem
+              </span>
+            </div>
+          </div>
           <p class="client-works-lead">
-            Brand identities, spatial editorial experiences, digital menus, and storefronts crafted across architecture, hospitality, and artisan retail.
+            Every project represents a distinct visual atmosphere. Explore the design decisions and interactive prototypes below.
           </p>
         </div>
 
         <div class="client-projects-grid">
-          <!-- 01: AÉRA -->
+          {/* 01: AÉRA */}
           <article class="client-project-card">
+            <!-- Visual Mockup Banner -->
+            <div class="project-card-visual visual-aera" aria-hidden="true">
+              <div class="mini-browser-bar">
+                <span></span><span></span><span></span>
+                <small>aera-studio.com</small>
+              </div>
+              <div class="mini-stage">
+                <span class="mock-mark">AÉRA</span>
+                <span class="mock-sub">Spatial Architecture</span>
+                <div class="mock-grid-lines">
+                  <i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+
             <div class="card-meta-top">
               <span class="project-num">01 / ARCHITECTURE</span>
-              <span class="project-sector">Spatial Design</span>
+              <span class="badge concept">CONCEPT</span>
             </div>
             <div class="card-main">
               <h3 class="project-title">AÉRA</h3>
@@ -64,31 +124,48 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
               <p class="project-summary">
                 Editorial, image-forward web portfolio crafted for an interior architecture studio. Designed with restrained serif typography, warm limestone tones, asymmetrical photographic grids, and seamless crossfade transitions to showcase residential and commercial environments.
               </p>
-              <div class="project-disciplines">
-                <span>Brand Strategy</span>
-                <span>Editorial Design</span>
-                <span>UI/UX Design</span>
-                <span>Art Direction</span>
+              <div class="project-deliverables-list">
+                <span>Visual Identity</span>
+                <span>Editorial 12-Col Grid</span>
+                <span>Portfolio UI/UX</span>
+                <span>Spatial Monogram</span>
               </div>
             </div>
             <div class="card-footer">
+              <a href="/aera/" class="button on-dark project-case-link">
+                <span>View case study</span>
+                <span aria-hidden="true">→</span>
+              </a>
               <a
                 href="https://aero-demo-rho.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button on-dark project-ext-link"
+                class="button secondary project-ext-link"
               >
-                <span>Visit live website</span>
+                <span>Live website</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <!-- 02: Morrow Café -->
+          {/* 02: Morrow Café */}
           <article class="client-project-card">
+            <!-- Visual Mockup Banner -->
+            <div class="project-card-visual visual-morrow" aria-hidden="true">
+              <div class="mini-browser-bar">
+                <span></span><span></span><span></span>
+                <small>morrowcafe.com</small>
+              </div>
+              <div class="mini-stage">
+                <span class="mock-mark">MORROW</span>
+                <span class="mock-sub">Specialty Coffee &amp; Kitchen</span>
+                <div class="mock-telemetry-chip">07:30 — 16:30 OPEN</div>
+              </div>
+            </div>
+
             <div class="card-meta-top">
               <span class="project-num">02 / HOSPITALITY</span>
-              <span class="project-sector">Specialty Coffee &amp; Kitchen</span>
+              <span class="badge concept">CONCEPT</span>
             </div>
             <div class="card-main">
               <h3 class="project-title">Morrow Café</h3>
@@ -96,31 +173,48 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
               <p class="project-summary">
                 A warm, tactile visual identity and web experience centered around unhurried mornings and thoughtful coffee. Featuring dynamic operating telemetry, custom culinary menu hierarchies, and atmospheric lifestyle art direction.
               </p>
-              <div class="project-disciplines">
+              <div class="project-deliverables-list">
                 <span>Visual Identity</span>
                 <span>Digital Menu UI</span>
-                <span>Lifestyle Art Direction</span>
-                <span>Packaging</span>
+                <span>Roast Telemetry</span>
+                <span>Packaging Direction</span>
               </div>
             </div>
             <div class="card-footer">
+              <a href="/morrow-cafe/" class="button on-dark project-case-link">
+                <span>View case study</span>
+                <span aria-hidden="true">→</span>
+              </a>
               <a
                 href="https://morrow-cafe-iota.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button on-dark project-ext-link"
+                class="button secondary project-ext-link"
               >
-                <span>Visit live website</span>
+                <span>Live website</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <!-- 03: Baked & Crust -->
+          {/* 03: Baked & Crust */}
           <article class="client-project-card">
+            <!-- Visual Mockup Banner -->
+            <div class="project-card-visual visual-baked" aria-hidden="true">
+              <div class="mini-browser-bar">
+                <span></span><span></span><span></span>
+                <small>bakedandcrust.com</small>
+              </div>
+              <div class="mini-stage">
+                <span class="mock-mark">BAKED &amp; CRUST</span>
+                <span class="mock-sub">Celebration Cakes · Kolkata</span>
+                <div class="mock-tag-chip">CUSTOM CAKE BUILDER</div>
+              </div>
+            </div>
+
             <div class="card-meta-top">
               <span class="project-num">03 / ARTISAN FOOD</span>
-              <span class="project-sector">Bakery &amp; Patisserie</span>
+              <span class="badge concept">CONCEPT</span>
             </div>
             <div class="card-main">
               <h3 class="project-title">Baked &amp; Crust</h3>
@@ -128,21 +222,25 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
               <p class="project-summary">
                 Brand identity and digital ordering storefront for a modern artisan bakery in Kolkata. Showcasing handcrafted sourdough, gourmet viennoiserie, custom celebration cake consultations, and dessert gifting curation.
               </p>
-              <div class="project-disciplines">
-                <span>Visual Identity</span>
+              <div class="project-deliverables-list">
+                <span>Brand Identity</span>
                 <span>Storefront UI/UX</span>
-                <span>Digital Menu</span>
+                <span>Cake Builder Flow</span>
                 <span>Gifting Experience</span>
               </div>
             </div>
             <div class="card-footer">
+              <a href="/baked-and-crust/" class="button on-dark project-case-link">
+                <span>View case study</span>
+                <span aria-hidden="true">→</span>
+              </a>
               <a
                 href="https://baked-n-crust.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="button on-dark project-ext-link"
+                class="button secondary project-ext-link"
               >
-                <span>Visit live website</span>
+                <span>Live website</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -150,10 +248,11 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
         </div>
       </div>
 
-      <div class="archive-commission" style="margin-top: 56px; padding: 36px; border: 1px dashed var(--line); border-radius: 8px; background: var(--paper-soft); display: flex; flex-direction: column; gap: 16px;">
+      <!-- Upcoming Commissions & Collaboration Invitation -->
+      <div class="archive-commission" style="margin-top: 56px; padding: clamp(24px, 4vw, 40px); border: 1px dashed var(--line); border-radius: 8px; background: var(--paper-soft); display: flex; flex-direction: column; gap: 16px;">
         <div class="eyebrow" style="color: var(--signal);">UPCOMING COMMISSIONS</div>
         <h3 style="font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); font-weight: 400; margin: 0; color: var(--ink);">Collaborate with Archex Studio.</h3>
-        <p style="margin: 0; max-width: 600px; color: var(--graphite); line-height: 1.6;">
+        <p style="margin: 0; max-width: 620px; color: var(--graphite); line-height: 1.6;">
           We work selectively with founders, modern businesses, and engineering teams who care about craft, clarity, and lasting digital design. Share your project requirements with us to explore collaboration.
         </p>
         <div style="margin-top: 8px;">
@@ -162,136 +261,251 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
       </div>
     </section>
   </div>
+
   <section class="cta-band">
     <div class="cta-inner">
-      <h2>Ready to shape your brand or interface?</h2><a
-        class="button on-dark"
-        href="/contact/">Discuss a project <span aria-hidden="true">→</span></a
-      >
+      <h2>Ready to shape your brand or interface?</h2>
+      <a class="button on-dark" href="/contact/">Discuss a project <span aria-hidden="true">→</span></a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .badge {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .badge.concept {
+    background: rgba(156, 62, 47, 0.1);
+    color: var(--signal);
+    border: 1px solid rgba(156, 62, 47, 0.25);
+  }
+  .badge.in-house {
+    background: rgba(20, 20, 20, 0.08);
+    color: var(--ink);
+    border: 1px solid rgba(20, 20, 20, 0.2);
+  }
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .badge-dot.concept {
+    background: var(--signal);
+  }
+  .badge-dot.in-house {
+    background: var(--ink);
+  }
+
   .client-works-section {
     margin-top: 64px;
     padding-top: 48px;
     border-top: 1px solid var(--line);
   }
-
-  .client-works-header {
-    margin-bottom: 32px;
-  }
-
   .client-works-title {
     font-family: var(--serif);
-    font-size: clamp(28px, 4vw, 44px);
+    font-size: clamp(28px, 3.6vw, 44px);
     font-weight: 400;
     color: var(--ink);
-    margin: 8px 0 0;
   }
-
   .client-works-lead {
-    color: var(--graphite);
-    max-width: 680px;
     font-size: 16px;
+    color: var(--graphite);
+    max-width: 640px;
     line-height: 1.6;
-    margin: 12px 0 0;
+    margin: 12px 0 36px;
   }
 
   .client-projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 32px;
   }
-
-  @media (max-width: 960px) {
-    .client-projects-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+  .client-projects-grid > * {
+    min-width: 0;
   }
 
   .client-project-card {
     background: var(--paper-soft);
     border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: clamp(24px, 3vw, 32px);
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 24px;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
+  }
+  .client-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+    border-color: #c9c4b9;
   }
 
-  .client-project-card:hover {
-    border-color: var(--graphite);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.05);
+  /* Visual Preview Banners */
+  .project-card-visual {
+    height: 180px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .mini-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    opacity: 0.7;
+    font-family: var(--sans);
+  }
+  .mini-browser-bar span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .mini-browser-bar small {
+    margin-left: 8px;
+    letter-spacing: 0.04em;
+  }
+  .mini-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .mock-mark {
+    font-family: var(--serif);
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .mock-sub {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 3px;
+    font-family: var(--sans);
+  }
+
+  .visual-aera {
+    background: #EFECE6;
+    color: #161616;
+  }
+  .visual-aera .mock-grid-lines {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .visual-aera .mock-grid-lines i {
+    flex: 1;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+  }
+
+  .visual-morrow {
+    background: #F7F4EE;
+    color: #2A1F1D;
+  }
+  .mock-telemetry-chip {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 6px;
+    border-radius: 2px;
+    background: rgba(198, 125, 90, 0.15);
+    color: #8A4F32;
+    margin-top: 8px;
+    align-self: flex-start;
+    font-weight: 600;
+  }
+
+  .visual-baked {
+    background: #FAF7F2;
+    color: #1F1916;
+  }
+  .mock-tag-chip {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 6px;
+    border-radius: 2px;
+    background: rgba(212, 155, 85, 0.18);
+    color: #8C5B23;
+    margin-top: 8px;
+    align-self: flex-start;
+    font-weight: 600;
   }
 
   .card-meta-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: var(--sans);
+    padding: 16px 20px 0;
     font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--graphite);
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 6px;
   }
-
   .project-num {
     font-weight: 600;
-    color: var(--signal);
+    letter-spacing: 0.08em;
   }
-
+  .card-main {
+    padding: 12px 20px 20px;
+    flex-grow: 1;
+  }
   .project-title {
     font-family: var(--serif);
-    font-size: clamp(28px, 3vw, 36px);
+    font-size: 26px;
     font-weight: 400;
-    line-height: 1.1;
-    margin: 12px 0 6px;
+    margin: 0 0 4px;
     color: var(--ink);
   }
-
   .project-tagline {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--ink-soft);
-    margin: 0 0 14px;
+    margin: 0 0 12px;
   }
-
   .project-summary {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--graphite);
-    line-height: 1.6;
-    margin: 0 0 20px;
+    line-height: 1.55;
+    margin: 0 0 18px;
   }
-
-  .project-disciplines {
+  .project-deliverables-list {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
   }
-
-  .project-disciplines span {
+  .project-deliverables-list span {
     font-size: 11px;
-    font-family: var(--sans);
     padding: 3px 8px;
-    border-radius: 4px;
-    background: rgba(20, 20, 20, 0.05);
-    color: var(--ink-soft);
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    color: var(--ink);
   }
 
+  .card-footer {
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .project-case-link {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
   .project-ext-link {
-    width: 100%;
-    justify-content: center;
-    font-size: 13px;
-    text-decoration: none;
+    font-size: 12px;
+    padding: 8px 14px;
   }
 </style>

@@ -6,6 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Archex Craft Case Study — Archex Studio"
   description="How Archex Studio created the brand identity, typography hierarchy, and digital interface design system for Archex Craft."
   path="/archex-craft/"
+  noindex={true}
 >
   <div class="shell">
     <header class="page-intro">
@@ -46,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <!-- Narrative Section 01: The Challenge -->
     <section class="section reveal" style="padding: 48px 0; border-bottom: 1px solid var(--line);">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; align-items: start;">
         <div>
           <span class="eyebrow">01 / THE CHALLENGE</span>
           <h2 style="font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; margin: 12px 0 0; color: var(--ink);">
@@ -116,14 +117,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             target="_blank"
             rel="noopener noreferrer"
           >
-            Visit Live Archex Craft Website ↗
+            Visit the live website ↗
           </a>
           <a
             class="button secondary"
             style="border-color: #4c4944; color: #f2efe8;"
             href="/work/"
           >
-            ← Return to Selected Work
+            Return to Work
           </a>
         </div>
       </div>

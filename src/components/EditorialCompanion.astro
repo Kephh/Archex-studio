@@ -17,7 +17,7 @@ const { variant } = Astro.props;
         {/* Architectural outer boundary */}
         <div class="blueprint-frame">
           <div class="frame-bar top-bar">
-            <span class="tech-tag">ARCHIVE // 04 SELECTED COMMISSIONS</span>
+            <span class="tech-tag">ARCHIVE // 04 SELECTED PROJECTS</span>
             <span class="tech-coord">SERIES: 01—04 // ACTIVE</span>
           </div>
 
@@ -419,29 +419,26 @@ const { variant } = Astro.props;
         role="img"
         aria-label="An Idea Taking Form — Contact visual composition"
       >
-        <div class="inquiry-frame">
+        <div class="inquiry-frame" style="max-width: 100%; overflow: hidden;">
           <div class="inquiry-header">
-            <span class="inquiry-tag">INITIATION // LATENT STATE</span>
-            <span class="inquiry-coord">COORD: 00—BEGIN</span>
+            <span class="inquiry-tag">STUDIO DESK</span>
+            <span class="inquiry-coord">DIRECT ENQUIRY</span>
           </div>
 
           {/* Drafting canvas with layered architectural planes */}
-          <div class="drafting-canvas" data-drafting-canvas>
+          <div class="drafting-canvas" data-drafting-canvas style="max-width: 100%; overflow: hidden;">
             {/* Blueprint background coordinate underlay */}
             <div class="blueprint-underlay" aria-hidden="true">
               <div class="grid-cross c-top-left">+</div>
               <div class="grid-cross c-top-right">+</div>
               <div class="grid-cross c-bottom-left">+</div>
               <div class="grid-cross c-bottom-right">+</div>
-              <div class="dimension-line-y">
-                <span>Δy = 380</span>
-              </div>
             </div>
 
             {/* Floating Translucent Drafting Sheet */}
-            <div class="drafting-sheet" data-draft-sheet>
+            <div class="drafting-sheet" data-draft-sheet style="max-width: 100%; overflow: hidden;">
               <div class="sheet-head">
-                <span class="sheet-title">A NOTE TO BEGIN</span>
+                <span class="sheet-title">STUDIO BRIEF</span>
                 <span class="sheet-num">01 / DIRECT</span>
               </div>
 
@@ -450,7 +447,7 @@ const { variant } = Astro.props;
                 <div class="inquiry-evolution" aria-hidden="true">
                   <div class="origin-side">
                     <span class="large-query">?</span>
-                    <span class="stage-tag">THE QUESTION</span>
+                    <span class="stage-tag">QUESTION</span>
                   </div>
 
                   <div class="resolution-path">
@@ -467,43 +464,33 @@ const { variant } = Astro.props;
                       <circle class="ray-dot dot-mid" cx="90" cy="25" r="3" />
                       <circle class="ray-dot dot-end" cx="150" cy="40" r="3" />
                     </svg>
-                    <span class="ray-label">RESOLUTION VECTOR</span>
                   </div>
 
                   <div class="resolved-side">
                     <div class="target-frame">
                       <span class="crystallized-mark">A</span>
                     </div>
-                    <span class="stage-tag">THE FORM</span>
+                    <span class="stage-tag">FORM</span>
                   </div>
                 </div>
 
                 <div class="sheet-statement">
-                  <blockquote class="statement-quote">
-                    “Bring the question before the answer.”
+                  <blockquote class="statement-quote" style="margin: 0 0 4px; font-size: 13px;">
+                    “Tell us what you're looking to create.”
                   </blockquote>
-                  <span class="statement-context">
-                    Honest conversations on identity, digital experience and
-                    creative direction.
+                  <span class="statement-context" style="font-size: 12px; color: var(--graphite);">
+                    Direct designer review within 1 business day.
                   </span>
                 </div>
-              </div>
-
-              <div class="sheet-foot">
-                <div class="protocol-chip">
-                  <span class="chip-dot" />
-                  <span class="chip-text">DIRECT INQUIRY OPEN</span>
-                </div>
-                <span class="sheet-id">SPEC // CON-04</span>
               </div>
             </div>
           </div>
 
           <div class="inquiry-footer">
             <span class="inquiry-status">
-              STATUS: HONEST PRE-ENGAGEMENT DIALOGUE
+              STATUS: OPEN FOR DESIGN CONVERSATIONS
             </span>
-            <span class="inquiry-author">ARCHEX STUDIO</span>
+            <span class="inquiry-author">ARCHEX</span>
           </div>
 
           {/* Crop marks */}
@@ -1959,6 +1946,9 @@ const { variant } = Astro.props;
   @media (max-width: 800px) {
     .companion-wrapper {
       width: min(100%, 32rem);
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
       justify-self: center;
       margin: 10px auto 0;
     }
@@ -1966,9 +1956,7 @@ const { variant } = Astro.props;
     .engine-frame,
     .method-frame,
     .drafting-sheet {
-      box-shadow:
-        8px 8px 0 rgba(156, 62, 47, 0.8),
-        0 14px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
     }
     .folio-content {
       grid-template-columns: 1fr;
@@ -2005,15 +1993,24 @@ const { variant } = Astro.props;
   @media (max-width: 480px) {
     .companion-wrapper {
       width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .blueprint-frame,
     .engine-frame,
     .method-frame,
     .inquiry-frame {
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow: hidden;
       padding: 12px 10px;
     }
     .master-folio,
     .drafting-sheet {
+      box-sizing: border-box;
+      max-width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       padding: 14px 12px;
     }
     .folio-name {

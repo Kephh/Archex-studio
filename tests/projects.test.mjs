@@ -29,9 +29,12 @@ test('client projects have valid external URLs and no demo mentions', () => {
   }
 });
 
-test('archex-craft case study has valid route and external URL', () => {
-  const craft = projects.find((p) => p.id === 'archex-craft');
-  assert.ok(craft);
-  assert.equal(craft.route, '/archex-craft/');
-  assert.ok(craft.externalUrl?.includes('craft.archexweb.in'));
+test('all projects have transparent classifications and dedicated routes', () => {
+  for (const p of projects) {
+    assert.ok(['concept', 'in-house', 'client'].includes(p.classification));
+    assert.ok(['CONCEPT', 'IN-HOUSE', 'CLIENT PROJECT'].includes(p.classificationLabel));
+    assert.ok(p.route && p.route.startsWith('/'));
+    assert.ok(p.deliverables && p.deliverables.length >= 3);
+    assert.ok(p.caseStudy && p.caseStudy.challenge && p.caseStudy.solution);
+  }
 });

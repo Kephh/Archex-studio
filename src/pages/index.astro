@@ -14,10 +14,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="hero-label meta">
           <span>Brand Identity &amp; UI/UX Design</span><span>ARCHEX / STUDIO</span>
         </div>
-        <h1>A clear brand.<br /><em>A better digital</em> experience.</h1>
+        <h1>A clear brand.<br class="hero-br" /><em>A better digital</em> experience.</h1>
+        <p class="hero-subtext">Brand identity, creative direction and digital experiences.</p>
         <div class="hero-actions">
-          <a class="button on-dark" href="/contact/">Discuss a design project</a>
-          <a class="button secondary" href="/work/">View selected work <span aria-hidden="true">→</span></a>
+          <a class="button on-dark" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+          <a class="button secondary" href="/contact/">Discuss a project <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div
@@ -62,10 +63,301 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  {/* 02. Two Design Disciplines */}
+  {/* 02. Selected Work / Large Project Showcase (Moved directly beneath hero) */}
+  <section id="work" class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow" style="color: var(--signal);">SELECTED PROJECTS</div>
+      <h2 class="section-title">Selected work.<br />Selected thinking.</h2>
+      <div class="section-intro">
+        <p>
+          Brand identities, spatial editorial experiences, digital menus, and storefronts crafted across architecture, hospitality, technology, and artisan retail.
+        </p>
+      </div>
+    </div>
+
+    <div class="home-showcase-grid">
+      <!-- 01: AÉRA -->
+      <article class="showcase-card">
+        <div class="showcase-visual visual-aera" aria-hidden="true">
+          <div class="mock-browser-bar">
+            <span></span><span></span><span></span>
+            <small>aera-studio.com</small>
+          </div>
+          <div class="mock-art-canvas">
+            <div class="aera-watermark">A É R A</div>
+            <div class="aera-arch-frame">
+              <span class="arch-tag">01 / ARCHITECTURE</span>
+              <span class="arch-title">Limestone Residence</span>
+              <div class="arch-bars">
+                <i></i><i></i><i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-meta">
+            <span class="showcase-num">01 / ARCHITECTURE</span>
+            <span class="badge concept">CONCEPT</span>
+          </div>
+          <h3 class="showcase-title">AÉRA</h3>
+          <p class="showcase-subtitle">Studio of Interior Architecture</p>
+          <p class="showcase-desc">
+            Editorial, image-forward web portfolio crafted for an interior architecture studio with restrained Playfair typography, mineral limestone tones, and spatial storytelling.
+          </p>
+          <div class="showcase-tags">
+            <span>Brand Strategy</span>
+            <span>Editorial Grid</span>
+            <span>Spatial Monogram</span>
+            <span>Portfolio UI</span>
+          </div>
+          <div class="showcase-actions">
+            <a class="button on-dark" href="/aera/">View Case Study <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://aero-demo-rho.vercel.app/" target="_blank" rel="noopener noreferrer">
+              Live website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02: Morrow Café -->
+      <article class="showcase-card">
+        <div class="showcase-visual visual-morrow" aria-hidden="true">
+          <div class="mock-browser-bar">
+            <span></span><span></span><span></span>
+            <small>morrowcafe.com</small>
+          </div>
+          <div class="mock-art-canvas">
+            <div class="morrow-stamp">MORROW</div>
+            <div class="morrow-menu-card">
+              <span class="roast-chip">07:30 — 16:30 OPEN</span>
+              <span class="coffee-name">Ethiopia Washed Filter</span>
+              <small class="coffee-notes">Jasmine · Bergamot · Honeycomb</small>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-meta">
+            <span class="showcase-num">02 / HOSPITALITY</span>
+            <span class="badge concept">CONCEPT</span>
+          </div>
+          <h3 class="showcase-title">Morrow Café</h3>
+          <p class="showcase-subtitle">Coffee, Kitchen &amp; Slow Moments</p>
+          <p class="showcase-desc">
+            Warm visual identity and digital presence for a specialty coffee house and seasonal kitchen with custom menu storytelling and live operating telemetry.
+          </p>
+          <div class="showcase-tags">
+            <span>Visual Identity</span>
+            <span>Digital Menu UI</span>
+            <span>Operating Telemetry</span>
+            <span>Packaging</span>
+          </div>
+          <div class="showcase-actions">
+            <a class="button on-dark" href="/morrow-cafe/">View Case Study <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://morrow-cafe-iota.vercel.app/" target="_blank" rel="noopener noreferrer">
+              Live website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03: Baked & Crust -->
+      <article class="showcase-card">
+        <div class="showcase-visual visual-baked" aria-hidden="true">
+          <div class="mock-browser-bar">
+            <span></span><span></span><span></span>
+            <small>bakedandcrust.com</small>
+          </div>
+          <div class="mock-art-canvas">
+            <div class="baked-logo">BAKED &amp; CRUST</div>
+            <div class="baked-cake-card">
+              <span class="cake-badge">CUSTOM CAKE BUILDER</span>
+              <span class="cake-title">Belgian Dark Truffle</span>
+              <small class="cake-tier">2-Tier celebration cake</small>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-meta">
+            <span class="showcase-num">03 / ARTISAN FOOD</span>
+            <span class="badge concept">CONCEPT</span>
+          </div>
+          <h3 class="showcase-title">Baked &amp; Crust</h3>
+          <p class="showcase-subtitle">Artisan Bakery &amp; Custom Cakes in Kolkata</p>
+          <p class="showcase-desc">
+            Visual identity, custom confectionary showcase, and storefront digital ordering experience for a modern artisan bakery crafting celebration cakes and handcrafted bakes in Kolkata.
+          </p>
+          <div class="showcase-tags">
+            <span>Brand Identity</span>
+            <span>Storefront UI/UX</span>
+            <span>Custom Cake Builder</span>
+            <span>Gifting Direction</span>
+          </div>
+          <div class="showcase-actions">
+            <a class="button on-dark" href="/baked-and-crust/">View Case Study <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://baked-n-crust.vercel.app/" target="_blank" rel="noopener noreferrer">
+              Live website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04: Archex Craft (In-House Featured Flagship) -->
+      <article class="showcase-card showcase-craft">
+        <div class="showcase-visual visual-craft" aria-hidden="true">
+          <div class="mock-browser-bar dark">
+            <span></span><span></span><span></span>
+            <small>craft.archexweb.in</small>
+          </div>
+          <div class="mock-art-canvas">
+            <div class="craft-terminal">
+              <span class="term-prompt">$ archex-tokens build --platform=web</span>
+              <span class="term-status">✓ 124 design tokens compiled to CSS</span>
+              <div class="term-tokens">
+                <span>--font-serif: DM Serif</span>
+                <span>--space-unit: 8px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <div class="showcase-meta">
+            <span class="showcase-num">04 / TECHNOLOGY PRACTICE</span>
+            <span class="badge in-house">IN-HOUSE</span>
+          </div>
+          <h3 class="showcase-title">Brand &amp; Interface System for Archex Craft</h3>
+          <p class="showcase-subtitle">Archex Craft · In-House Practice</p>
+          <p class="showcase-desc">
+            Complete brand identity, typography system, component specifications, and responsive design tokens engineered for production without translation loss.
+          </p>
+          <div class="showcase-tags">
+            <span>Practice Brand System</span>
+            <span>Design Tokens</span>
+            <span>Interface Specs</span>
+            <span>Component Library</span>
+          </div>
+          <div class="showcase-actions">
+            <a class="button on-dark" href="/archex-craft/">View Case Study <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer">
+              Live website <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="showcase-footer-link">
+      <a class="inline-link" href="/work/">
+        Explore all selected works in the portfolio archive <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  {/* 03. The Signature Experience: From Identity into Interface */}
+  <section class="section section-rule shell reveal">
+    <div class="section-header">
+      <div class="eyebrow" style="color: var(--signal);">THE SIGNATURE EXPERIENCE</div>
+      <h2 class="section-title">From identity<br />into interface.</h2>
+      <div class="section-intro">
+        <p>
+          Watch how character transforms into structure and living digital use across three coherent states.
+        </p>
+      </div>
+    </div>
+
+    <div class="identity-morph-stage" data-morph-stage data-state="0">
+      <!-- 3 State Selector Tabs -->
+      <div class="morph-tabs" role="group" aria-label="Identity transformation states">
+        <button type="button" class="morph-tab is-active" data-morph-tab="0" aria-pressed="true">
+          <span class="tab-step">01</span>
+          <span class="tab-label">Identity</span>
+        </button>
+        <button type="button" class="morph-tab" data-morph-tab="1" aria-pressed="false">
+          <span class="tab-step">02</span>
+          <span class="tab-label">Interface</span>
+        </button>
+        <button type="button" class="morph-tab" data-morph-tab="2" aria-pressed="false">
+          <span class="tab-step">03</span>
+          <span class="tab-label">Experience</span>
+        </button>
+      </div>
+
+      <!-- Live Transformative Specimen Frame -->
+      <div class="morph-frame" data-morph-frame>
+        <div class="morph-frame-head">
+          <span class="morph-status-label" data-morph-label>PHASE 01 // CHARACTER, TYPOGRAPHY &amp; COLOUR</span>
+          <span class="morph-step-counter" data-morph-counter>01 / 03</span>
+        </div>
+
+        <div class="morph-content-area">
+          <!-- State 1: Identity Specimen -->
+          <div class="morph-panel panel-identity" data-morph-panel="0">
+            <div class="identity-presentation">
+              <div class="identity-hero-mark">A</div>
+              <div class="identity-specs">
+                <span class="spec-brand">Archex Studio</span>
+                <span class="spec-detail">DM Serif Display + Instrument Sans</span>
+                <div class="spec-palette">
+                  <span class="swatch swatch-paper" title="Paper #F2EFE8"></span>
+                  <span class="swatch swatch-ink" title="Ink #141414"></span>
+                  <span class="swatch swatch-signal" title="Signal #9C3E2F"></span>
+                </div>
+              </div>
+            </div>
+            <p class="morph-copy">
+              A distinctive visual language shaped by clear typography, intentional colour, and a memorable point of view.
+            </p>
+          </div>
+
+          <!-- State 2: Interface Specimen -->
+          <div class="morph-panel panel-interface" data-morph-panel="1">
+            <div class="interface-presentation">
+              <div class="mock-nav-row">
+                <span class="brand-monogram">ARCHEX</span>
+                <div class="mock-links"><i></i><i></i><i></i></div>
+              </div>
+              <div class="mock-grid-columns">
+                <div class="col-lead">
+                  <div class="bar-headline"></div>
+                  <div class="bar-subline"></div>
+                </div>
+                <div class="col-aside">
+                  <div class="box-spec"></div>
+                </div>
+              </div>
+            </div>
+            <p class="morph-copy">
+              Typography and visual marks assemble into a responsive 12-column layout grid, design tokens, and component hierarchy.
+            </p>
+          </div>
+
+          <!-- State 3: Living Experience Specimen -->
+          <div class="morph-panel panel-experience" data-morph-panel="2">
+            <div class="experience-presentation">
+              <div class="mock-active-viewport">
+                <div class="viewport-banner">
+                  <span class="live-pip"></span>
+                  <span>RESPONSIVE IN USE // 1440px ➔ 390px</span>
+                </div>
+                <div class="interactive-button-row">
+                  <span class="mock-btn-state active">Default</span>
+                  <span class="mock-btn-state hover">Hover Reveal</span>
+                  <span class="mock-btn-state focus">Focus Ring</span>
+                </div>
+              </div>
+            </div>
+            <p class="morph-copy">
+              Smooth fluid motion, intuitive touch interactions, and resilient accessibility tested across devices and screen sizes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 04. Capabilities: Two Sides of One System */}
   <section id="disciplines" class="section section-rule shell reveal">
     <div class="section-header">
-      <div class="eyebrow">OUR DISCIPLINES</div>
+      <div class="eyebrow" style="color: var(--signal);">OUR DISCIPLINES</div>
       <h2 class="section-title">Two sides<br />of one system.</h2>
       <div class="section-intro">
         <p>
@@ -77,23 +369,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="capability-grid">
       <article class="capability">
         <div class="eyebrow">01 / Brand Identity</div>
-        <h3>
-          Make it<br />recognisable.
-        </h3>
+        <h3>Make it<br />recognisable.</h3>
         <p>
           Shape a clear point of view and a visual system people can recognise
           across the places your brand appears.
         </p>
         <div class="capability-list">
-          <span>Brand strategy & positioning</span>
-          <span>Logo & visual marks</span>
-          <span>Typography & colour systems</span>
+          <span>Brand strategy &amp; positioning</span>
+          <span>Logo &amp; visual marks</span>
+          <span>Typography &amp; colour systems</span>
           <span>Brand guidelines</span>
         </div>
-        <a class="capability-link" href="/capabilities/"
-          >Explore Brand Identity <span aria-hidden="true">→</span></a
-        >
+        <a class="capability-link" href="/capabilities/">
+          Explore Brand Identity <span aria-hidden="true">→</span>
+        </a>
       </article>
+
       <article class="capability">
         <div class="eyebrow">02 / Digital Product Design</div>
         <h3>Make it<br />usable.</h3>
@@ -102,202 +393,70 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           clear, responsive, and intuitive everyday use.
         </p>
         <div class="capability-list">
-          <span>Website design & UI</span>
-          <span>Web & mobile application UX</span>
-          <span>User flows & wireframing</span>
-          <span>Design systems & tokens</span>
+          <span>Website design &amp; UI</span>
+          <span>Web &amp; mobile application UX</span>
+          <span>User flows &amp; wireframing</span>
+          <span>Design systems &amp; tokens</span>
         </div>
-        <a class="capability-link" href="/capabilities/"
-          >Explore Digital Experience <span aria-hidden="true">→</span></a
-        >
+        <a class="capability-link" href="/capabilities/">
+          Explore Digital Experience <span aria-hidden="true">→</span>
+        </a>
       </article>
     </div>
   </section>
 
-  {/* 03. What We Can Help With — Plain Language */}
+  {/* 05. Creative Methodology: Connected 4-Stage Method */}
   <section class="section section-rule shell reveal">
     <div class="section-header">
-      <div class="eyebrow">WHAT WE DO</div>
-      <h2 class="section-title">Services explained<br />in plain language.</h2>
+      <div class="eyebrow" style="color: var(--signal);">CREATIVE METHODOLOGY</div>
+      <h2 class="section-title">Recognise. Translate.<br />Test. Carry.</h2>
       <div class="section-intro">
         <p>
-          No agency buzzwords or design obscurity. Here is exactly what we
-          design and why each piece matters to your business.
+          A continuous four-stage methodology that ensures design clarity survives implementation in code.
         </p>
       </div>
     </div>
-    <div class="services-plain-grid">
-      <article class="service-plain-card">
-        <span class="service-num">01</span>
-        <h3>Brand strategy</h3>
-        <p>
-          Clarifying who you are, what you offer, and why it matters to your
-          audience before making visual decisions. We uncover your core
-          positioning so every design choice has purpose.
-        </p>
-      </article>
-      <article class="service-plain-card">
-        <span class="service-num">02</span>
-        <h3>Visual identity</h3>
-        <p>
-          Designing your logo, typography hierarchy, colour palette, and
-          visual rules to create a distinct, coherent market presence that builds
-          immediate trust and recognition.
-        </p>
-      </article>
-      <article class="service-plain-card">
-        <span class="service-num">03</span>
-        <h3>UI/UX design</h3>
-        <p>
-          Creating website and application layouts, user flows, and interaction
-          patterns focused on clarity, speed, and ease of use so customers find
-          what they need without friction.
-        </p>
-      </article>
-      <article class="service-plain-card">
-        <span class="service-num">04</span>
-        <h3>Design systems</h3>
-        <p>
-          Building organised UI component libraries, design token
-          specifications, and documentation so your digital products stay
-          consistent as your team and business scale.
-        </p>
-      </article>
-    </div>
-  </section>
 
-  {/* 04. Our Design Approach — 4 Principles */}
-  <section class="section section-rule shell reveal">
-    <div class="section-header">
-      <div class="eyebrow">PHILOSOPHY</div>
-      <h2 class="section-title">How we approach<br />every design.</h2>
-      <div class="section-intro">
-        <p>
-          Good design is not decorative flourish. It is clear thinking made
-          visible through rigorous, intentional principles.
-        </p>
+    <div class="method-timeline-grid">
+      <div class="method-card">
+        <span class="method-step-num">01</span>
+        <h4>Recognise</h4>
+        <p>Understand the essential character, audience context, and goals before touching pixels.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-step-num">02</span>
+        <h4>Translate</h4>
+        <p>Develop coherent typography, form, and colour rules into a unified design system.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-step-num">03</span>
+        <h4>Test</h4>
+        <p>Stress-test interactions across desktop, tablet, and mobile viewports for fluid usability.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-step-num">04</span>
+        <h4>Carry</h4>
+        <p>Package complete layout specifications and code tokens so the system lasts as you scale.</p>
       </div>
     </div>
-    <div class="principles-grid">
-      <div class="principle-card">
-        <span class="principle-num">01</span>
-        <h4>Understand before designing</h4>
-        <p>
-          We ground every aesthetic choice in your business goals, target
-          audience, and functional requirements before touching pixels.
-        </p>
-      </div>
-      <div class="principle-card">
-        <span class="principle-num">02</span>
-        <h4>Audience-first interaction</h4>
-        <p>
-          We design for the real person using the screen, ensuring every
-          interaction feels natural, immediate, and legible.
-        </p>
-      </div>
-      <div class="principle-card">
-        <span class="principle-num">03</span>
-        <h4>Clarity over complexity</h4>
-        <p>
-          We strip away unnecessary ornament, confusing terminology, and visual
-          friction to let your core value stand out.
-        </p>
-      </div>
-      <div class="principle-card">
-        <span class="principle-num">04</span>
-        <h4>Design for implementation</h4>
-        <p>
-          We design with engineering reality in mind, producing clean specs and
-          tokens ready for build in code without translation loss.
-        </p>
-      </div>
-    </div>
+
     <div class="section-footer-action">
-      <a class="inline-link" href="/studio/"
-        >Read our full studio methodology <span aria-hidden="true">→</span></a
-      >
+      <a class="inline-link" href="/studio/">
+        Read our full studio methodology and philosophy <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
-  {/* 05. The Design Process — 5 Steps */}
-  <section class="section section-rule shell reveal">
-    <div class="section-header">
-      <div class="eyebrow">WORKING METHOD</div>
-      <h2 class="section-title">
-        A clear, collaborative<br />design process.
-      </h2>
-      <div class="section-intro">
-        <p>
-          A structured five-step path from first conversation to final production
-          assets, with transparency at every milestone.
-        </p>
-      </div>
-    </div>
-    <div class="process-steps-list">
-      <div class="process-step-item">
-        <div class="process-step-num">Step 01</div>
-        <div class="process-step-content">
-          <h4>Understand</h4>
-          <p>
-            We learn about your business, target audience, competitors, and
-            goals to establish a clear project foundation.
-          </p>
-        </div>
-      </div>
-      <div class="process-step-item">
-        <div class="process-step-num">Step 02</div>
-        <div class="process-step-content">
-          <h4>Define</h4>
-          <p>
-            We outline project scope, user journeys, design requirements, and
-            technical constraints.
-          </p>
-        </div>
-      </div>
-      <div class="process-step-item">
-        <div class="process-step-num">Step 03</div>
-        <div class="process-step-content">
-          <h4>Design</h4>
-          <p>
-            We explore visual directions, wireframes, and interface layouts
-            through collaborative review cycles.
-          </p>
-        </div>
-      </div>
-      <div class="process-step-item">
-        <div class="process-step-num">Step 04</div>
-        <div class="process-step-content">
-          <h4>Refine</h4>
-          <p>
-            We polish typography, colours, interaction details, and edge cases
-            based on structured feedback.
-          </p>
-        </div>
-      </div>
-      <div class="process-step-item">
-        <div class="process-step-num">Step 05</div>
-        <div class="process-step-content">
-          <h4>Deliver</h4>
-          <p>
-            We package production-ready design files, tokens, guidelines, and
-            handoff documentation for your engineering team.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* 06. Micro-CTA Bridge to Craft */}
+  {/* 06. Archex Ecosystem: Studio & Craft Connection */}
   <section class="section section-rule shell reveal">
     <div class="craft-bridge-box">
       <div class="craft-bridge-content">
-        <div class="eyebrow">NEED MORE THAN DESIGN?</div>
-        <h3>Your design can become a working product.</h3>
-        <p>
-          Archex Studio focuses on how your brand and product look, feel, and
-          function for users. If you need your website or software engineered,
-          <strong>Archex Craft</strong> is our dedicated engineering practice that
-          turns these designs into fast, reliable production code.
+        <div class="eyebrow" style="color: var(--signal-bright);">ARCHEX ECOSYSTEM</div>
+        <h3 style="color: #FAF9F5; margin: 8px 0 12px; font-family: var(--serif); font-size: clamp(24px, 3.2vw, 36px); font-weight: 400;">
+          Designed by Studio. Engineered by Craft.
+        </h3>
+        <p style="color: #D3CEC4; line-height: 1.6; max-width: 620px; margin: 0;">
+          Archex Studio focuses on how your brand and product look, feel, and function. When you need production software built, <strong>Archex Craft</strong> is our dedicated engineering practice that turns these design specifications into fast, dependable code.
         </p>
       </div>
       <div class="craft-bridge-action">
@@ -307,132 +466,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           target="_blank"
           rel="noopener noreferrer"
         >
-          Meet Craft — Software & Engineering <span aria-hidden="true">↗</span>
+          Meet Craft — Software &amp; Engineering <span aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
   </section>
 
-  {/* 07. Featured Case Study / Studio Portfolio */}
-  <section class="section section-rule shell reveal">
-    <div class="section-header">
-      <div class="eyebrow">FEATURED CASE STUDY</div>
-      <h2 class="section-title">Brand &amp; Interface<br />System for Archex Craft.</h2>
-      <div class="section-intro">
-        <p>
-          Archex Craft is our engineering practice. We developed its complete visual identity, typography system, component specifications, and responsive design tokens.
-        </p>
-      </div>
-    </div>
-    <div class="evidence">
-      <div class="evidence-frame">
-        <div class="evidence-copy">
-          <div class="eyebrow">01 / FEATURED CASE STUDY</div>
-          <h3>Archex<br />Craft.</h3>
-          <p>Brand identity, design system &amp; interface specifications.</p>
-        </div>
-      </div>
-      <dl class="meta-list">
-        <div>
-          <dt>Case study</dt><dd>
-            <a href="/archex-craft/">View design system breakdown →</a>
-          </dd>
-        </div>
-        <div>
-          <dt>Deliverables</dt><dd>Brand identity, design tokens, component library</dd>
-        </div>
-        <div>
-          <dt>Engineered by</dt><dd>
-            <a href="https://craft.archexweb.in" target="_blank" rel="noopener noreferrer"
-              >Archex Craft in production ↗</a
-            >
-          </dd>
-        </div>
-      </dl>
-    </div>
-
-    <!-- Selected Works Row on Homepage -->
-    <div class="home-portfolio-preview" style="margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line);">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
-        <div>
-          <span class="eyebrow" style="color: var(--signal);">SELECTED COMMISSIONS</span>
-          <h3 style="font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); font-weight: 400; margin: 4px 0 0; color: var(--ink);">
-            Recent brand &amp; digital works.
-          </h3>
-        </div>
-        <a href="/work/" class="inline-link" style="font-size: 13px;">View all selected works →</a>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <!-- AÉRA -->
-        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
-              <span style="font-weight: 600; color: var(--signal);">01 / ARCHITECTURE</span>
-              <span>Spatial Design</span>
-            </div>
-            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">AÉRA</h4>
-            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Studio of Interior Architecture</p>
-            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
-              Editorial, image-forward web portfolio crafted for an interior architecture studio with restrained Playfair typography and spatial storytelling.
-            </p>
-          </div>
-          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
-            <a href="https://aero-demo-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
-              Visit live website ↗
-            </a>
-          </div>
-        </article>
-
-        <!-- Morrow Café -->
-        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
-              <span style="font-weight: 600; color: var(--signal);">02 / HOSPITALITY</span>
-              <span>Specialty Coffee</span>
-            </div>
-            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">Morrow Café</h4>
-            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Coffee, Kitchen &amp; Slow Moments</p>
-            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
-              Warm visual identity and digital presence for a specialty coffee house and seasonal kitchen with custom menu storytelling and operating telemetry.
-            </p>
-          </div>
-          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
-            <a href="https://morrow-cafe-iota.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
-              Visit live website ↗
-            </a>
-          </div>
-        </article>
-
-        <!-- Baked & Crust -->
-        <article style="background: var(--paper-soft); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--sans); color: var(--graphite); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 12px;">
-              <span style="font-weight: 600; color: var(--signal);">03 / ARTISAN FOOD</span>
-              <span>Bakery &amp; Patisserie</span>
-            </div>
-            <h4 style="font-family: var(--serif); font-size: 24px; font-weight: 400; margin: 0 0 6px; color: var(--ink);">Baked &amp; Crust</h4>
-            <p style="font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 0 0 10px;">Artisan Bakery &amp; Custom Cakes</p>
-            <p style="font-size: 13px; color: var(--graphite); line-height: 1.5; margin: 0;">
-              Visual identity and storefront digital ordering experience for an artisan bakery in Kolkata, featuring celebration cake consultations and dessert gifting.
-            </p>
-          </div>
-          <div style="padding-top: 12px; border-top: 1px solid var(--line);">
-            <a href="https://baked-n-crust.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-link" style="font-size: 12px; font-weight: 600; color: var(--signal);">
-              Visit live website ↗
-            </a>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <div style="margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap;">
-      <a class="button on-dark" href="/archex-craft/">Read Case Study <span aria-hidden="true">→</span></a>
-      <a class="button secondary" href="/work/">Explore Studio Portfolio <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
-  {/* 08. Studio FAQs */}
+  {/* 07. FAQs (Reduced to 3 high-impact questions) */}
   <section class="section section-rule shell reveal">
     <div class="section-header">
       <div class="eyebrow">FREQUENTLY ASKED QUESTIONS</div>
@@ -441,8 +481,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </h2>
       <div class="section-intro">
         <p>
-          Clear answers to understand how we collaborate, what we deliver, and
-          how we help your business succeed.
+          Clear answers on how we collaborate, what we deliver, and how we help your business succeed.
         </p>
       </div>
     </div>
@@ -471,28 +510,646 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           developer handoff documentation.
         </p>
       </div>
-      <div class="faq-item">
-        <h3>How does Studio collaborate with Archex Craft or external developers?</h3>
-        <p>
-          We design with engineering reality in mind. We provide explicit
-          component states, responsive breakpoints, layout grids, and token
-          values that frontend engineers can implement directly without guesswork.
-        </p>
-      </div>
     </div>
   </section>
 
-  {/* 09. Closing CTA Band */}
+  {/* 08. Closing CTA Band */}
   <section class="cta-band">
     <div class="cta-inner">
-      <h2>Have a brand or digital experience in mind?</h2>
+      <h2>Have something worth shaping?</h2>
       <p class="cta-subtext">
         Tell us what you're looking to create. We'll help you shape a clear
         identity and an intuitive product.
       </p>
-      <a class="button on-dark" href="/contact/"
-        >Discuss a project <span aria-hidden="true">→</span></a
-      >
+      <a class="button on-dark" href="/contact/">
+        Discuss a project <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Hero subtext */
+  .hero-subtext {
+    font-size: clamp(16px, 1.8vw, 19px);
+    color: var(--graphite);
+    max-width: 32rem;
+    margin: -12px 0 28px;
+    line-height: 1.5;
+  }
+
+  /* Badge Styles */
+  .badge {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .badge.concept {
+    background: rgba(156, 62, 47, 0.1);
+    color: var(--signal);
+    border: 1px solid rgba(156, 62, 47, 0.25);
+  }
+  .badge.in-house {
+    background: rgba(20, 20, 20, 0.08);
+    color: var(--ink);
+    border: 1px solid rgba(20, 20, 20, 0.2);
+  }
+
+  /* Home Project Showcase Cards */
+  .home-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 32px;
+    margin-top: 24px;
+  }
+  .home-showcase-grid > * {
+    min-width: 0;
+  }
+  .showcase-card {
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+  }
+  .showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  }
+
+  .showcase-visual {
+    height: 180px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .mock-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    opacity: 0.7;
+    font-family: var(--sans);
+  }
+  .mock-browser-bar span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .mock-browser-bar small {
+    margin-left: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .visual-aera {
+    background: #EFECE6;
+    color: #161616;
+  }
+  .aera-watermark {
+    font-family: var(--serif);
+    font-size: 26px;
+    letter-spacing: 0.06em;
+  }
+  .aera-arch-frame {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .arch-tag {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--signal);
+    font-weight: 600;
+  }
+  .arch-title {
+    font-size: 13px;
+    font-family: var(--serif);
+  }
+  .arch-bars {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .arch-bars i {
+    flex: 1;
+    height: 6px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 1px;
+  }
+
+  .visual-morrow {
+    background: #F7F4EE;
+    color: #2A1F1D;
+  }
+  .morrow-stamp {
+    font-family: var(--serif);
+    font-size: 24px;
+    letter-spacing: 0.04em;
+  }
+  .morrow-menu-card {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .roast-chip {
+    font-size: 9px;
+    font-weight: 600;
+    color: #8A4F32;
+    background: rgba(198,125,90,0.15);
+    padding: 2px 6px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+  .coffee-name {
+    font-family: var(--serif);
+    font-size: 13px;
+  }
+  .coffee-notes {
+    font-size: 10px;
+    color: #5A4742;
+  }
+
+  .visual-baked {
+    background: #FAF7F2;
+    color: #1F1916;
+  }
+  .baked-logo {
+    font-family: var(--serif);
+    font-size: 24px;
+  }
+  .baked-cake-card {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cake-badge {
+    font-size: 9px;
+    font-weight: 600;
+    color: #8C5B23;
+    background: rgba(212,155,85,0.18);
+    padding: 2px 6px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+  .cake-title {
+    font-family: var(--serif);
+    font-size: 13px;
+  }
+  .cake-tier {
+    font-size: 10px;
+    color: #5C4F48;
+  }
+
+  .visual-craft {
+    background: #141414;
+    color: #FAF9F5;
+  }
+  .mock-browser-bar.dark {
+    color: #FAF9F5;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 6px;
+  }
+  .craft-terminal {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .term-prompt {
+    color: #a8a49c;
+  }
+  .term-status {
+    color: #70b470;
+  }
+  .term-tokens {
+    color: #e27d60;
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .showcase-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .showcase-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--graphite);
+    margin-bottom: 10px;
+  }
+  .showcase-num {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .showcase-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .showcase-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .showcase-desc {
+    font-size: 13px;
+    color: var(--graphite);
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .showcase-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .showcase-tags span {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    color: var(--ink);
+  }
+  .showcase-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .showcase-actions .button {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+  .showcase-footer-link {
+    margin-top: 36px;
+    text-align: right;
+  }
+
+  /* 03. Identity Morph Stage */
+  .identity-morph-stage {
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: clamp(20px, 3.5vw, 36px);
+  }
+  .morph-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .morph-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--graphite);
+    transition: all 0.2s ease;
+  }
+  .morph-tab:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .morph-tab.is-active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .tab-step {
+    font-weight: 600;
+    font-size: 11px;
+    opacity: 0.7;
+  }
+
+  .morph-frame {
+    background: #191817;
+    color: #FAF9F5;
+    border-radius: 8px;
+    padding: clamp(20px, 3vw, 32px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .morph-frame-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--signal-bright);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  .morph-step-counter {
+    color: #9C978E;
+  }
+
+  .morph-panel {
+    display: none;
+    animation: fadeIn 0.3s ease forwards;
+  }
+  .morph-panel.is-active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .identity-presentation {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .identity-hero-mark {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 72px);
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #FAF9F5;
+  }
+  .identity-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .spec-brand {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: #FAF9F5;
+  }
+  .spec-detail {
+    font-size: 13px;
+    color: #B5B0A6;
+  }
+  .spec-palette {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .swatch-paper { background: #F2EFE8; }
+  .swatch-ink { background: #141414; }
+  .swatch-signal { background: #9C3E2F; }
+
+  .interface-presentation {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .mock-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 16px;
+  }
+  .brand-monogram {
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+  .mock-links {
+    display: flex;
+    gap: 8px;
+  }
+  .mock-links i {
+    width: 24px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+  .mock-grid-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+  .bar-headline {
+    width: 70%;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .bar-subline {
+    width: 90%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+  }
+  .box-spec {
+    height: 50px;
+    background: rgba(156, 62, 47, 0.25);
+    border: 1px solid var(--signal-bright);
+    border-radius: 4px;
+  }
+
+  .experience-presentation {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .viewport-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: #B5B0A6;
+    margin-bottom: 16px;
+  }
+  .live-pip {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #70b470;
+    box-shadow: 0 0 8px rgba(112, 180, 112, 0.6);
+  }
+  .interactive-button-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .mock-btn-state {
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-family: var(--sans);
+  }
+  .mock-btn-state.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .mock-btn-state.hover {
+    background: var(--signal-bright);
+    color: #141414;
+    font-weight: 600;
+  }
+  .mock-btn-state.focus {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    outline: 2px solid var(--signal-bright);
+    outline-offset: 2px;
+  }
+
+  .morph-copy {
+    font-size: 14px;
+    color: #CFCBC2;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* 05. Method Timeline Grid */
+  .method-timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 32px 0 24px;
+  }
+  .method-card {
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .method-step-num {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--signal);
+    letter-spacing: 0.1em;
+  }
+  .method-card h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0;
+  }
+  .method-card p {
+    font-size: 13px;
+    color: var(--graphite);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .showcase-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .showcase-actions .button {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // 3-Phase Interactive Morph Controller
+  function initMorphStage() {
+    const stage = document.querySelector('[data-morph-stage]');
+    if (!stage) return;
+
+    const tabs = stage.querySelectorAll('[data-morph-tab]');
+    const panels = stage.querySelectorAll('[data-morph-panel]');
+    const label = stage.querySelector('[data-morph-label]');
+    const counter = stage.querySelector('[data-morph-counter]');
+
+    const phaseLabels = [
+      'PHASE 01 // CHARACTER, TYPOGRAPHY & COLOUR',
+      'PHASE 02 // LAYOUT, GRID & DESIGN TOKENS',
+      'PHASE 03 // INTERACTION, MOTION & REAL-WORLD USE',
+    ];
+
+    const setMorphPhase = (index: number) => {
+      tabs.forEach((tab, i) => {
+        const isActive = i === index;
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-pressed', String(isActive));
+      });
+
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('is-active', i === index);
+      });
+
+      if (label) label.textContent = phaseLabels[index] || phaseLabels[0];
+      if (counter) counter.textContent = `0${index + 1} / 03`;
+      stage.setAttribute('data-state', String(index));
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const idx = Number(tab.getAttribute('data-morph-tab') || 0);
+        setMorphPhase(idx);
+      });
+    });
+
+    // Initialize with phase 0
+    setMorphPhase(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMorphStage);
+  } else {
+    initMorphStage();
+  }
+</script>

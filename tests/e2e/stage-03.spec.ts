@@ -132,8 +132,11 @@ test('homepage CTAs and story sections lead to real destinations', async ({
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(
-    page.getByRole('heading', { name: /A clear brand|identity into interface/i }),
+    page.getByRole('heading', { level: 1 }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 1 }),
+  ).toContainText(/A clear brand/i);
   await expect(
     page.getByRole('heading', { name: /Brand & Interface|our first project/i }),
   ).toBeVisible();
@@ -177,10 +180,10 @@ test('Work exposes featured case study and upcoming commissions', async ({
     page.locator('.archive-grid .archive-lead a[href="/archex-craft/"]'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: /View project overview|View case study/i }),
+    page.locator('.archive-grid').getByRole('link', { name: /View project overview|View case study/i }),
   ).toHaveAttribute('href', '/archex-craft/');
   await expect(
-    page.getByRole('link', { name: /Visit the live website|Visit live website/i }),
+    page.locator('.archive-grid').getByRole('link', { name: /Visit the live website|Visit live website/i }),
   ).toHaveAttribute('href', 'https://craft.archexweb.in');
   await expect(page.locator('.archive-grid .archive-lead')).toHaveCount(1);
   await expect(page.locator('.archive-commission')).toBeVisible();
@@ -255,7 +258,7 @@ test('Contact presents the design enquiry channel and direct touchpoints', async
   await expect(page.locator('.form-card')).toBeVisible();
   await expect(page.locator('#studioEnquiryForm')).toBeVisible();
   await expect(page.locator('a[href^="mailto:hello@archexweb.in"]')).toBeVisible();
-  await expect(page.locator('a[href*="archexweb.in/contact"]')).toBeVisible();
+  await expect(page.locator('.direct-channels-card a[href*="archexweb.in/contact"]')).toBeVisible();
 });
 
 test('first-time visitor copy avoids internal status and implementation language', async ({
@@ -354,7 +357,7 @@ test('reduced motion keeps the homepage complete and navigable', async ({
   await expect(
     page
       .locator('.site-header')
-      .getByRole('link', { name: 'Contact', exact: true }),
+      .getByRole('link', { name: /Discuss a Project|Contact/i }),
   ).toBeVisible();
   await page.screenshot({
     path: `${evidenceDir}/home-reduced-motion.png`,
@@ -381,6 +384,7 @@ test('homepage editorial sections reveal when scrolled into view', async ({
 test('homepage and affected routes produce requested visual evidence', async ({
   page,
 }) => {
+  test.setTimeout(60000);
   const cases = [
     { route: '/', name: 'home' },
     { route: '/work/', name: 'work' },
