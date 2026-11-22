@@ -85,7 +85,11 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
               </p>
             </div>
 
-            <form class="studio-brief-form" id="studioEnquiryForm" novalidate>
+            <form class="studio-brief-form" id="studioEnquiryForm" action="https://formspree.io/f/moedkeal" method="POST">
+              <!-- Hidden configuration fields for Formspree -->
+              <input type="hidden" name="_subject" value="New Design Enquiry — Archex Studio" />
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
               <!-- Service Selection -->
               <div class="form-group">
                 <label for="designRequirement" class="form-label">What do you need designed? *</label>
@@ -132,9 +136,9 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
 
               <!-- Submit Button -->
               <div class="form-actions">
-                <button type="submit" class="button on-dark form-submit-btn">
-                  <span>Send Design Brief</span>
-                  <span aria-hidden="true">→</span>
+                <button type="submit" class="button on-dark form-submit-btn" id="studioSubmitBtn">
+                  <span class="btn-text">Send Design Brief</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
                 </button>
               </div>
 
@@ -142,6 +146,12 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
               <div class="form-confirmation" id="studioFormAlert" role="alert" aria-live="polite">
                 <strong>Brief received with thanks.</strong><br />
                 Our creative lead will review your requirements and respond within one business day.
+              </div>
+
+              <!-- Error Alert Banner -->
+              <div class="form-error-alert" id="studioFormErrorAlert" role="alert" aria-live="polite">
+                <strong>Unable to send brief.</strong><br />
+                <span id="studioFormErrorMessage">There was an issue sending your brief. Please try again or email us directly at hello@archexweb.in.</span>
               </div>
             </form>
           </div>
@@ -312,6 +322,9 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
 
   .form-submit-btn {
     width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     justify-content: center;
     background: var(--signal-bright);
     color: #141414;
@@ -320,11 +333,16 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, opacity 0.2s ease;
   }
 
-  .form-submit-btn:hover {
+  .form-submit-btn:hover:not(:disabled) {
     background: #ffa089;
+  }
+
+  .form-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
   }
 
   .form-confirmation {
@@ -342,25 +360,106 @@ import EditorialCompanion from '../components/EditorialCompanion.astro';
   .form-confirmation.is-visible {
     display: block;
   }
+
+  .form-error-alert {
+    display: none;
+    padding: 14px 18px;
+    border-radius: 6px;
+    background: rgba(235, 87, 87, 0.15);
+    border: 1px solid #eb5757;
+    color: #f2efe8;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .form-error-alert.is-visible {
+    display: block;
+  }
 </style>
 
 <script>
   function initStudioForm() {
-    const form = document.getElementById('studioEnquiryForm') as HTMLFormElement;
-    const alert = document.getElementById('studioFormAlert');
+    const form = document.getElementById('studioEnquiryForm') as HTMLFormElement | null;
+    const successAlert = document.getElementById('studioFormAlert');
+    const errorAlert = document.getElementById('studioFormErrorAlert');
+    const errorMsg = document.getElementById('studioFormErrorMessage');
+    const submitBtn = form?.querySelector('.form-submit-btn') as HTMLButtonElement | null;
+    const btnText = submitBtn?.querySelector('.btn-text');
+    const btnArrow = submitBtn?.querySelector('.btn-arrow') as HTMLElement | null;
 
-    if (!form || !alert) return;
+    if (!form || !successAlert) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Reset any previous alert states
+      successAlert.classList.remove('is-visible');
+      if (errorAlert) errorAlert.classList.remove('is-visible');
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
 
-      // Show confirmation
-      alert.classList.add('is-visible');
-      form.reset();
+      // Show submitting state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        if (btnText) btnText.textContent = 'Sending Brief...';
+        if (btnArrow) btnArrow.style.display = 'none';
+      }
+
+      try {
+        const formData = new FormData(form);
+
+        // Ensure Formspree standard field names are populated
+        if (formData.has('fullName') && !formData.has('name')) {
+          formData.append('name', String(formData.get('fullName') || ''));
+        }
+        if (formData.has('projectBrief') && !formData.has('message')) {
+          formData.append('message', String(formData.get('projectBrief') || ''));
+        }
+
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          successAlert.classList.add('is-visible');
+          form.reset();
+        } else {
+          let message =
+            'There was an issue sending your brief. Please try again or email us directly at hello@archexweb.in.';
+          try {
+            const data = await response.json();
+            if (data && Array.isArray(data.errors) && data.errors.length > 0) {
+              message = data.errors
+                .map((err: { message: string }) => err.message)
+                .join(', ');
+            }
+          } catch {
+            // Keep default message if response isn't JSON
+          }
+          if (errorMsg) errorMsg.textContent = message;
+          if (errorAlert) errorAlert.classList.add('is-visible');
+        }
+      } catch {
+        if (errorMsg) {
+          errorMsg.textContent =
+            'Network error. Please check your connection or email us directly at hello@archexweb.in.';
+        }
+        if (errorAlert) errorAlert.classList.add('is-visible');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (btnText) btnText.textContent = 'Send Design Brief';
+          if (btnArrow) btnArrow.style.display = '';
+        }
+      }
     });
   }
 

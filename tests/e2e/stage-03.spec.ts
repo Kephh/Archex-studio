@@ -7,7 +7,7 @@ const routes = [
   { path: '/capabilities/', heading: 'Capabilities.', name: 'capabilities' },
   { path: '/studio/', heading: 'Studio.', name: 'studio' },
   { path: '/archex-craft/', heading: /Archex Craft/i, name: 'archex-craft' },
-  { path: '/contact/', heading: /Contact|conversation/i, name: 'contact' },
+  { path: '/contact/', heading: /contact|conversation/i, name: 'contact' },
 ];
 
 const viewports = [
@@ -157,7 +157,7 @@ test('homepage CTAs and story sections lead to real destinations', async ({
   await expect(contactLink).toHaveAttribute('href', '/contact/');
   await contactLink.click();
   await expect(page).toHaveURL(/\/contact\/$/);
-  await expect(page.locator('main h1')).toContainText(/Contact|conversation/i);
+  await expect(page.locator('main h1')).toContainText(/contact|conversation/i);
 
   await page.goto('/');
   await expect(page.locator('.hero-field')).not.toHaveAttribute('data-stage');
@@ -259,6 +259,70 @@ test('Contact presents the design enquiry channel and direct touchpoints', async
   await expect(page.locator('#studioEnquiryForm')).toBeVisible();
   await expect(page.locator('a[href^="mailto:hello@archexweb.in"]')).toBeVisible();
   await expect(page.locator('.direct-channels-card a[href*="archexweb.in/contact"]')).toBeVisible();
+});
+
+test('Contact form submits design enquiry to Formspree and shows confirmation', async ({
+  page,
+}) => {
+  let submittedRequest: { method: string; url: string; hasPostData: boolean } | null = null;
+
+  await page.route('https://formspree.io/f/moedkeal', async (route) => {
+    submittedRequest = {
+      method: route.request().method(),
+      url: route.request().url(),
+      hasPostData: Boolean(route.request().postData()),
+    };
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ ok: true }),
+    });
+  });
+
+  await page.goto('/contact/');
+  await page.selectOption('#designRequirement', 'brand-identity');
+  await page.fill('#fullName', 'Aarav Mehta');
+  await page.fill('#email', 'aarav@company.com');
+  await page.fill('#companyName', 'Studio Craft Ltd.');
+  await page.fill('#projectBrief', 'Looking to craft a new identity and brand system.');
+
+  await page.click('#studioSubmitBtn');
+
+  await expect(page.locator('#studioFormAlert')).toBeVisible();
+  await expect(page.locator('#studioFormAlert')).toContainText(/Brief received with thanks/i);
+  expect(submittedRequest).not.toBeNull();
+  expect(submittedRequest?.method).toBe('POST');
+  expect(submittedRequest?.url).toBe('https://formspree.io/f/moedkeal');
+
+  // Form should be reset
+  await expect(page.locator('#fullName')).toHaveValue('');
+  await expect(page.locator('#email')).toHaveValue('');
+});
+
+test('Contact form displays error alert when submission fails', async ({
+  page,
+}) => {
+  await page.route('https://formspree.io/f/moedkeal', async (route) => {
+    await route.fulfill({
+      status: 400,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        errors: [{ message: 'Rate limit reached or invalid address' }],
+      }),
+    });
+  });
+
+  await page.goto('/contact/');
+  await page.selectOption('#designRequirement', 'brand-identity');
+  await page.fill('#fullName', 'Aarav Mehta');
+  await page.fill('#email', 'aarav@company.com');
+  await page.fill('#projectBrief', 'Brief test content.');
+
+  await page.click('#studioSubmitBtn');
+
+  await expect(page.locator('#studioFormErrorAlert')).toBeVisible();
+  await expect(page.locator('#studioFormErrorAlert')).toContainText(/Rate limit reached or invalid address/i);
+  await expect(page.locator('#studioFormAlert')).not.toBeVisible();
 });
 
 test('first-time visitor copy avoids internal status and implementation language', async ({
